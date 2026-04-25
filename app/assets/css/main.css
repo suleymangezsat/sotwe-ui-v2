@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+ * Twitter / X color palette.
+ * Light and dark variants follow the modern X app:
+ *   bg / text / muted / border / hover
+ * Semantic aliases (bg-surface, text-default, etc.) expose these to
+ * components without hardcoding hex literals.
+ */
+@theme static {
+  --color-twitter-blue-50: #eff9ff;
+  --color-twitter-blue-100: #dcf1ff;
+  --color-twitter-blue-200: #b1e4ff;
+  --color-twitter-blue-300: #6cd0ff;
+  --color-twitter-blue-400: #22b8ff;
+  --color-twitter-blue-500: #1d9bf0;
+  --color-twitter-blue-600: #0f83d6;
+  --color-twitter-blue-700: #0e6aae;
+  --color-twitter-blue-800: #125a8e;
+  --color-twitter-blue-900: #154c75;
+  --color-twitter-blue-950: #0f2f4a;
+
+  /* Twitter / X neutral scale (mirrors dark+light app chrome) */
+  --color-twitter-slate-50: #f7f9f9;
+  --color-twitter-slate-100: #eff3f4;
+  --color-twitter-slate-200: #cfd9de;
+  --color-twitter-slate-300: #aab8c2;
+  --color-twitter-slate-400: #71767b;
+  --color-twitter-slate-500: #536471;
+  --color-twitter-slate-600: #3d4148;
+  --color-twitter-slate-700: #2f3336;
+  --color-twitter-slate-800: #202327;
+  --color-twitter-slate-900: #16181c;
+  --color-twitter-slate-950: #000000;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Force the body-level vertical scrollbar to always be present so its
+     * first appearance (after the 20-tweet timeline lays out) doesn't
+     * reflow the 3-column grid. `overflow-y: scroll` is what actually
+     * engages the gutter; `scrollbar-gutter: stable` alone is a no-op
+     * on the default `overflow: visible`. */
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-white text-twitter-slate-900 antialiased;
+    font-family:
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji';
+  }
+
+  html.dark body {
+    @apply bg-black text-twitter-slate-100;
+  }
+
+  /* Active nav link style (was .active-link in v1). */
+  a.router-link-active,
+  a.router-link-exact-active {
+    color: var(--color-twitter-blue-500);
+  }
+}
+
+@layer utilities {
+  /* v1 custom utilities preserved for component parity */
+  .break-word {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .light-text {
+    color: var(--color-twitter-slate-500);
+  }
+
+  .divider {
+    border-top: 1px solid var(--color-twitter-slate-100);
+  }
+
+  html.dark .divider {
+    border-top-color: var(--color-twitter-slate-700);
+  }
+}
