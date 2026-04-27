@@ -50,12 +50,16 @@ export function createApiClient(): ApiClient {
     onRequest({ request, options }) {
       const headers = new Headers(options.headers)
 
-      // Bearer token, both on SSR (rehydrated from the visitor's cookie)
-      // and on the client. Skipped for the auth endpoints themselves so we
-      // never accidentally send a stale token while requesting a new one.
+      // Bearer token, only on the `/me/*` paths that actually require it.
+      // Public endpoints (`/v3/*`, `/v2/*`) are explicitly skipped — some
+      // backends (notably the dev sotwebe instance) reject an *invalid*
+      // JWT with 401 even on otherwise-public endpoints, so attaching a
+      // stale prod token to a public listing request paradoxically breaks
+      // it. Auth endpoints (`/v3/auth/*`) also never get a token —
+      // they're how you mint one.
       const url = typeof request === 'string' ? request : request.toString()
-      const isAuthEndpoint = url.includes('/v3/auth/')
-      if (!isAuthEndpoint) {
+      const needsAuth = url.includes('/me/')
+      if (needsAuth) {
         const token = readAccessToken()
         if (token) headers.set('Authorization', `Bearer ${token}`)
       }

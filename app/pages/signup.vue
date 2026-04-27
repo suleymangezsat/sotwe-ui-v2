@@ -50,7 +50,9 @@ function onProfileDone() {
 </script>
 
 <template>
-  <STopBar title="Create account" :show-back="true" />
+  <!-- The step heading ("Create your account" / "Verify…" / "Tell us about
+       you") is the page h1 — topbar drops to h2. -->
+  <STopBar title="Create account" :show-back="true" :as="'h2'" />
   <section class="mx-auto flex max-w-sm flex-col gap-6 px-4 py-8">
     <div class="flex flex-col items-center gap-2">
       <SLogo :size="40" />

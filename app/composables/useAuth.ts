@@ -77,6 +77,34 @@ export function useAuth() {
     user.value = null
   }
 
+  /*
+   * Dev-only mock helper. Lets the seeder flip the visitor's apparent
+   * subscription tier without a real backend account, so we can exercise
+   * gated flows (Download All, Premium UI badges, …) on a free-tier test
+   * account. The flag lives in localStorage so it survives reloads, and
+   * the override is gated on `nodeEnv !== 'production'` so a stray prod
+   * deploy can't accidentally upgrade visitors.
+   */
+  function applyDevSubscriptionOverride(profile: UserProfile): UserProfile {
+    if (import.meta.server) return profile
+    const config = useRuntimeConfig()
+    if (config.public.nodeEnv === 'production') return profile
+    if (localStorage.getItem('sotwe-dev-premium') !== '1') return profile
+    return {
+      ...profile,
+      subscription: {
+        id: profile.subscription?.id || 'dev-mock',
+        name: 'Premium (dev mock)',
+        description: 'Client-side mock — backend still says Free.',
+        priority: 99,
+        features: profile.subscription?.features ?? [],
+        renewal: profile.subscription?.renewal ?? 'MONTHLY',
+        startDate: profile.subscription?.startDate ?? new Date().toISOString(),
+        endDate: profile.subscription?.endDate ?? new Date(Date.now() + 86400000).toISOString(),
+      },
+    }
+  }
+
   async function fetchUser(): Promise<UserProfile | null> {
     if (!accessToken.value) {
       user.value = null
@@ -84,8 +112,8 @@ export function useAuth() {
     }
     try {
       const profile = await useApi().me.profile()
-      user.value = profile
-      return profile
+      user.value = applyDevSubscriptionOverride(profile)
+      return user.value
     }
     catch (firstErr) {
       // The access token is rejected. Most often this is just a 30-minute
@@ -97,15 +125,15 @@ export function useAuth() {
       if (refreshed) {
         try {
           const profile = await useApi().me.profile()
-          user.value = profile
-          return profile
+          user.value = applyDevSubscriptionOverride(profile)
+          return user.value
         }
         catch { /* fall through to clearTokens below */ }
       }
       // Both the access AND refresh path are dead — clear cookies so the
       // UI can render the signed-out shell instead of looping on a stale
       // pair.
-      // eslint-disable-next-line no-console
+       
       console.warn('[auth] token rejected', firstErr)
       clearTokens()
       return null

@@ -62,6 +62,21 @@ export const SubscriptionTerm = {
 } as const
 export type SubscriptionTerm = (typeof SubscriptionTerm)[keyof typeof SubscriptionTerm]
 
+/**
+ * Reasons offered in the cancel-renewal dialog. Backend stores them as a
+ * raw string; we use a const map so the picker stays typed and the
+ * dropdown can render labels from a single source.
+ */
+export const CancelReason = {
+  HIGH_COST: 'HIGH_COST',
+  FEATURE_BROKEN: 'FEATURE_BROKEN',
+  NOT_USING_ENOUGH: 'NOT_USING_ENOUGH',
+  CHANGE_IN_NEEDS: 'CHANGE_IN_NEEDS',
+  LACK_OF_FEATURE: 'LACK_OF_FEATURE',
+  OTHER: 'OTHER',
+} as const
+export type CancelReason = (typeof CancelReason)[keyof typeof CancelReason]
+
 export const ReportType = {
   USER: 'USER',
   TAG: 'TAG',

@@ -46,6 +46,9 @@ export default defineNuxtConfig({
     { path: '~/components/rail', pathPrefix: false },
     { path: '~/components/form', pathPrefix: false },
     { path: '~/components/auth', pathPrefix: false },
+    { path: '~/components/dialog', pathPrefix: false },
+    { path: '~/components/user', pathPrefix: false },
+    { path: '~/components/pricing', pathPrefix: false },
     { path: '~/components' },
   ],
 

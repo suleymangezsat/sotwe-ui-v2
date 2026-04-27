@@ -25,6 +25,8 @@ import type {
   Location as SotwePlace,
   LoginPayload,
   NearbyUser,
+  PaymentResponse,
+  PaymentSource,
   RefreshTokenPayload,
   ReportPayload,
   ResetPasswordPayload,
@@ -242,6 +244,40 @@ export function useApi() {
       subscription: () => client<UserSubscription>('/me/subscription'),
       cancelSubscription: (body: CancelSubscriptionPayload) =>
         client<void>('/me/subscription', { method: 'DELETE', body }),
+
+      /**
+       * Mint a payment session for a given subscription plan + processor.
+       * Returns `{ id, sessionId, createdAt }` — the `sessionId` is what
+       * we hand to Stripe's `redirectToCheckout` (or to Sellix's invoice
+       * URL) to start the checkout. Auth-required.
+       */
+      createPaymentSession: (source: PaymentSource, subscriptionId: string) =>
+        client<PaymentResponse>(
+          `/me/subscription/payment/${source}/${encodeURIComponent(subscriptionId)}`,
+          { method: 'POST' },
+        ),
+      /**
+       * After Stripe redirects the visitor back to /pricing/:source/success
+       * we hit this with the `sessionId` query param so the backend can
+       * confirm the charge cleared, attach the new subscription to the
+       * user, and return the fresh `UserSubscription` for the UI to show.
+       */
+      verifyPayment: (source: PaymentSource, sessionId: string) =>
+        client<UserSubscription>(
+          `/me/subscription/payment/${source}/verify`,
+          { method: 'POST', query: { sessionId } },
+        ),
+      /**
+       * Fallback path used when the success redirect drops the
+       * `?session_id=…` query (Stripe sometimes loses it across mobile
+       * Safari intent handoffs). Verifies the most recent in-flight
+       * payment for the authed user.
+       */
+      verifyLastPayment: (source: PaymentSource) =>
+        client<UserSubscription>(
+          `/me/subscription/payment/${source}/verify_last`,
+          { method: 'POST' },
+        ),
     },
 
     subscriptions: {

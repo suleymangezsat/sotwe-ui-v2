@@ -7,7 +7,7 @@ useSotweMeta({
 </script>
 
 <template>
-  <STopBar title="Payment" :show-back="true" />
+  <STopBar title="Payment" :show-back="true" :as="'h2'" />
   <section class="flex flex-col items-center gap-4 px-4 py-16 text-center">
     <Icon name="i-lucide-circle-x" class="size-16 text-red-500" />
     <h1 class="text-2xl font-bold">Something went wrong</h1>

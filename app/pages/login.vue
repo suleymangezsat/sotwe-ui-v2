@@ -66,7 +66,8 @@ async function submit() {
 </script>
 
 <template>
-  <STopBar title="Sign in" :show-back="true" />
+  <!-- The page hero ("Sign in to Sotwe") is the h1 — topbar drops to h2. -->
+  <STopBar title="Sign in" :show-back="true" :as="'h2'" />
   <section class="mx-auto flex max-w-sm flex-col gap-6 px-4 py-8">
     <div class="flex flex-col items-center gap-2">
       <SLogo :size="40" />

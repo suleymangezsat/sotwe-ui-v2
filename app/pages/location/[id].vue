@@ -35,7 +35,9 @@ useSotweMeta({
 </script>
 
 <template>
-  <STopBar :title="titleText" :show-back="true" />
+  <!-- Place name is rendered as an h1 inside the page body — topbar
+       drops to h2 to keep the page at exactly one h1. -->
+  <STopBar :title="titleText" :show-back="true" :as="'h2'" />
   <header v-if="place.name" class="border-b border-twitter-slate-100 px-4 py-4 dark:border-twitter-slate-700">
     <h1 class="text-xl font-bold">{{ place.fullName || place.name }}</h1>
     <p v-if="place.country" class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">

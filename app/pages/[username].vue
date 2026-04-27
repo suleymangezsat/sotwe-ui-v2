@@ -6,7 +6,24 @@
  *
  * /v3/user/{screenName} returns both `data: Tweet[]` (timeline) and
  * `info: User` (profile) in one call, so a single fetch hydrates both.
+ *
+ * The header replicates v1 `components/user/profile/*`:
+ *   - banner (3:1 aspect)
+ *   - avatar overlapping the banner/content seam (size-32 disc, 4px
+ *     ring against bg)
+ *   - action button row to the right of the avatar (Share + 3-dot menu
+ *     — Open on X / Account ownership / Report user)
+ *   - h1 = display name + verified tick + protected lock
+ *   - @screenName + bio (with mention/hashtag/url linkification) + website
+ *     link from `urlEntity` + location + joined date + category badges
+ *   - stats row: posts / following / followers (compact format)
+ *
+ * The page-level h1 is the visible name in the header — STopBar drops to
+ * h2 so we keep exactly one h1 per page (SEO + a11y).
  */
+
+import { parseTweetText } from '~/utils/tweetEntities'
+import { formatCount } from '~/utils/formatCount'
 
 const route = useRoute()
 const screenName = computed(() => String(route.params.username))
@@ -35,9 +52,14 @@ if (!data.value?.info) {
 }
 
 const profile = data.value.info
-const tweets = data.value.tweets
 const initialAfter = data.value.after
 const whoToFollow = data.value.whoToFollow
+
+// Track every tweet the visitor has loaded — initial SSR batch + every
+// page that infinite scroll has pulled in. SDownloadAllButton reads from
+// this ref so the ZIP includes exactly the media that's been seen so far,
+// matching v1's `user/timeline/findAllMediaUrls` Vuex getter behaviour.
+const loadedTweets = ref([...data.value.tweets])
 
 async function loadMoreTweets(after: string) {
   const res = await useApi().user.get(screenName.value, { after })
@@ -48,8 +70,39 @@ async function loadMoreTweets(after: string) {
   for (const t of res.data) {
     if (!t.user) t.user = profile
   }
+  loadedTweets.value.push(...res.data)
   return { items: res.data, after: res.after }
 }
+
+// Bio entity linkification. v1 stripped raw URLs from the description and
+// surfaced the user's website as a separate `urlEntity` link below — the
+// raw `t.co/…` stub shouldn't show up in body text. We mirror that:
+//   1. strip every `https?://…` token from the description
+//   2. parse what's left for mention + hashtag entities
+// If the description is JUST a URL (a common case for power users like
+// elonmusk who use the bio as the website field) the cleaned text is
+// empty and the bio paragraph hides entirely.
+const cleanBio = computed(() => {
+  const raw = profile.description ?? ''
+  return raw.replace(/(?:https?|ftp):\/\/\S+/g, '').trim()
+})
+const bioSegments = computed(() => {
+  if (!cleanBio.value) return []
+  return parseTweetText({
+    text: cleanBio.value,
+    userMentionEntities: profile.userMentionEntities,
+    tagEntities: profile.tagEntities,
+  })
+})
+
+const websiteUrl = computed(() => profile.urlEntity?.expandedURL || profile.url || undefined)
+const websiteDisplay = computed(() => profile.urlEntity?.displayURL || websiteUrl.value)
+
+const joinedDate = computed(() =>
+  profile.createdAt
+    ? new Date(profile.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long' })
+    : undefined,
+)
 
 useSotweMeta({
   title: `${profile.name} (@${profile.screenName}) · Sotwe`,
@@ -73,9 +126,14 @@ useSotweMeta({
 </script>
 
 <template>
-  <STopBar :title="profile.name" :show-back="true" />
+  <!-- Page hero (the user's name) is the sole h1 — topbar demotes to h2
+       so the page has exactly one h1 (SEO + a11y). -->
+  <STopBar :title="profile.name" :show-back="true" :as="'h2'" />
 
   <header class="relative">
+    <!-- Banner. Twitter ships banners at 3:1 (1500×500). Empty state is a
+         neutral grey rectangle of the same aspect to keep CLS stable when
+         the avatar/content row mounts before the image loads. -->
     <div class="aspect-[3/1] bg-twitter-slate-100 dark:bg-twitter-slate-900">
       <img
         v-if="profile.profileBannerOriginal"
@@ -84,17 +142,15 @@ useSotweMeta({
         class="h-full w-full object-cover"
       >
     </div>
-    <!--
-      Twitter-style profile avatar: a fixed-size 128px disc whose vertical
-      centre sits on the banner/content seam (translate-y 50% upward).
-      Positioned absolutely so it overlaps without pushing the content row
-      down; the content row below reserves `pt-20` to skip the avatar.
-      No verified tick here — the name row underneath already shows it.
-    -->
-    <div class="relative px-4">
+
+    <!-- Avatar + action button row, sitting on the banner/content seam.
+         -mt-16 lifts both surfaces by half the avatar's height (size-32 ÷
+         2 = 64px) so the avatar visually overlaps the banner. items-end
+         keeps the button row baseline-aligned with the avatar's bottom. -->
+    <div class="flex items-end justify-between px-4 -mt-16">
       <NuxtLink
         :to="`/${profile.screenName}`"
-        class="absolute left-4 top-0 -translate-y-1/2 rounded-full ring-4 ring-white dark:ring-black"
+        class="rounded-full ring-4 ring-white dark:ring-black"
         :aria-label="profile.name"
       >
         <img
@@ -105,36 +161,111 @@ useSotweMeta({
           class="size-32 rounded-full object-cover bg-twitter-slate-100 dark:bg-twitter-slate-900"
         >
       </NuxtLink>
-    </div>
-    <div class="px-4 pb-3 pt-20">
-      <div class="flex items-center gap-1 text-xl font-bold">
-        <span>{{ profile.name }}</span>
-        <SVerifiedBadge v-if="profile.verified" class="size-5 text-twitter-blue-500" />
+
+      <div class="flex items-center gap-2 pb-2">
+        <SDownloadAllButton :username="profile.screenName" :tweets="loadedTweets" />
+        <SProfileShareButton :profile="profile" />
+        <SProfileMenu :profile="profile" />
       </div>
+    </div>
+
+    <div class="px-4 pt-4 pb-3">
+      <!-- Display name (h1) + verified + protected indicators. -->
+      <h1 class="flex items-center gap-1 text-xl font-bold">
+        <span class="break-word">{{ profile.name }}</span>
+        <SVerifiedBadge v-if="profile.verified" class="size-5 shrink-0 text-twitter-blue-500" />
+        <Icon
+          v-if="profile.userProtected"
+          name="i-lucide-lock"
+          class="size-4 shrink-0 text-twitter-slate-500"
+          aria-label="Protected account"
+        />
+      </h1>
       <div class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
         @{{ profile.screenName }}
       </div>
-      <p v-if="profile.description" class="mt-2 whitespace-pre-wrap break-word">
-        {{ profile.description }}
+
+      <!-- Bio with mention/hashtag linkification. URLs are rendered as a
+           separate "website" link below to match v1's stripped-bio
+           pattern. -->
+      <p
+        v-if="bioSegments.length"
+        class="mt-2 whitespace-pre-wrap break-word text-[15px] text-twitter-slate-900 dark:text-twitter-slate-100"
+      >
+        <template v-for="(seg, i) in bioSegments" :key="i">
+          <template v-if="seg.kind === 'text'">{{ seg.text }}</template>
+          <NuxtLink
+            v-else-if="seg.kind === 'mention'"
+            :to="`/${seg.screenName}`"
+            class="text-twitter-blue-500 hover:underline"
+          >{{ seg.text }}</NuxtLink>
+          <NuxtLink
+            v-else-if="seg.kind === 'hashtag'"
+            :to="`/hashtag/${encodeURIComponent(seg.tag)}`"
+            class="text-twitter-blue-500 hover:underline"
+          >{{ seg.text }}</NuxtLink>
+        </template>
       </p>
-      <div class="mt-3 flex flex-wrap gap-4 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        <span v-if="profile.location">
-          <Icon name="i-lucide-map-pin" class="mr-1 inline size-4" /> {{ profile.location }}
+
+      <!-- Inline meta row: website / location / joined / category. Each
+           item gets its own icon for quick scan. Items only render when
+           the underlying field is non-empty so absent metadata doesn't
+           leave dangling icons. -->
+      <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
+        <a
+          v-if="websiteUrl"
+          :href="websiteUrl"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="inline-flex items-center gap-1 text-twitter-blue-500 hover:underline"
+        >
+          <Icon name="i-lucide-link" class="size-4" />
+          {{ websiteDisplay }}
+        </a>
+        <span v-if="profile.location" class="inline-flex items-center gap-1">
+          <Icon name="i-lucide-map-pin" class="size-4" /> {{ profile.location }}
         </span>
-        <span v-if="profile.createdAt">
-          <Icon name="i-lucide-calendar" class="mr-1 inline size-4" />
-          Joined {{ new Date(profile.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long' }) }}
+        <span v-if="joinedDate" class="inline-flex items-center gap-1">
+          <Icon name="i-lucide-calendar" class="size-4" /> Joined {{ joinedDate }}
         </span>
       </div>
-      <div class="mt-3 flex gap-5 text-sm">
-        <span><b>{{ profile.followingCount?.toLocaleString() }}</b> <span class="text-twitter-slate-500 dark:text-twitter-slate-400">Following</span></span>
-        <span><b>{{ profile.followerCount?.toLocaleString() }}</b> <span class="text-twitter-slate-500 dark:text-twitter-slate-400">Followers</span></span>
+
+      <!-- Category badges (e.g. "News", "Sports") if the backend tagged
+           the user. Hidden for the vast majority of profiles. -->
+      <div
+        v-if="profile.category && profile.category.length"
+        class="mt-2 flex flex-wrap gap-1.5"
+      >
+        <span
+          v-for="c in profile.category"
+          :key="c"
+          class="rounded-full bg-twitter-slate-100 px-2.5 py-0.5 text-xs font-semibold text-twitter-slate-700 dark:bg-twitter-slate-800 dark:text-twitter-slate-200"
+        >
+          {{ c }}
+        </span>
+      </div>
+
+      <!-- Stats row: posts / following / followers. Numeric counts use the
+           same compact formatter as the tweet action row (1.2K / 5M). -->
+      <div class="mt-3 flex flex-wrap gap-5 text-sm">
+        <span v-if="profile.postCount != null">
+          <b>{{ formatCount(profile.postCount) }}</b>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Posts</span>
+        </span>
+        <span v-if="profile.followingCount != null">
+          <b>{{ formatCount(profile.followingCount) }}</b>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Following</span>
+        </span>
+        <span v-if="profile.followerCount != null">
+          <b>{{ formatCount(profile.followerCount) }}</b>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Followers</span>
+        </span>
       </div>
     </div>
   </header>
 
   <SInfiniteTimeline
-    :initial-items="tweets"
+    :initial-items="loadedTweets"
     :initial-after="initialAfter"
     :load-more="loadMoreTweets"
   >

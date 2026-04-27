@@ -39,6 +39,30 @@ const refreshToken = ref('')
 const status = ref<'idle' | 'loading' | 'ok' | 'error'>('idle')
 const message = ref<string | undefined>(undefined)
 
+/*
+ * Mock-premium toggle.
+ *
+ * Backed by `localStorage.sotwe-dev-premium`. The hook lives in
+ * `useAuth().fetchUser()` — when this flag is set, the next /me/profile
+ * fetch comes back with `subscription.priority` swapped to a non-zero
+ * value so premium-gated UI (Download All Media, …) can be exercised
+ * with a free-tier test account. Backend still says Free; only the
+ * client-side `auth.user` view is patched.
+ *
+ * Hard-disabled in production builds — see `applyDevSubscriptionOverride`
+ * in app/composables/useAuth.ts.
+ */
+const mockPremium = ref(false)
+onMounted(() => {
+  mockPremium.value = localStorage.getItem('sotwe-dev-premium') === '1'
+})
+watch(mockPremium, (v) => {
+  if (v) localStorage.setItem('sotwe-dev-premium', '1')
+  else localStorage.removeItem('sotwe-dev-premium')
+  // Re-fetch the user so the override applies (or is undone) immediately.
+  if (auth.isAuthenticated.value) auth.fetchUser()
+})
+
 function stripBearer(t: string): string {
   return t.replace(/^bearer\s+/i, '').trim()
 }
@@ -121,6 +145,31 @@ const isAuthed = computed(() => Boolean(auth.accessToken.value))
         <span>An access token is already in cookies for this browser.</span>
         <SButton size="xs" variant="ghost" color="error" @click="clear">Clear</SButton>
       </div>
+
+      <!--
+        Subscription override. Lets the visitor flip
+        `auth.user.subscription.priority` to a non-zero value without a
+        real premium account, so gated flows (Download All Media,
+        Premium UI badges, …) can be exercised end-to-end on a free-tier
+        test account. Persists in localStorage so it survives reloads.
+      -->
+      <label
+        class="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm dark:border-amber-900 dark:bg-amber-950"
+      >
+        <input
+          v-model="mockPremium"
+          type="checkbox"
+          class="mt-0.5 size-4 shrink-0 accent-twitter-blue-500"
+        >
+        <div class="flex flex-col gap-0.5">
+          <span class="font-semibold text-amber-900 dark:text-amber-200">Mock premium subscription</span>
+          <span class="text-xs text-amber-800 dark:text-amber-300">
+            Patches <code>auth.user.subscription.priority = 99</code> client-side
+            so you can test premium-gated flows (e.g. Download All Media).
+            Backend still says Free.
+          </span>
+        </div>
+      </label>
 
       <form class="flex flex-col gap-4" @submit.prevent="seed">
         <UFormField label="Access token (JWT)" :ui="{ root: 'w-full' }">

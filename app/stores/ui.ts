@@ -27,7 +27,6 @@ export const useUiStore = defineStore('ui', () => {
   const signupDialog = ref(slot())
   const forgotPasswordDialog = ref(slot())
   const genericErrorDialog = ref(slot<{ title?: string, message?: string }>())
-  const messageDialog = ref(slot<{ userId?: string, screenName?: string }>())
   const mediaModal = ref(slot<{ tweetId?: string, index?: number }>())
   const shareModal = ref(slot<{ url?: string, title?: string }>())
   const reportDialog = ref(slot<{ type?: string, name?: string }>())
@@ -43,7 +42,6 @@ export const useUiStore = defineStore('ui', () => {
     signupDialog,
     forgotPasswordDialog,
     genericErrorDialog,
-    messageDialog,
     mediaModal,
     shareModal,
     reportDialog,

@@ -35,7 +35,10 @@ useSotweMeta({
 </script>
 
 <template>
-  <STopBar title="Home" />
+  <!-- SMastHead carries the page-level h1 (the SEO-critical hero copy
+       Google indexes). The topbar title is navigation chrome only, so it
+       drops to h2 to keep this page at exactly one h1. -->
+  <STopBar title="Home" :as="'h2'" />
   <SMastHead />
   <STrendsView v-if="data" :data="data" />
 </template>

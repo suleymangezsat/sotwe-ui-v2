@@ -362,6 +362,25 @@ export interface CancelSubscriptionPayload {
   feedback?: string
 }
 
+/**
+ * Payment processor identifier — picked in the SPaymentMethodDialog and
+ * passed as a path segment (`/me/subscription/payment/{source}/...`) to the
+ * backend so it knows which provider's session to mint / verify.
+ */
+export type PaymentSource = 'stripe' | 'sellix'
+
+/**
+ * Backend response when minting a payment session. The `sessionId` is what
+ * we hand to `stripe.redirectToCheckout()` (or to Sellix's invoice URL) to
+ * actually start the checkout. `id` is our internal payment record id —
+ * useful for support / log correlation, not used in the UI flow.
+ */
+export interface PaymentResponse {
+  id: string
+  sessionId: string
+  createdAt: string
+}
+
 export interface ReportPayload {
   type: ReportType
   name: string

@@ -3,13 +3,25 @@
  * Per-page sticky header strip — shows the current section title, a back
  * button when on a nested route, and keeps the sidebar hidden on mobile
  * where the logo + theme toggle live here instead.
+ *
+ * The title renders as an `<h1>` by default since for most simple pages
+ * (Bookmarks, About, Profile, …) the topbar text IS the page subject and
+ * those pages don't render any other heading. Pages that DO have their
+ * own content-level h1 — login, signup, pricing, location, the home
+ * page hero — should pass `:as="'h2'"` so the page keeps a single h1
+ * (Google's SEO heuristic + accessibility tree expect exactly one).
  */
 
-defineProps<{
+withDefaults(defineProps<{
   title?: string
+  /** Heading level for the title element. */
+  as?: 'h1' | 'h2'
   /** When true, show a back arrow that calls router.back(). */
   showBack?: boolean
-}>()
+}>(), {
+  as: 'h1',
+  showBack: false,
+})
 
 const router = useRouter()
 </script>
@@ -31,7 +43,13 @@ const router = useRouter()
     <!-- Mobile: show logo where the sidebar would have been -->
     <SLogo v-if="!showBack" :size="24" :compact="true" class="md:hidden" />
 
-    <h1 v-if="title" class="flex-1 truncate text-lg font-bold">{{ title }}</h1>
+    <component
+      :is="as"
+      v-if="title"
+      class="flex-1 truncate text-lg font-bold"
+    >
+      {{ title }}
+    </component>
     <div v-else class="flex-1" />
 
     <SThemeToggle class="md:hidden" />

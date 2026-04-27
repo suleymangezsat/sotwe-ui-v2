@@ -43,6 +43,7 @@ useSotweMeta({
 
 const changePasswordOpen = ref(false)
 const deleteOpen = ref(false)
+const cancelRenewalOpen = ref(false)
 
 function signOut() {
   auth.signOut()
@@ -76,19 +77,33 @@ function signOut() {
 
     <div
       v-if="profile.subscription"
-      class="rounded-2xl border border-twitter-blue-200 bg-twitter-blue-50 p-4 dark:border-twitter-blue-700 dark:bg-twitter-blue-950"
+      class="flex flex-col gap-3 rounded-2xl border border-twitter-blue-200 bg-twitter-blue-50 p-4 dark:border-twitter-blue-700 dark:bg-twitter-blue-950"
     >
       <div class="flex items-center gap-2 font-bold">
         <Icon name="i-lucide-badge-check" class="size-5 text-twitter-blue-500" />
         {{ profile.subscription.name }}
       </div>
-      <p v-if="profile.subscription.description" class="mt-1 text-sm text-twitter-slate-600 dark:text-twitter-slate-300">
+      <p v-if="profile.subscription.description" class="text-sm text-twitter-slate-600 dark:text-twitter-slate-300">
         {{ profile.subscription.description }}
       </p>
-      <p class="mt-2 text-xs text-twitter-slate-500 dark:text-twitter-slate-400">
+      <p class="text-xs text-twitter-slate-500 dark:text-twitter-slate-400">
         Renews {{ profile.subscription.renewal }} · ends
         {{ new Date(profile.subscription.endDate).toLocaleDateString() }}
       </p>
+      <!-- Cancel-renewal trigger only shows for paid tiers (priority > 0).
+           Free-tier users have nothing to cancel — the button would 4xx
+           from the backend. -->
+      <div v-if="profile.subscription.priority > 0" class="flex flex-wrap gap-2">
+        <SButton size="sm" variant="ghost" color="error" icon="i-lucide-x-circle" @click="cancelRenewalOpen = true">
+          Cancel auto-renewal
+        </SButton>
+        <SButton size="sm" variant="ghost" to="/pricing" icon="i-lucide-arrow-up-right">
+          Manage plan
+        </SButton>
+      </div>
+      <SButton v-else size="sm" to="/pricing" icon="i-lucide-sparkles">
+        Upgrade to Premium
+      </SButton>
     </div>
 
     <section class="flex flex-col gap-3">
@@ -126,6 +141,7 @@ function signOut() {
 
     <SChangePasswordDialog v-model="changePasswordOpen" />
     <SDeleteAccountDialog v-model="deleteOpen" :username="profile.username" />
+    <SCancelRenewalDialog v-model="cancelRenewalOpen" @done="refresh" />
   </section>
 
   <section v-else class="flex min-h-dvh items-center justify-center">

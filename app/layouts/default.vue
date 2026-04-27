@@ -16,10 +16,9 @@
  *
  * Modal stack (LoginDialog, SignupDialog, MessageDialog, MediaModal, ...)
  * is rendered inside <ClientOnly> at the bottom so it doesn't bloat SSR
- * HTML. Faz 6 will drop the real dialogs into this slot.
+ * HTML. Each dialog reads its own state from `useUiStore()` so the
+ * layout doesn't need to pipe props through.
  */
-
-const ui = useUiStore()
 </script>
 
 <template>
@@ -46,24 +45,23 @@ const ui = useUiStore()
     <SBottomNav />
 
     <!--
-      Global dialog stack. Ported components mount once and read their
-      open state from `useUiStore()` so any tweet row or sidebar action
-      can trigger them with a single store write.
+      Global dialog stack. Each component mounts once and reads its open
+      state from `useUiStore()` so any tweet row, sidebar action, or
+      composable can trigger one with a single store write — no
+      v-model plumbing through every parent. <ClientOnly> prevents the
+      backdrop / portal markup from bloating the SSR HTML.
     -->
     <ClientOnly>
       <SMediaDialog />
       <SReportDialog />
-      <!-- Faz 6.4 / 6.5 fill in the remaining slots: login / signup /
-           forgot password / message / social sharing / nearby. -->
-      <div v-if="ui.loginDialog.display" />
-      <div v-if="ui.signupDialog.display" />
-      <div v-if="ui.forgotPasswordDialog.display" />
-      <div v-if="ui.genericErrorDialog.display" />
-      <div v-if="ui.messageDialog.display" />
-      <div v-if="ui.shareModal.display" />
-      <div v-if="ui.locationPermissionDialog.display" />
-      <div v-if="ui.displayCampaignModal" />
-      <div v-if="ui.displayNearbyDialog" />
+      <SLoginDialog />
+      <SSignupDialog />
+      <SForgotPasswordDialogGlobal />
+      <SGenericErrorDialog />
+      <SSocialShareDialog />
+      <SLocationPermissionDialog />
+      <SCampaignDialog />
+      <SNearbyDialog />
     </ClientOnly>
   </div>
 </template>
