@@ -1,11 +1,25 @@
 import type { FetchOptions } from 'ofetch'
 import {
   ErrorCode,
+  type AuthTokens,
   type BackendErrorBody,
   type SotweApiError,
 } from '~shared/types'
 
 type ApiClient = ReturnType<typeof $fetch.create>
+
+const ACCESS_COOKIE = 'sotwe-access-token'
+const REFRESH_COOKIE = 'sotwe-refresh-token'
+
+/**
+ * Single-flight refresh. If a 401 lands on the client we exchange the
+ * refresh-cookie for a new pair of tokens once and replay every concurrent
+ * request that arrived during the window. Without de-duplication a page
+ * with five parallel `useApi().me.*` calls would burn five refresh-token
+ * requests, and the backend revokes the refresh token on each rotation —
+ * so only the first call would succeed, the rest would log the user out.
+ */
+let inflightRefresh: Promise<AuthTokens | null> | null = null
 
 
 /**
@@ -33,8 +47,18 @@ export function createApiClient(): ApiClient {
     baseURL,
     credentials: 'include',
     retry: 0,
-    onRequest({ options }) {
+    onRequest({ request, options }) {
       const headers = new Headers(options.headers)
+
+      // Bearer token, both on SSR (rehydrated from the visitor's cookie)
+      // and on the client. Skipped for the auth endpoints themselves so we
+      // never accidentally send a stale token while requesting a new one.
+      const url = typeof request === 'string' ? request : request.toString()
+      const isAuthEndpoint = url.includes('/v3/auth/')
+      if (!isAuthEndpoint) {
+        const token = readAccessToken()
+        if (token) headers.set('Authorization', `Bearer ${token}`)
+      }
 
       if (import.meta.server) {
         // Backend CORS + localization contract — match what sotwe-ui v1
@@ -63,6 +87,53 @@ export function createApiClient(): ApiClient {
 
   return $fetch.create(options)
 }
+
+/**
+ * Read the access-token cookie WITHOUT going through Nuxt's `useCookie`
+ * helper. `useCookie` requires a Nuxt instance bound to the call (it reads
+ * from `useNuxtApp()` synchronously) which isn't available inside `ofetch`
+ * interceptors on the client. We read the cookie directly to stay
+ * framework-shaped without leaking it into the api factory's signature.
+ */
+function readAccessToken(): string | null {
+  if (import.meta.server) {
+    const evt = useRequestEvent()
+    const cookieHeader = evt?.node.req.headers.cookie
+    if (!cookieHeader) return null
+    const m = cookieHeader.match(new RegExp(`(?:^|;\\s*)${ACCESS_COOKIE}=([^;]+)`))
+    return m && m[1] ? decodeURIComponent(m[1]) : null
+  }
+  const m = document.cookie.match(new RegExp(`(?:^|;\\s*)${ACCESS_COOKIE}=([^;]+)`))
+  return m && m[1] ? decodeURIComponent(m[1]) : null
+}
+
+/**
+ * Refresh helper exposed for the auth composable. Hits `/v3/auth/refreshToken`
+ * exactly once even when several callers race for it, then resolves every
+ * waiter with the result. Callers are responsible for writing the new
+ * tokens back into the cookies (see `useAuth().refresh()`).
+ */
+export async function refreshTokensOnce(refreshToken: string): Promise<AuthTokens | null> {
+  if (inflightRefresh) return inflightRefresh
+  inflightRefresh = (async () => {
+    try {
+      const client = useApiClient()
+      return await client<AuthTokens>('/v3/auth/refreshToken', {
+        method: 'POST',
+        body: { refreshToken },
+      })
+    }
+    catch {
+      return null
+    }
+    finally {
+      inflightRefresh = null
+    }
+  })()
+  return inflightRefresh
+}
+
+export const AUTH_COOKIES = { access: ACCESS_COOKIE, refresh: REFRESH_COOKIE } as const
 
 /**
  * Lazy singleton per request. On the server each request gets its own client

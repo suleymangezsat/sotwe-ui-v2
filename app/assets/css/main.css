@@ -71,6 +71,26 @@
   a.router-link-exact-active {
     color: var(--color-twitter-blue-500);
   }
+
+  /*
+   * Tailwind v4's preflight no longer applies `cursor: pointer` to native
+   * buttons (it now follows the platform default `cursor: default`). That
+   * makes every clickable element on the site feel inert on hover. Restore
+   * the affordance globally for elements that ARE meant to be clicked —
+   * buttons, summary disclosures, and ARIA-button / ARIA-link composites
+   * (e.g. STweet's `role="link"` article wrapper, action-row buttons).
+   *
+   * Disabled / aria-disabled controls keep the default pointer so the
+   * non-actionable state is still visually distinct.
+   */
+  button:not(:disabled):not([aria-disabled='true']),
+  summary,
+  [role='button']:not([aria-disabled='true']),
+  [role='link']:not([aria-disabled='true']),
+  [role='menuitem']:not([aria-disabled='true']),
+  [role='tab']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
 }
 
 @layer utilities {

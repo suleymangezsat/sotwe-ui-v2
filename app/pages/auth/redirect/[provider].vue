@@ -18,6 +18,8 @@ const provider = computed(() => String(route.params.provider || '').toLowerCase(
 const loading = ref(true)
 const errorMessage = ref<string | undefined>(undefined)
 
+const auth = useAuth()
+
 onMounted(async () => {
   const code = route.query.code as string | undefined
   if (!code) {
@@ -27,12 +29,12 @@ onMounted(async () => {
   }
   try {
     if (provider.value === 'google') {
-      await useApi().auth.google({ code })
+      await auth.signInWithGoogle({ code })
     }
     else {
       throw new Error(`Unsupported provider: ${provider.value}`)
     }
-    navigateTo('/')
+    navigateTo('/me/profile', { replace: true })
   }
   catch (e) {
     errorMessage.value = (e as Error).message || 'Social sign-in failed'

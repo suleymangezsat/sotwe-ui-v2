@@ -1,18 +1,36 @@
 <script setup lang="ts">
 /*
- * Login (`/login`). Faz 7 will swap the inline local + Google flow with
- * sidebase/nuxt-auth's `signIn()` call. Root-level route to match the
- * v1 URL scheme (`/login`, not `/auth/login`) — existing backlinks +
- * search index entries assume this path.
+ * Login (`/login`, root-level — v1 URL scheme). Uses the shared form
+ * primitives, surfaces backend errors via SFormError, and offers two
+ * shortcuts:
+ *
+ *   1. "Continue with Google" — kicks the OAuth dance via
+ *      SLoginWithGoogleButton; the visitor returns to /auth/redirect/google
+ *      where the access code is exchanged for a JWT.
+ *   2. "Forgot password" — opens SForgotPasswordDialog which runs the
+ *      three-step reset flow without leaving this page.
+ *
+ * Successful sign-in writes tokens via `useAuth().signIn()`, fetches the
+ * profile, then sends the visitor to `?redirect=…` (or /me/profile by
+ * default — the post-login destination v1 used).
  */
+
+import { ErrorCode } from '~shared/types'
+import { isSotweApiError } from '~/utils/api'
 
 const email = ref('')
 const password = ref('')
+const emailError = ref<string | undefined>(undefined)
+const passwordError = ref<string | undefined>(undefined)
+
 const loading = ref(false)
+const errorCode = ref<ErrorCode | undefined>(undefined)
 const errorMessage = ref<string | undefined>(undefined)
+const forgotOpen = ref(false)
 
 const route = useRoute()
-const redirect = computed(() => (route.query.redirect as string | undefined) || '/')
+const auth = useAuth()
+const redirect = computed(() => (route.query.redirect as string | undefined) || '/me/profile')
 
 useSotweMeta({
   title: 'Sign in · Sotwe',
@@ -21,14 +39,25 @@ useSotweMeta({
 })
 
 async function submit() {
+  if (loading.value || emailError.value || passwordError.value) return
+  if (!email.value || !password.value) return
+
   loading.value = true
+  errorCode.value = undefined
   errorMessage.value = undefined
   try {
-    await useApi().auth.login({ email: email.value, password: password.value })
+    await auth.signIn({ email: email.value, password: password.value })
     navigateTo(redirect.value)
   }
   catch (e) {
-    errorMessage.value = (e as Error).message || 'Sign-in failed'
+    if (isSotweApiError(e)) {
+      errorCode.value = e.code
+      errorMessage.value = e.message
+    }
+    else {
+      errorCode.value = ErrorCode.UNEXPECTED
+      errorMessage.value = (e as Error).message || 'Sign-in failed'
+    }
   }
   finally {
     loading.value = false
@@ -38,24 +67,63 @@ async function submit() {
 
 <template>
   <STopBar title="Sign in" :show-back="true" />
-  <section class="mx-auto flex max-w-sm flex-col gap-4 px-4 py-8">
-    <SLogo :size="40" class="mx-auto" />
-    <h1 class="text-center text-2xl font-bold">Sign in to Sotwe</h1>
+  <section class="mx-auto flex max-w-sm flex-col gap-6 px-4 py-8">
+    <div class="flex flex-col items-center gap-2">
+      <SLogo :size="40" />
+      <h1 class="text-center text-2xl font-bold">Sign in to Sotwe</h1>
+      <p class="text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
+        Welcome back. Sign in to follow up on bookmarks, manage your
+        subscription, and pick up where you left off.
+      </p>
+    </div>
 
-    <UForm :state="{ email, password }" class="flex flex-col gap-4" @submit="submit">
-      <UFormField name="email" label="Email">
-        <UInput v-model="email" type="email" autocomplete="email" :ui="{ base: 'w-full' }" />
-      </UFormField>
-      <UFormField name="password" label="Password">
-        <UInput v-model="password" type="password" autocomplete="current-password" :ui="{ base: 'w-full' }" />
-      </UFormField>
-      <p v-if="errorMessage" class="text-sm text-red-500">{{ errorMessage }}</p>
-      <SButton block :loading="loading" type="submit">Sign in</SButton>
-    </UForm>
+    <SLoginWithGoogleButton />
+
+    <div class="flex items-center gap-3 text-xs text-twitter-slate-400">
+      <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
+      OR
+      <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
+    </div>
+
+    <form class="flex flex-col gap-4" @submit.prevent="submit">
+      <SEmailField
+        v-model="email"
+        autocomplete="email"
+        no-validate
+        @update:error="emailError = $event"
+      />
+      <SPasswordField
+        v-model="password"
+        autocomplete="current-password"
+        no-validate
+        @update:error="passwordError = $event"
+      />
+
+      <SFormError :code="errorCode" :message="errorMessage" />
+
+      <SButton
+        block
+        type="submit"
+        :loading="loading"
+        :disabled="!email || !password"
+      >
+        Sign in
+      </SButton>
+    </form>
 
     <div class="flex items-center justify-between text-sm">
-      <NuxtLink to="/signup" class="text-twitter-blue-500 hover:underline">Create account</NuxtLink>
-      <button class="text-twitter-slate-500 hover:underline">Forgot password</button>
+      <NuxtLink to="/signup" class="font-semibold text-twitter-blue-500 hover:underline">
+        Create account
+      </NuxtLink>
+      <button
+        type="button"
+        class="text-twitter-slate-500 hover:underline dark:text-twitter-slate-400"
+        @click="forgotOpen = true"
+      >
+        Forgot password?
+      </button>
     </div>
+
+    <SForgotPasswordDialog v-model="forgotOpen" />
   </section>
 </template>

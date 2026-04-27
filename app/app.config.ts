@@ -21,9 +21,29 @@ export default defineAppConfig({
         root: 'rounded-2xl',
       },
     },
+    // Inputs intentionally use `rounded-lg`, not the pill shape we apply to
+    // buttons. When inputs and buttons share the same radius the form starts
+    // to look like a stack of buttons — visual hierarchy collapses, and the
+    // visitor can't tell at a glance which element accepts text and which
+    // submits. Pills for actions; soft rectangles for fields.
     input: {
       slots: {
-        base: 'rounded-full',
+        base: 'rounded-lg',
+      },
+    },
+    textarea: {
+      slots: {
+        base: 'rounded-lg',
+      },
+    },
+    select: {
+      slots: {
+        base: 'rounded-lg',
+      },
+    },
+    selectMenu: {
+      slots: {
+        base: 'rounded-lg',
       },
     },
   },

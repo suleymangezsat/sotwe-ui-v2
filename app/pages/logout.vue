@@ -1,16 +1,19 @@
 <script setup lang="ts">
 /*
- * Logout — clear the auth cookie client-side, then bounce home. Faz 7
- * swaps this with sidebase/nuxt-auth's signOut().
+ * Logout — clear auth cookies + cached user via `useAuth().signOut()`,
+ * then bounce home. Kept as a dedicated page (not just a button) so v1's
+ * `/logout` deep links continue to work.
+ *
+ * Faz 7 will swap the body for `signOut({ callbackUrl: '/' })` from
+ * `@sidebase/nuxt-auth`.
  */
 
 definePageMeta({ layout: false })
 
+const auth = useAuth()
+
 if (import.meta.client) {
-  const token = useCookie('sotwe-access-token')
-  token.value = null
-  const refresh = useCookie('sotwe-refresh-token')
-  refresh.value = null
+  auth.signOut()
   navigateTo('/', { replace: true })
 }
 

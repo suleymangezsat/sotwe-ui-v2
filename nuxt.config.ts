@@ -44,6 +44,8 @@ export default defineNuxtConfig({
     { path: '~/components/trend', pathPrefix: false },
     { path: '~/components/promo', pathPrefix: false },
     { path: '~/components/rail', pathPrefix: false },
+    { path: '~/components/form', pathPrefix: false },
+    { path: '~/components/auth', pathPrefix: false },
     { path: '~/components' },
   ],
 
@@ -132,6 +134,7 @@ export default defineNuxtConfig({
     '/login': { headers: { 'cache-control': 'no-store' } },
     '/signup': { headers: { 'cache-control': 'no-store' } },
     '/logout': { headers: { 'cache-control': 'no-store' } },
+    '/dev/**': { headers: { 'cache-control': 'no-store, x-robots-tag: noindex' } },
     // Same-origin API proxy. In local dev / `nuxt preview` the browser's
     // client-side `$fetch` hits `/api/...` (same origin) and Nitro forwards
     // to the real backend. Prod deploys never reach this rule — the
