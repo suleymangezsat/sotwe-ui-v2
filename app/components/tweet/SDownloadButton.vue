@@ -86,11 +86,11 @@ function click() {
     <button
       type="button"
       aria-label="Download media"
-      class="group inline-flex items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
+      class="group inline-flex shrink-0 items-center gap-0.5 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 sm:gap-1 dark:text-twitter-slate-400"
       @click.stop="click"
     >
-      <span class="inline-flex size-8 items-center justify-center rounded-full transition-colors group-hover:bg-twitter-blue-50 dark:group-hover:bg-twitter-blue-950">
-        <Icon name="i-lucide-download" class="size-5" />
+      <span class="inline-flex items-center justify-center rounded-full transition-colors sm:size-8 sm:group-hover:bg-twitter-blue-50 dark:sm:group-hover:bg-twitter-blue-950">
+        <Icon name="i-lucide-download" class="size-4 sm:size-5" />
       </span>
     </button>
     <div

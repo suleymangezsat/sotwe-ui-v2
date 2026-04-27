@@ -1,8 +1,11 @@
 <script setup lang="ts">
 /*
  * Tweet bookmark toggle — writes through `useBookmarkIdsStore` which wraps
- * POST/DELETE `/me/bookmark/:id`. Icon flips between outline and filled to
- * match v1. Auth-gated: an unauthed click opens the login dialog.
+ * POST/DELETE `/me/bookmark/:id`. Icon flips between outline (`ri-bookmark-
+ * line`) and filled (`ri-bookmark-fill`) to match v1; we deliberately
+ * switch icon names rather than apply `fill-current` because Lucide icons
+ * bake `fill="none"` into the SVG and ignore Tailwind fill utilities.
+ * Auth-gated: an unauthed click opens the login dialog.
  * BOOKMARK_SIZE_EXCEEDED / INSUFFICIENT_SUBSCRIPTION errors route to
  * /pricing (v1 parity).
  */
@@ -65,23 +68,26 @@ async function toggle() {
 </script>
 
 <template>
+  <!-- Mobile sizing matches SIconButton: 28px circle / 16px icon / text-xs
+       count. The bookmark button is interactive (not read-only) but
+       shares the same visual language as its read-only neighbours so the
+       row stays cohesive. -->
   <button
     type="button"
     :aria-label="isBookmarked ? 'Remove bookmark' : 'Add bookmark'"
     :aria-pressed="isBookmarked"
-    class="group inline-flex items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
+    class="group inline-flex shrink-0 items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
     :class="{ 'text-twitter-blue-500': isBookmarked }"
     @click.stop="toggle"
   >
     <span
-      class="inline-flex size-8 items-center justify-center rounded-full transition-colors group-hover:bg-twitter-blue-50 dark:group-hover:bg-twitter-blue-950"
+      class="inline-flex items-center justify-center rounded-full transition-colors sm:size-8 sm:group-hover:bg-twitter-blue-50 dark:sm:group-hover:bg-twitter-blue-950"
     >
       <Icon
-        :name="isBookmarked ? 'i-lucide-bookmark' : 'i-lucide-bookmark'"
-        class="size-5"
-        :class="{ 'fill-current': isBookmarked }"
+        :name="isBookmarked ? 'i-ri-bookmark-fill' : 'i-ri-bookmark-line'"
+        class="size-4 sm:size-5"
       />
     </span>
-    <span v-if="optimisticCount > 0" class="text-sm tabular-nums">{{ formatCount(optimisticCount) }}</span>
+    <span v-if="optimisticCount > 0" class="text-xs tabular-nums sm:text-sm">{{ formatCount(optimisticCount) }}</span>
   </button>
 </template>

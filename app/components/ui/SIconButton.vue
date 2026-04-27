@@ -30,16 +30,32 @@ const countLabel = computed(() => {
 </script>
 
 <template>
+  <!--
+    Mobile-first sizing for the tweet action row. The row carries up to
+    7 buttons (Reply / Repost / Like / Views / Bookmark / Share / Download).
+    Reply/Repost/Like/Views are read-only display surfaces — they show the
+    count but don't accept input — so dropping the circular hit-area on
+    mobile in favour of an icon-only ribbon is honest, and saves the ~12px
+    of padding per button that was forcing the row to overflow narrow phones.
+    Counts are kept visible at every breakpoint (the user has no other
+    place to read engagement numbers) but rendered at `text-xs` on mobile
+    to stay inside a 360px viewport.
+  -->
   <button
     type="button"
     :aria-label="label"
-    class="group inline-flex items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
+    class="group inline-flex shrink-0 items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
   >
+    <!--
+      Mobile: no fixed-size wrapper — the icon renders at its intrinsic 16px
+      so all 7 buttons + their counts fit a 360px viewport.
+      Desktop (sm+): 32px circular hit-area with hover ring, matching X.
+    -->
     <span
-      class="inline-flex size-8 items-center justify-center rounded-full transition-colors group-hover:bg-twitter-blue-50 dark:group-hover:bg-twitter-blue-950"
+      class="inline-flex items-center justify-center rounded-full transition-colors sm:size-8 sm:group-hover:bg-twitter-blue-50 dark:sm:group-hover:bg-twitter-blue-950"
     >
-      <Icon :name="icon" class="size-5" />
+      <Icon :name="icon" class="size-4 sm:size-5" />
     </span>
-    <span v-if="countLabel" class="text-sm tabular-nums">{{ countLabel }}</span>
+    <span v-if="countLabel" class="text-xs tabular-nums sm:text-sm">{{ countLabel }}</span>
   </button>
 </template>
