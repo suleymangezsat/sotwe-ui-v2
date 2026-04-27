@@ -19,34 +19,44 @@ if (error.value || !tweet.value) {
   throw createError({ statusCode: 404, statusMessage: 'Tweet not found', fatal: true })
 }
 
-const t = tweet.value
+const tw = tweet.value
 
+// v1 `tweetpage.meta.*` template — `{fullname} {username}` pattern is
+// indexed by Google for tweet-detail SEO; param names match v1 exactly.
+const { t: $t } = useI18n()
 useSotweMeta({
-  title: `${t.user?.name || t.user?.screenName || 'Tweet'} on Sotwe`,
-  description: t.text?.slice(0, 200) || 'Read this tweet without a Twitter account.',
-  image: t.mediaEntities?.[0]?.mediaURL || t.user?.profileImageOriginal,
-  isSensitive: t.possiblySensitive,
+  title: $t('tweetpage.meta.title', {
+    fullname: tw.user?.name ?? '',
+    username: tw.user?.screenName ? `@${tw.user.screenName}` : '',
+  }),
+  description: $t('tweetpage.meta.description', {
+    likes: tw.favoriteCount ?? 0,
+    retweets: tw.retweetCount ?? 0,
+    text: tw.text?.slice(0, 200) ?? '',
+  }),
+  image: tw.mediaEntities?.[0]?.mediaURL || tw.user?.profileImageOriginal,
+  isSensitive: tw.possiblySensitive,
   ogType: 'article',
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'SocialMediaPosting',
-    'headline': t.text?.slice(0, 110),
-    'datePublished': new Date(t.createdAt).toISOString(),
-    'author': t.user
-      ? { '@type': 'Person', 'name': t.user.name, 'alternateName': `@${t.user.screenName}` }
+    'headline': tw.text?.slice(0, 110),
+    'datePublished': new Date(tw.createdAt).toISOString(),
+    'author': tw.user
+      ? { '@type': 'Person', 'name': tw.user.name, 'alternateName': `@${tw.user.screenName}` }
       : undefined,
     'interactionStatistic': [
-      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/LikeAction', 'userInteractionCount': t.favoriteCount },
-      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/ShareAction', 'userInteractionCount': t.retweetCount },
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/LikeAction', 'userInteractionCount': tw.favoriteCount },
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/ShareAction', 'userInteractionCount': tw.retweetCount },
     ],
   },
 })
 </script>
 
 <template>
-  <STopBar title="Tweet" :show-back="true" />
+  <STopBar :title="$t('tweetpage.topBarTitle')" :show-back="true" />
   <STweetRow v-if="tweet" :tweet="tweet" />
   <section class="px-4 py-6 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-    Replies will load here in Faz 6.
+    {{ $t('tweetpage.repliesPlaceholder') }}
   </section>
 </template>

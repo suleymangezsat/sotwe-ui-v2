@@ -20,16 +20,26 @@ if (!data.value?.tweets?.length && !data.value?.info) {
 }
 
 const place = computed(() => (data.value?.info as unknown as { name?: string, fullName?: string, country?: string }) || {})
-const titleText = computed(() => place.value.fullName || place.value.name || 'Location')
+const { t } = useI18n()
+const titleText = computed(() => place.value.fullName || place.value.name || t('locationpage.fallbackTitle'))
 
 async function loadMore(after: string) {
   const res = await useApi().location.get(id.value, { after })
   return { items: res.data, after: res.after }
 }
 
+// `locationpage.meta.*` v1 keys. The `{firstTweet}` slot pulls the first
+// tweet snippet so the SERP listing reads naturally.
+const firstTweetSnippet = computed(() => {
+  const text = data.value?.tweets?.[0]?.text?.slice(0, 200).trim()
+  return text ? ` ${text}` : ''
+})
 useSotweMeta({
-  title: `${titleText.value} · Sotwe`,
-  description: `Tweets posted in ${titleText.value}.`,
+  title: t('locationpage.meta.title', { location: titleText.value }),
+  description: t('locationpage.meta.description', {
+    location: titleText.value,
+    firstTweet: firstTweetSnippet.value,
+  }),
   isSensitive: data.value?.sensitive,
 })
 </script>
@@ -50,11 +60,11 @@ useSotweMeta({
     :load-more="loadMore"
   >
     <template #default="{ items }">
-      <STweet v-for="t in items" :key="t.id" :tweet="t" />
+      <STweet v-for="tw in items" :key="tw.id" :tweet="tw" />
     </template>
     <template #empty>
       <p class="px-4 py-10 text-center text-twitter-slate-500">
-        No tweets posted here yet.
+        {{ t('locationpage.noTweets') }}
       </p>
     </template>
   </SInfiniteTimeline>

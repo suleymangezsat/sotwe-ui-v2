@@ -20,6 +20,7 @@ const props = defineProps<{
 
 const created = computed(() => formatCreatedAt(props.tweet.createdAt))
 const tweetHref = computed(() => `/tweet/${props.tweet.id}`)
+const { t } = useI18n()
 
 const ui = useUiStore()
 function openMedia(index: number) {
@@ -44,7 +45,7 @@ function handleCardClick(e: MouseEvent) {
   <div
     class="mt-3 cursor-pointer overflow-hidden rounded-2xl border border-twitter-slate-100 transition-colors hover:bg-twitter-slate-50 dark:border-twitter-slate-700 dark:hover:bg-twitter-slate-900"
     role="link"
-    :aria-label="`Open quoted tweet by ${tweet.user?.name || tweet.user?.screenName}`"
+    :aria-label="t('tweet.openQuotedTweetBy', { name: tweet.user?.name || tweet.user?.screenName || '' })"
     @click="handleCardClick"
   >
     <div class="flex items-center gap-2 px-3 pt-3 text-sm">

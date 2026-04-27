@@ -44,6 +44,7 @@ const ui = useUiStore()
 const router = useRouter()
 const route = useRoute()
 const toast = useToast()
+const { t } = useI18n()
 
 const loading = ref(false)
 
@@ -110,7 +111,7 @@ async function handleClick() {
   const urls = collectUrls()
   if (!urls.length) {
     toast.add({
-      title: `No media to download for @${props.username}`,
+      title: t('download_all.noMedia', { username: props.username }),
       icon: 'i-lucide-alert-circle',
     })
     return
@@ -120,7 +121,7 @@ async function handleClick() {
   const progressId = String(Date.now())
   toast.add({
     id: progressId,
-    title: `Downloading ${urls.length} files…`,
+    title: t('download_all.downloading', { count: urls.length }),
     icon: 'i-lucide-loader-circle',
     duration: 0,
   })
@@ -150,7 +151,7 @@ async function handleClick() {
 
     toast.remove(progressId)
     toast.add({
-      title: `Downloaded ${urls.length} files`,
+      title: t('download_all.downloaded', { count: urls.length }),
       icon: 'i-lucide-check',
       color: 'success',
     })
@@ -158,7 +159,7 @@ async function handleClick() {
   catch (err) {
     toast.remove(progressId)
     toast.add({
-      title: 'Download failed',
+      title: t('download_all.failed'),
       description: (err as Error).message,
       icon: 'i-lucide-alert-circle',
       color: 'error',
@@ -173,7 +174,7 @@ async function handleClick() {
 <template>
   <button
     type="button"
-    :aria-label="`Download all media from @${username}`"
+    :aria-label="t('download_all.ariaLabel', { username })"
     class="inline-flex h-9 items-center justify-center gap-1.5 rounded-full border border-twitter-slate-200 px-3 text-sm font-semibold transition-colors hover:bg-twitter-slate-50 disabled:cursor-progress disabled:opacity-60 sm:px-4 dark:border-twitter-slate-700 dark:hover:bg-twitter-slate-900"
     :disabled="loading"
     @click="handleClick"
@@ -186,6 +187,6 @@ async function handleClick() {
     <!-- Mobile: icon-only fab. Desktop: icon + label. The label hides
          under sm to keep the action row inside the avatar+banner gutter
          on narrow viewports. -->
-    <span class="hidden sm:inline">Download all</span>
+    <span class="hidden sm:inline">{{ t('download_all.label') }}</span>
   </button>
 </template>

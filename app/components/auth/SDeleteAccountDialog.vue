@@ -11,6 +11,7 @@ const props = defineProps<{ username: string }>()
 
 const auth = useAuth()
 const toast = useToast()
+const { t } = useI18n()
 
 const confirmInput = ref('')
 const loading = ref(false)
@@ -27,12 +28,12 @@ async function destroy() {
   try {
     await useApi().me.deleteAccount()
     auth.signOut()
-    toast.add({ title: 'Account deleted', icon: 'i-lucide-check', color: 'success' })
+    toast.add({ title: t('profile_actions.accountDeleted'), icon: 'i-lucide-check', color: 'success' })
     navigateTo('/', { replace: true })
   }
   catch (err) {
     toast.add({
-      title: 'Could not delete account',
+      title: t('profile_actions.couldntDelete'),
       description: (err as Error).message,
       color: 'error',
       icon: 'i-lucide-alert-circle',
@@ -46,14 +47,13 @@ async function destroy() {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Delete your account">
+  <SDialog v-model="open" :title="t('profile_actions.deleteAccountTitle')">
     <div class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-700 dark:text-twitter-slate-300">
-        This will permanently delete your account and all associated
-        bookmarks. This cannot be undone.
+        {{ t('profile_actions.deleteAccountDesc') }}
       </p>
 
-      <UFormField :label="`Type your username @${username} to confirm`" :ui="{ root: 'w-full' }">
+      <UFormField :label="t('profile_actions.typeUsernameToConfirm', { username })" :ui="{ root: 'w-full' }">
         <UInput
           v-model="confirmInput"
           type="text"
@@ -69,7 +69,7 @@ async function destroy() {
           block
           @click="open = false"
         >
-          Cancel
+          {{ t('common.cancel') }}
         </SButton>
         <SButton
           color="error"
@@ -78,7 +78,7 @@ async function destroy() {
           :disabled="!matches"
           @click="destroy"
         >
-          Delete account
+          {{ t('profile_actions.deleteBtn') }}
         </SButton>
       </div>
     </div>

@@ -19,6 +19,7 @@
 
 const ui = useUiStore()
 const toast = useToast()
+const { t } = useI18n()
 
 const open = computed({
   get: () => ui.shareModal.display,
@@ -71,22 +72,22 @@ async function copyLink() {
   if (!url.value) return
   try {
     await navigator.clipboard.writeText(url.value)
-    toast.add({ title: 'Link copied', icon: 'i-lucide-link' })
+    toast.add({ title: t('tweet.linkCopied'), icon: 'i-lucide-link' })
   }
   catch {
-    toast.add({ title: 'Copy failed', color: 'error' })
+    toast.add({ title: t('tweet.copyFailed'), color: 'error' })
   }
 }
 </script>
 
 <template>
-  <SDialog v-model="open" title="Share">
+  <SDialog v-model="open" :title="t('share_dialog.title')">
     <div class="flex flex-col gap-4">
       <div class="flex items-stretch gap-2 rounded-lg border border-twitter-slate-100 bg-twitter-slate-50 p-1 text-sm dark:border-twitter-slate-700 dark:bg-twitter-slate-900">
         <span class="min-w-0 flex-1 truncate px-2 py-2 font-mono text-xs text-twitter-slate-700 dark:text-twitter-slate-300">
           {{ url }}
         </span>
-        <SButton size="sm" variant="solid" icon="i-lucide-copy" @click="copyLink">Copy</SButton>
+        <SButton size="sm" variant="solid" icon="i-lucide-copy" @click="copyLink">{{ t('profile_menu.copy') }}</SButton>
       </div>
 
       <div class="grid grid-cols-4 gap-3">
@@ -95,7 +96,7 @@ async function copyLink() {
           :key="n.id"
           type="button"
           class="flex flex-col items-center gap-1 rounded-lg p-2 text-xs transition-colors hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
-          :aria-label="`Share on ${n.label}`"
+          :aria-label="t('tweet.shareOn', { network: n.label })"
           @click="shareTo(n)"
         >
           <span

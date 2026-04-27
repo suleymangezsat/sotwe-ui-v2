@@ -37,11 +37,14 @@ const status = ref<'verifying' | 'ok' | 'error'>('verifying')
 const subscription = ref<UserSubscription | undefined>(undefined)
 const errorMessage = ref<string | undefined>(undefined)
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Payment successful · Sotwe',
-  description: 'Thanks for subscribing.',
+  title: t('payment_success.metaTitle'),
+  description: t('payment_success.metaDescription'),
   noindex: true,
 })
+
+const processorLabel = computed(() => source.value === 'stripe' ? 'Stripe' : 'Sellix')
 
 onMounted(async () => {
   try {
@@ -60,39 +63,35 @@ onMounted(async () => {
 </script>
 
 <template>
-  <STopBar title="Payment" :show-back="true" :as="'h2'" />
+  <STopBar :title="t('payment_success.topBarTitle')" :show-back="true" :as="'h2'" />
   <section class="flex flex-col items-center gap-4 px-4 py-16 text-center">
     <template v-if="status === 'verifying'">
       <Icon name="i-lucide-loader-circle" class="size-10 animate-spin text-twitter-blue-500" />
-      <h1 class="text-2xl font-bold">Confirming your payment…</h1>
+      <h1 class="text-2xl font-bold">{{ t('payment_success.confirming') }}</h1>
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Hang tight — we're checking with {{ source === 'stripe' ? 'Stripe' : 'Sellix' }}.
+        {{ t('payment_success.hangTight', { processor: processorLabel }) }}
       </p>
     </template>
 
     <template v-else-if="status === 'ok'">
       <Icon name="i-lucide-circle-check" class="size-16 text-twitter-blue-500" />
-      <h1 class="text-2xl font-bold">You're all set</h1>
+      <h1 class="text-2xl font-bold">{{ t('payment_success.allSet') }}</h1>
       <p class="max-w-md text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Welcome to <span class="font-semibold">{{ subscription?.name || 'Sotwe Premium' }}</span>.
-        Enjoy ad-free browsing, full-resolution downloads, and early
-        access to new features.
+        {{ t('payment_success.welcome', { plan: subscription?.name || t('payment_success.premiumFallback') }) }}
       </p>
-      <SButton to="/" block>Back home</SButton>
+      <SButton to="/" block>{{ t('payment_success.backHome') }}</SButton>
     </template>
 
     <template v-else>
       <Icon name="i-lucide-alert-triangle" class="size-16 text-amber-500" />
-      <h1 class="text-2xl font-bold">We couldn't confirm your payment</h1>
+      <h1 class="text-2xl font-bold">{{ t('payment_fail.heading') }}</h1>
       <p v-if="errorMessage" class="max-w-md text-sm text-red-600 dark:text-red-400">
         {{ errorMessage }}
       </p>
       <p class="max-w-md text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        If you were charged but don't see your subscription, please
-        contact <a href="mailto:contact@sotwe.com" class="text-twitter-blue-500 hover:underline">contact@sotwe.com</a>
-        and we'll sort it out.
+        {{ t('payment_fail.footer', { email: 'contact@sotwe.com' }) }}
       </p>
-      <SButton to="/pricing" block>Back to pricing</SButton>
+      <SButton to="/pricing" block>{{ t('payment_fail.back') }}</SButton>
     </template>
   </section>
 </template>

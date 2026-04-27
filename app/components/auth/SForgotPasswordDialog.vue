@@ -21,6 +21,7 @@ import { ErrorCode } from '~shared/types'
 const open = defineModel<boolean>({ required: true })
 
 const store = useForgotPasswordStore()
+const { t } = useI18n()
 
 // Per-field validation error state — surfaces "submit disabled" without
 // a wrapper UForm.
@@ -63,12 +64,11 @@ function close() {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Reset your password">
+  <SDialog v-model="open" :title="t('forgot_dialog.title')">
     <!-- Step 1 — email -->
     <div v-if="store.step === 'init'" class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Enter the email address tied to your Sotwe account. We'll send a
-        one-time code to confirm it's you.
+        {{ t('forgot_dialog.enterEmailDesc') }}
       </p>
       <SEmailField v-model="store.email" @update:error="emailError = $event" />
       <SFormError v-if="submitErrorCode" :code="submitErrorCode" />
@@ -78,15 +78,14 @@ function close() {
         :disabled="!!emailError || !store.email"
         @click="onInit"
       >
-        Send code
+        {{ t('forgot_dialog.sendCode') }}
       </SButton>
     </div>
 
     <!-- Step 2 — OTP -->
     <div v-else-if="store.step === 'verify'" class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        We sent a code to <span class="font-semibold">{{ store.email }}</span>.
-        Enter it below to continue.
+        {{ t('forgot_dialog.codeSentDesc', { email: store.email }) }}
       </p>
       <SOtpField v-model="store.otp" @update:error="otpError = $event" />
       <SFormError v-if="submitErrorCode" :code="submitErrorCode" />
@@ -96,25 +95,25 @@ function close() {
         :disabled="!!otpError || !store.otp"
         @click="onVerify"
       >
-        Verify code
+        {{ t('forgot_dialog.verifyCode') }}
       </SButton>
       <button
         type="button"
         class="text-sm text-twitter-blue-500 hover:underline"
         @click="store.step = 'init'"
       >
-        Use a different email
+        {{ t('signup_steps.useDifferentEmail') }}
       </button>
     </div>
 
     <!-- Step 3 — new password -->
     <div v-else-if="store.step === 'confirm'" class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Pick a new password. You'll use it the next time you sign in.
+        {{ t('forgot_dialog.newPasswordDesc') }}
       </p>
       <SPasswordField
         v-model="store.newPassword"
-        label="New password"
+        :label="t('forgot_dialog.newPasswordLabel')"
         autocomplete="new-password"
         @update:error="passwordError = $event"
       />
@@ -125,18 +124,18 @@ function close() {
         :disabled="!!passwordError || !store.newPassword"
         @click="onConfirm"
       >
-        Save password
+        {{ t('forgot_dialog.savePassword') }}
       </SButton>
     </div>
 
     <!-- Step 4 — done -->
     <div v-else class="flex flex-col items-center gap-4 py-2 text-center">
       <Icon name="i-lucide-check-circle-2" class="size-10 text-green-500" />
-      <h3 class="text-lg font-bold">Password updated</h3>
+      <h3 class="text-lg font-bold">{{ t('forgot_dialog.done') }}</h3>
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        You can now sign in with your new password.
+        {{ t('forgot_dialog.doneDesc') }}
       </p>
-      <SButton block @click="close">Close</SButton>
+      <SButton block @click="close">{{ t('common.close') }}</SButton>
     </div>
   </SDialog>
 </template>

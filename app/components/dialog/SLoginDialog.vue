@@ -21,6 +21,7 @@ import { isSotweApiError } from '~/utils/api'
 const ui = useUiStore()
 const auth = useAuth()
 const route = useRoute()
+const { t } = useI18n()
 
 const open = computed({
   get: () => ui.loginDialog.display,
@@ -80,18 +81,17 @@ function goToSignup() {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Sign in to Sotwe">
+  <SDialog v-model="open" :title="t('auth_dialog.signInTitle')">
     <form class="flex flex-col gap-4" @submit.prevent="submit">
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Sign in to continue. Your browsing stays anonymous either way —
-        accounts only unlock bookmarks and personalised features.
+        {{ t('auth_dialog.signInSubtitle') }}
       </p>
 
       <SLoginWithGoogleButton />
 
       <div class="flex items-center gap-3 text-xs text-twitter-slate-400">
         <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
-        OR
+        {{ t('auth_dialog.orDivider') }}
         <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
       </div>
 
@@ -106,15 +106,15 @@ function goToSignup() {
         :loading="loading"
         :disabled="!email || !password"
       >
-        Sign in
+        {{ t('auth_dialog.signInButton') }}
       </SButton>
 
       <div class="flex items-center justify-between text-sm">
         <button type="button" class="font-semibold text-twitter-blue-500 hover:underline" @click="goToSignup">
-          Create account
+          {{ t('auth_dialog.createAccount') }}
         </button>
         <button type="button" class="text-twitter-slate-500 hover:underline dark:text-twitter-slate-400" @click="goToFullPage">
-          Open full page
+          {{ t('auth_dialog.openFullPage') }}
         </button>
       </div>
     </form>

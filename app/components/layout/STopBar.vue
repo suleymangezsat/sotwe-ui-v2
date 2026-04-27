@@ -24,6 +24,7 @@ withDefaults(defineProps<{
 })
 
 const router = useRouter()
+const { t } = useI18n()
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const router = useRouter()
     <button
       v-if="showBack"
       type="button"
-      aria-label="Back"
+      :aria-label="t('common.back')"
       class="inline-flex size-9 items-center justify-center rounded-full hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
       @click="router.back()"
     >

@@ -1,13 +1,15 @@
 <script setup lang="ts">
 /*
  * "Ad-Free Browsing" promo card — v1 `components/layout/Highlight.vue` /
- * `highlightCard`. Strings pulled verbatim from app/locales/en.js :
- *   adFreePromotionCard.{title,description,button_text}.
+ * `highlightCard`. Strings pulled verbatim from
+ * `i18n/locales/{en,tr,id}.json` → `adFreePromotionCard.*`.
  *
  * V1 placement: desktop right rail (d-none d-md-block) AND mobile inline
  * on the trends page (d-block d-md-none, my-5). We render the same card
  * in both spots via dedicated callers.
  */
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -18,12 +20,12 @@
       </div>
       <div class="min-w-0 flex-1">
         <h3 class="text-base font-bold text-twitter-slate-950 dark:text-twitter-slate-100">
-          Ad-Free Browsing
+          {{ t('adFreePromotionCard.title') }}
         </h3>
         <p class="mt-1 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-          Enjoy Sotwe without ads and experience a more enjoyable browsing. More content, zero ads 🚀
+          {{ t('adFreePromotionCard.description') }}
         </p>
-        <SButton to="/pricing" size="sm" class="mt-3">Subscribe now</SButton>
+        <SButton to="/pricing" size="sm" class="mt-3">{{ t('adFreePromotionCard.button_text') }}</SButton>
       </div>
     </div>
   </SCard>

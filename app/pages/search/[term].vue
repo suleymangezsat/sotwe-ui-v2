@@ -34,10 +34,17 @@ async function loadMoreTweets(after: string) {
   return { items: res.data, after: res.after }
 }
 
+// `searchpage.meta.*` keys. v1 noindex'es search result pages
+// (duplicate / low-quality content vs the sources). The `foundPeople`
+// fragment appends user-name list to the description when matches exist.
+const { t } = useI18n()
+const peopleFragment = computed(() => {
+  const list = (users.value || []).slice(0, 5).map(u => u.name).filter(Boolean).join(', ')
+  return list ? t('searchpage.meta.foundPeople', { people: list }) : ''
+})
 useSotweMeta({
-  title: `${term.value} · Search on Sotwe`,
-  description: `Tweets and users matching "${term.value}".`,
-  // Search result pages don't get indexed (duplicate / low-quality content).
+  title: t('searchpage.meta.title', { term: term.value }),
+  description: t('searchpage.meta.description', { term: term.value }) + peopleFragment.value,
   noindex: true,
 })
 </script>
@@ -50,13 +57,13 @@ useSotweMeta({
       :class="['flex-1 py-3 transition-colors hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900', tab === 'tweets' ? 'border-b-4 border-twitter-blue-500 text-twitter-slate-950 dark:text-twitter-slate-100' : 'text-twitter-slate-500']"
       @click="tab = 'tweets'"
     >
-      Tweets
+      {{ t('searchpage.tabTweets') }}
     </button>
     <button
       :class="['flex-1 py-3 transition-colors hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900', tab === 'users' ? 'border-b-4 border-twitter-blue-500 text-twitter-slate-950 dark:text-twitter-slate-100' : 'text-twitter-slate-500']"
       @click="tab = 'users'"
     >
-      Users
+      {{ t('searchpage.tabUsers') }}
     </button>
   </nav>
 
@@ -67,11 +74,11 @@ useSotweMeta({
     :load-more="loadMoreTweets"
   >
     <template #default="{ items }">
-      <STweet v-for="t in items" :key="t.id" :tweet="t" />
+      <STweet v-for="tw in items" :key="tw.id" :tweet="tw" />
     </template>
     <template #empty>
       <p class="px-4 py-10 text-center text-twitter-slate-500">
-        No tweets found for "{{ term }}".
+        {{ t('searchpage.noTweetsForTerm', { term }) }}
       </p>
     </template>
   </SInfiniteTimeline>
@@ -95,7 +102,7 @@ useSotweMeta({
       </div>
     </NuxtLink>
     <p v-if="!users.length" class="px-4 py-10 text-center text-twitter-slate-500">
-      No users match "{{ term }}".
+      {{ t('searchpage.noUsersForTerm', { term }) }}
     </p>
   </div>
 </template>

@@ -48,6 +48,8 @@ async function submit() {
   }
   catch { /* see store */ }
 }
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -59,7 +61,7 @@ async function submit() {
     <SFormError :code="errorCode" />
 
     <SButton block type="submit" :loading="store.loading" :disabled="!canSubmit">
-      Create my account
+      {{ t('signup_steps.createAccountBtn') }}
     </SButton>
   </form>
 </template>

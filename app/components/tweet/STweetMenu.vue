@@ -17,6 +17,7 @@ const props = defineProps<{
 const toast = useToast()
 const ui = useUiStore()
 const config = useRuntimeConfig()
+const { t } = useI18n()
 const open = ref(false)
 const menuEl = ref<HTMLElement | null>(null)
 onClickOutside(menuEl, () => { open.value = false })
@@ -26,10 +27,10 @@ async function copyLink() {
   const url = `${config.public.siteUrl.replace(/\/+$/, '')}/tweet/${props.tweet.id}`
   try {
     await navigator.clipboard.writeText(url)
-    toast.add({ title: 'Link copied', icon: 'i-lucide-link' })
+    toast.add({ title: t('tweet.linkCopied'), icon: 'i-lucide-link' })
   }
   catch {
-    toast.add({ title: 'Copy failed', color: 'error' })
+    toast.add({ title: t('tweet.copyFailed'), color: 'error' })
   }
 }
 
@@ -50,7 +51,7 @@ function openReport() {
   <div ref="menuEl" class="relative">
     <button
       type="button"
-      aria-label="More"
+      :aria-label="t('common.more')"
       class="inline-flex size-8 items-center justify-center rounded-full text-twitter-slate-500 transition-colors hover:bg-twitter-blue-50 hover:text-twitter-blue-500 dark:text-twitter-slate-400 dark:hover:bg-twitter-blue-950"
       @click.stop="open = !open"
     >
@@ -66,21 +67,21 @@ function openReport() {
         class="flex w-full items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
         @click="copyLink"
       >
-        <Icon name="i-lucide-link" class="size-4" /> Copy link
+        <Icon name="i-lucide-link" class="size-4" /> {{ t('tweet.copyLink') }}
       </button>
       <button
         type="button"
         class="flex w-full items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
         @click="viewOnX"
       >
-        <Icon name="i-simple-icons-x" class="size-4" /> View on X
+        <Icon name="i-simple-icons-x" class="size-4" /> {{ t('tweet.menuOpenOnX') }}
       </button>
       <button
         type="button"
         class="flex w-full items-center gap-3 px-4 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-950"
         @click="openReport"
       >
-        <Icon name="i-lucide-flag" class="size-4" /> Report
+        <Icon name="i-lucide-flag" class="size-4" /> {{ t('tweet.menuReport') }}
       </button>
     </div>
   </div>

@@ -17,6 +17,7 @@ import type { NearbyUser } from '~shared/types'
 
 const ui = useUiStore()
 const app = useAppStore()
+const { t } = useI18n()
 
 const open = computed({
   get: () => ui.displayNearbyDialog,
@@ -50,11 +51,10 @@ const visible = computed(() => users.value.slice(0, 6))
 </script>
 
 <template>
-  <SDialog v-model="open" title="People around you">
+  <SDialog v-model="open" :title="t('nearby_dialog.title')">
     <div class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        A peek at who's tweeting near you right now. Sign in to see the
-        full list.
+        {{ t('nearby_dialog.desc') }}
       </p>
 
       <div v-if="loading" class="flex justify-center py-6">
@@ -65,7 +65,7 @@ const visible = computed(() => users.value.slice(0, 6))
         v-else-if="errored"
         class="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300"
       >
-        Couldn't fetch nearby users. Try again in a moment.
+        {{ t('nearby_dialog.cantFetch') }}
       </div>
 
       <ul v-else-if="visible.length" class="grid grid-cols-3 gap-3">
@@ -98,12 +98,12 @@ const visible = computed(() => users.value.slice(0, 6))
         v-else
         class="py-6 text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400"
       >
-        No nearby users yet.
+        {{ t('nearby_dialog.noUsers') }}
       </p>
 
       <div class="flex gap-2">
-        <SButton block variant="ghost" @click="open = false">Maybe later</SButton>
-        <SButton block to="/me/nearby" @click="open = false">Go to Nearby</SButton>
+        <SButton block variant="ghost" @click="open = false">{{ t('nearby_dialog.maybeLater') }}</SButton>
+        <SButton block to="/me/nearby" @click="open = false">{{ t('nearby_dialog.goToNearby') }}</SButton>
       </div>
     </div>
   </SDialog>

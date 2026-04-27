@@ -38,6 +38,7 @@ function close() {
 }
 
 const router = useRouter()
+const { t } = useI18n()
 function tryAgain() {
   const next = props.value.nextUrl
   close()
@@ -47,7 +48,7 @@ function tryAgain() {
 </script>
 
 <template>
-  <SDialog v-model="open" :title="props.title || 'Something went wrong'">
+  <SDialog v-model="open" :title="props.title || t('generic_error.defaultTitle')">
     <div class="flex flex-col gap-4">
       <div class="flex items-start gap-3">
         <Icon name="i-lucide-alert-triangle" class="mt-0.5 size-6 shrink-0 text-amber-500" />
@@ -56,15 +57,15 @@ function tryAgain() {
             {{ props.code }}
           </p>
           <p class="text-sm text-twitter-slate-700 dark:text-twitter-slate-300">
-            {{ props.message || 'An unexpected error happened. Please try again in a moment.' }}
+            {{ props.message || t('generic_error.defaultBody') }}
           </p>
         </div>
       </div>
 
       <div class="flex gap-2">
-        <SButton block variant="ghost" @click="close">Dismiss</SButton>
+        <SButton block variant="ghost" @click="close">{{ t('generic_error.dismiss') }}</SButton>
         <SButton block @click="tryAgain">
-          {{ props.nextUrl ? 'Continue' : 'Try again' }}
+          {{ props.nextUrl ? t('generic_error.continue') : t('generic_error.tryAgain') }}
         </SButton>
       </div>
     </div>

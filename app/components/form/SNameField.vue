@@ -7,13 +7,13 @@
 import { validateName } from '~/utils/validators'
 import { translateValidationKey } from '~/utils/validationMessages'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   label?: string
   placeholder?: string
   required?: boolean
 }>(), {
-  label: 'Name',
-  placeholder: 'Your full name',
+  label: undefined,
+  placeholder: undefined,
   required: true,
 })
 
@@ -24,16 +24,20 @@ const touched = ref(false)
 const error = computed(() => (touched.value ? validateName(model.value) : undefined))
 watch(error, e => emit('update:error', e), { immediate: true })
 const errorMessage = computed(() => translateValidationKey(error.value))
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.name.label'))
+const placeholderText = computed(() => props.placeholder ?? t('forms.name.placeholder'))
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
     <UInput
       v-model="model"
       type="text"
       maxlength="50"
       autocomplete="name"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       class="w-full"
       @blur="touched = true"
     />

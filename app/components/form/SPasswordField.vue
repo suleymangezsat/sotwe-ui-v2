@@ -20,8 +20,8 @@ const props = withDefaults(defineProps<{
   noValidate?: boolean
   disabled?: boolean
 }>(), {
-  label: 'Password',
-  placeholder: 'At least 8 characters',
+  label: undefined,
+  placeholder: undefined,
   autocomplete: 'current-password',
   required: true,
   noValidate: false,
@@ -39,14 +39,18 @@ const error = computed(() =>
 )
 watch(error, e => emit('update:error', e), { immediate: true })
 const errorMessage = computed(() => translateValidationKey(error.value))
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.password.label'))
+const placeholderText = computed(() => props.placeholder ?? t('forms.password.placeholder'))
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
     <UInput
       v-model="model"
       :type="visible ? 'text' : 'password'"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       :autocomplete="autocomplete"
       :disabled="disabled"
       class="w-full"
@@ -58,7 +62,7 @@ const errorMessage = computed(() => translateValidationKey(error.value))
           variant="link"
           size="xs"
           :icon="visible ? 'i-lucide-eye-off' : 'i-lucide-eye'"
-          :aria-label="visible ? 'Hide password' : 'Show password'"
+          :aria-label="visible ? t('forms.password.hide') : t('forms.password.show')"
           @click="visible = !visible"
         />
       </template>

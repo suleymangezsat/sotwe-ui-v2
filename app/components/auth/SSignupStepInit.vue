@@ -34,6 +34,8 @@ async function submit() {
   if (!canSubmit.value) return
   try { await store.submit() } catch { /* error mirrored via store */ }
 }
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -55,7 +57,7 @@ async function submit() {
     <SFormError :code="errorCode" />
 
     <SButton block type="submit" :loading="store.loading" :disabled="!canSubmit">
-      Send verification code
+      {{ t('signup_steps.sendCode') }}
     </SButton>
   </form>
 </template>

@@ -16,8 +16,8 @@ const props = withDefaults(defineProps<{
   noValidate?: boolean
   disabled?: boolean
 }>(), {
-  label: 'Username',
-  placeholder: 'screen_name',
+  label: undefined,
+  placeholder: undefined,
   required: true,
   noValidate: false,
   disabled: false,
@@ -37,14 +37,18 @@ const error = computed(() =>
 )
 watch(error, e => emit('update:error', e), { immediate: true })
 const errorMessage = computed(() => translateValidationKey(error.value))
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.username.label'))
+const placeholderText = computed(() => props.placeholder ?? t('forms.username.placeholder'))
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
     <UInput
       v-model="model"
       type="text"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       autocomplete="username"
       :disabled="disabled"
       class="w-full"

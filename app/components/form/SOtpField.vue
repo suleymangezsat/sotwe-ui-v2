@@ -8,15 +8,19 @@
 import { validateOtp } from '~/utils/validators'
 import { translateValidationKey } from '~/utils/validationMessages'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   label?: string
   placeholder?: string
   disabled?: boolean
 }>(), {
-  label: 'Verification code',
-  placeholder: '123456',
+  label: undefined,
+  placeholder: undefined,
   disabled: false,
 })
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.otp.label'))
+const placeholderText = computed(() => props.placeholder ?? t('forms.otp.placeholder'))
 
 const model = defineModel<string>({ required: true })
 const emit = defineEmits<{ 'update:error': [string | undefined] }>()
@@ -35,14 +39,14 @@ function onInput(e: Event) {
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" required :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" required :ui="{ root: 'w-full' }">
     <UInput
       :model-value="model"
       type="text"
       inputmode="numeric"
       autocomplete="one-time-code"
       maxlength="8"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       :disabled="disabled"
       class="w-full"
       :ui="{ base: 'text-center tracking-[0.4em] text-lg font-semibold' }"

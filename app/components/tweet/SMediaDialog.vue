@@ -14,6 +14,7 @@
 import type { MediaEntity } from '~shared/types'
 
 const ui = useUiStore()
+const { t } = useI18n()
 
 const openProps = computed(() => ui.mediaModal.props as unknown as {
   media?: MediaEntity[]
@@ -65,7 +66,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
     <button
       type="button"
       class="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full bg-twitter-slate-800/70 text-white hover:bg-twitter-slate-700"
-      aria-label="Close"
+      :aria-label="t('common.close')"
       @click.stop="close"
     >
       <Icon name="i-lucide-x" class="size-5" />
@@ -75,7 +76,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
       v-if="media.length > 1"
       type="button"
       class="absolute left-4 inline-flex size-10 items-center justify-center rounded-full bg-twitter-slate-800/70 text-white hover:bg-twitter-slate-700"
-      aria-label="Previous"
+      :aria-label="t('common.previous')"
       @click.stop="prev"
     >
       <Icon name="i-lucide-chevron-left" class="size-6" />
@@ -84,7 +85,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
       v-if="media.length > 1"
       type="button"
       class="absolute right-4 top-1/2 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-twitter-slate-800/70 text-white hover:bg-twitter-slate-700"
-      aria-label="Next"
+      :aria-label="t('common.next')"
       @click.stop="next"
     >
       <Icon name="i-lucide-chevron-right" class="size-6" />
@@ -94,7 +95,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
       <img
         v-if="media[current]?.type === 'photo'"
         :src="media[current]?.mediaURL"
-        :alt="media[current]?.text || 'media'"
+        :alt="media[current]?.text || t('tweet.mediaAlt')"
         class="max-h-[90vh] max-w-full object-contain"
       >
       <video

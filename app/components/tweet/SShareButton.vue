@@ -16,6 +16,7 @@ const props = defineProps<{
 
 const toast = useToast()
 const config = useRuntimeConfig()
+const { t } = useI18n()
 const open = ref(false)
 const dropdown = ref<HTMLElement | null>(null)
 onClickOutside(dropdown, () => { open.value = false })
@@ -26,7 +27,7 @@ const absoluteUrl = computed(() =>
 
 const shareTitle = computed(() => {
   const user = props.tweet.user
-  return user?.name ? `${user.name} on Sotwe` : 'Tweet on Sotwe'
+  return user?.name ? t('tweet.shareTitleNamed', { name: user.name }) : t('tweet.shareTitleGeneric')
 })
 
 async function share() {
@@ -54,21 +55,21 @@ async function copyLink() {
   open.value = false
   try {
     await navigator.clipboard.writeText(absoluteUrl.value)
-    toast.add({ title: 'Link copied', icon: 'i-lucide-link' })
+    toast.add({ title: t('tweet.linkCopied'), icon: 'i-lucide-link' })
   }
   catch {
-    toast.add({ title: 'Copy failed', color: 'error' })
+    toast.add({ title: t('tweet.copyFailed'), color: 'error' })
   }
 }
 
 function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
   const u = encodeURIComponent(absoluteUrl.value)
-  const t = encodeURIComponent(props.tweet.text || '')
+  const txt = encodeURIComponent(props.tweet.text || '')
   switch (network) {
-    case 'x': return `https://twitter.com/intent/tweet?url=${u}&text=${t}`
+    case 'x': return `https://twitter.com/intent/tweet?url=${u}&text=${txt}`
     case 'facebook': return `https://www.facebook.com/sharer/sharer.php?u=${u}`
-    case 'whatsapp': return `https://api.whatsapp.com/send?text=${t}%20${u}`
-    case 'telegram': return `https://t.me/share/url?url=${u}&text=${t}`
+    case 'whatsapp': return `https://api.whatsapp.com/send?text=${txt}%20${u}`
+    case 'telegram': return `https://t.me/share/url?url=${u}&text=${txt}`
   }
 }
 </script>
@@ -77,7 +78,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
   <div class="relative">
     <button
       type="button"
-      aria-label="Share"
+      :aria-label="t('tweet.share')"
       class="group inline-flex shrink-0 items-center gap-0.5 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 sm:gap-1 dark:text-twitter-slate-400"
       @click.stop="share"
     >
@@ -103,7 +104,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
         @click="copyLink"
       >
         <Icon name="i-lucide-link" class="size-4" />
-        Copy link
+        {{ t('tweet.copyLink') }}
       </button>
       <a
         :href="socialHref('x')"
@@ -112,7 +113,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
         class="flex items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
       >
         <Icon name="i-simple-icons-x" class="size-4" />
-        Share on X
+        {{ t('tweet.shareOn', { network: 'X' }) }}
       </a>
       <a
         :href="socialHref('facebook')"
@@ -121,7 +122,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
         class="flex items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
       >
         <Icon name="i-simple-icons-facebook" class="size-4" />
-        Share on Facebook
+        {{ t('tweet.shareOn', { network: 'Facebook' }) }}
       </a>
       <a
         :href="socialHref('whatsapp')"
@@ -130,7 +131,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
         class="flex items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
       >
         <Icon name="i-simple-icons-whatsapp" class="size-4" />
-        Share on WhatsApp
+        {{ t('tweet.shareOn', { network: 'WhatsApp' }) }}
       </a>
       <a
         :href="socialHref('telegram')"
@@ -139,7 +140,7 @@ function socialHref(network: 'x' | 'facebook' | 'whatsapp' | 'telegram') {
         class="flex items-center gap-3 px-4 py-2 text-sm hover:bg-twitter-slate-50 dark:hover:bg-twitter-slate-900"
       >
         <Icon name="i-simple-icons-telegram" class="size-4" />
-        Share on Telegram
+        {{ t('tweet.shareOn', { network: 'Telegram' }) }}
       </a>
     </div>
   </div>

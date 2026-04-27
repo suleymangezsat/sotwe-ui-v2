@@ -19,6 +19,21 @@
  * HTML. Each dialog reads its own state from `useUiStore()` so the
  * layout doesn't need to pipe props through.
  */
+
+/*
+ * Per-locale `<html lang>` attribute. With `strategy: 'no_prefix'` every
+ * URL is shared across locales (matches v1 — see `nuxt.config.ts` i18n
+ * comment), so there's no hreflang chain to emit; `useLocaleHead({ seo:
+ * false })` just gives us the language code for the html tag without
+ * generating misleading alternate links that would all point to the same
+ * URL.
+ *
+ * `useSotweMeta` keeps owning the canonical link + OG / Twitter cards.
+ */
+const localeHead = useLocaleHead({ dir: true, lang: true, seo: false })
+useHead(() => ({
+  htmlAttrs: localeHead.value.htmlAttrs ?? {},
+}))
 </script>
 
 <template>

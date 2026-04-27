@@ -10,25 +10,27 @@
 
 import { Gender } from '~shared/types'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   label?: string
   required?: boolean
 }>(), {
-  label: 'Gender',
+  label: undefined,
   required: false,
 })
 
 const model = defineModel<Gender | undefined>({ required: true })
 
-const options: Array<{ value: Gender, label: string }> = [
-  { value: Gender.MALE, label: 'Male' },
-  { value: Gender.FEMALE, label: 'Female' },
-  { value: Gender.OTHER, label: 'Other' },
-]
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.gender.label'))
+const options = computed<Array<{ value: Gender, label: string }>>(() => [
+  { value: Gender.MALE, label: t('forms.gender.male') },
+  { value: Gender.FEMALE, label: t('forms.gender.female') },
+  { value: Gender.OTHER, label: t('forms.gender.other') },
+])
 </script>
 
 <template>
-  <UFormField :label="label" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :required="required" :ui="{ root: 'w-full' }">
     <div class="flex flex-wrap gap-2">
       <button
         v-for="opt in options"

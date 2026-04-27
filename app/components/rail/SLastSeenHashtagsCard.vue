@@ -10,6 +10,7 @@ import type { Visit } from '~shared/types'
 
 const visits = ref<Visit<string>[]>([])
 const loading = ref(true)
+const { t } = useI18n()
 
 async function load() {
   try {
@@ -25,7 +26,7 @@ onMounted(load)
 
 <template>
   <SCard v-if="loading || visits.length" padded>
-    <h2 class="mb-3 text-xl font-bold">Trending hashtags</h2>
+    <h2 class="mb-3 text-xl font-bold">{{ t('rail.trendingHashtags') }}</h2>
     <div v-if="loading" class="flex items-center justify-center py-4">
       <Icon name="i-lucide-loader-circle" class="size-5 animate-spin text-twitter-slate-400" />
     </div>

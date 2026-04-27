@@ -29,6 +29,7 @@ const retweeter = computed(() => props.tweet.retweetedStatus ? props.tweet.user 
 
 const created = computed(() => formatCreatedAt(body.value.createdAt))
 const absolute = computed(() => formatCreatedAtAbsolute(body.value.createdAt))
+const { t } = useI18n()
 
 const ui = useUiStore()
 function openMedia(index: number) {
@@ -60,7 +61,7 @@ function openTweet(e: MouseEvent) {
   <article
     class="cursor-pointer border-b border-twitter-slate-100 px-4 py-3 transition-colors hover:bg-twitter-slate-50/60 dark:border-twitter-slate-700 dark:hover:bg-twitter-slate-900/60"
     role="link"
-    :aria-label="`Open tweet by ${body.user?.name || body.user?.screenName}`"
+    :aria-label="t('tweet.openTweetBy', { name: body.user?.name || body.user?.screenName || '' })"
     @click="openTweet"
   >
     <!-- Pinned (outer tweet only, before the retweet swap) -->
@@ -69,7 +70,7 @@ function openTweet(e: MouseEvent) {
       class="mb-2 flex items-center gap-2 text-xs font-semibold text-twitter-slate-500 dark:text-twitter-slate-400"
     >
       <Icon name="i-lucide-pin" class="size-3.5" />
-      Pinned
+      {{ t('tweet.pinned') }}
     </p>
 
     <!-- Retweeted badge -->
@@ -81,7 +82,7 @@ function openTweet(e: MouseEvent) {
       <NuxtLink v-if="retweeter.screenName" :to="`/${retweeter.screenName}`" class="hover:underline">
         @{{ retweeter.screenName }}
       </NuxtLink>
-      retweeted
+      <span>{{ t('common.retweeted') }}</span>
     </p>
 
     <div class="flex items-start gap-3">
@@ -153,10 +154,10 @@ function openTweet(e: MouseEvent) {
         <STweetQuote v-if="body.quotedStatus" :tweet="body.quotedStatus" />
 
         <div class="mt-2 flex max-w-md items-center justify-between text-twitter-slate-500 dark:text-twitter-slate-400">
-          <SIconButton icon="i-lucide-message-circle" label="Reply" :count="body.replyCount || null" />
-          <SIconButton icon="i-lucide-repeat-2" label="Repost" :count="body.retweetCount || null" />
-          <SIconButton icon="i-lucide-heart" label="Like" :count="body.favoriteCount || null" />
-          <SIconButton icon="i-lucide-bar-chart-3" label="Views" :count="body.viewCount || null" />
+          <SIconButton icon="i-lucide-message-circle" :label="t('tweet.reply')" :count="body.replyCount || null" />
+          <SIconButton icon="i-lucide-repeat-2" :label="t('tweet.repost')" :count="body.retweetCount || null" />
+          <SIconButton icon="i-lucide-heart" :label="t('tweet.like')" :count="body.favoriteCount || null" />
+          <SIconButton icon="i-lucide-bar-chart-3" :label="t('tweet.views')" :count="body.viewCount || null" />
           <SBookmarkButton :tweet="body" />
           <SShareButton :tweet="body" />
           <SDownloadButton v-if="body.mediaEntities?.length" :media="body.mediaEntities" />

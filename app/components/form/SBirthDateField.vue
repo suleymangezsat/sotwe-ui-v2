@@ -9,13 +9,16 @@
 import { validateBirthDate } from '~/utils/validators'
 import { translateValidationKey } from '~/utils/validationMessages'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   label?: string
   required?: boolean
 }>(), {
-  label: 'Birth date',
+  label: undefined,
   required: true,
 })
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.birthDate.label'))
 
 const model = defineModel<string | undefined>({ required: true })
 const emit = defineEmits<{ 'update:error': [string | undefined] }>()
@@ -30,7 +33,7 @@ const errorMessage = computed(() => translateValidationKey(error.value))
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
     <UInput
       v-model="model"
       type="date"

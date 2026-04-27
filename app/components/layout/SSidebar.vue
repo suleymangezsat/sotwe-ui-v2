@@ -19,17 +19,19 @@ interface NavItem {
   exact?: boolean
 }
 
+const { t } = useI18n()
+
 // URLs mirror v1's app/router.js exactly — sotwe.com/me/* for authed user
 // pages, sotwe.com/pricing for premium, and a root-level Sotwe logo for
 // the home trends feed. No explicit /trends item in the sidebar: v1 used
 // `/` itself as the trends overview (CF-IPCountry default).
-const items: NavItem[] = [
-  { label: 'Home', to: '/', icon: 'i-lucide-house', exact: true },
-  { label: 'Nearby', to: '/me/nearby', icon: 'i-lucide-map-pin' },
-  { label: 'Bookmarks', to: '/me/bookmarks', icon: 'i-lucide-bookmark' },
-  { label: 'Profile', to: '/me/profile', icon: 'i-lucide-user-round' },
-  { label: 'Premium', to: '/pricing', icon: 'i-lucide-badge-check' },
-]
+const items = computed<NavItem[]>(() => [
+  { label: t('navigation.home'), to: '/', icon: 'i-lucide-house', exact: true },
+  { label: t('navigation.nearby'), to: '/me/nearby', icon: 'i-lucide-map-pin' },
+  { label: t('navigation.myBookmarks'), to: '/me/bookmarks', icon: 'i-lucide-bookmark' },
+  { label: t('navigation.myProfile'), to: '/me/profile', icon: 'i-lucide-user-round' },
+  { label: t('navigation.pricing'), to: '/pricing', icon: 'i-lucide-badge-check' },
+])
 
 const route = useRoute()
 function isActive(item: NavItem) {
@@ -37,14 +39,14 @@ function isActive(item: NavItem) {
   return route.path === item.to || route.path.startsWith(item.to + '/')
 }
 
-const moreItems = [
+const moreItems = computed(() => [
   [
-    { label: 'About', icon: 'i-lucide-info', to: '/about' },
-    { label: 'Terms of Service', icon: 'i-lucide-file-text', to: '/terms-of-service' },
-    { label: 'Privacy Policy', icon: 'i-lucide-shield', to: '/privacy-policy' },
-    { label: 'Refund Policy', icon: 'i-lucide-receipt', to: '/delivery-refund-terms' },
+    { label: t('navigation.about'), icon: 'i-lucide-info', to: '/about' },
+    { label: t('navigation.termsOfService'), icon: 'i-lucide-file-text', to: '/terms-of-service' },
+    { label: t('navigation.privacyPolicy'), icon: 'i-lucide-shield', to: '/privacy-policy' },
+    { label: t('navigation.refundPolicy'), icon: 'i-lucide-receipt', to: '/delivery-refund-terms' },
   ],
-]
+])
 </script>
 
 <template>
@@ -75,20 +77,20 @@ const moreItems = [
         <span class="hidden xl:inline">{{ item.label }}</span>
       </NuxtLink>
 
-      <SMenu :items="moreItems" aria-label="More links">
+      <SMenu :items="moreItems" :aria-label="t('common.more')">
         <button
           type="button"
           class="group flex items-center gap-4 rounded-full px-3 py-3 text-xl text-twitter-slate-700 transition-colors hover:bg-twitter-slate-50 xl:py-2.5 dark:text-twitter-slate-200 dark:hover:bg-twitter-slate-900"
         >
           <Icon name="i-lucide-ellipsis" class="size-7 shrink-0" />
-          <span class="hidden xl:inline">More</span>
+          <span class="hidden xl:inline">{{ t('common.more') }}</span>
         </button>
       </SMenu>
     </nav>
 
     <div class="mt-auto hidden items-center justify-between gap-2 border-t border-twitter-slate-100 pt-3 xl:flex dark:border-twitter-slate-700">
       <SThemeToggle />
-      <SButton variant="outline" size="sm" to="/login">Sign in</SButton>
+      <SButton variant="outline" size="sm" to="/login">{{ t('auth.signIn') }}</SButton>
     </div>
 
     <div class="mt-auto flex flex-col items-center gap-2 xl:hidden">

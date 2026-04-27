@@ -23,15 +23,16 @@ const { data } = await useAsyncData(
   { default: () => [] },
 )
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Nearby · Sotwe',
-  description: 'Twitter / X users near you.',
+  title: t('nearbypage.meta.title'),
+  description: t('nearbypage.meta.description'),
   noindex: true,
 })
 </script>
 
 <template>
-  <STopBar title="Nearby" />
+  <STopBar :title="t('navigation.nearby')" />
   <section class="divide-y divide-twitter-slate-100 dark:divide-twitter-slate-700">
     <NuxtLink
       v-for="u in data"
@@ -51,12 +52,12 @@ useSotweMeta({
           <SVerifiedBadge v-if="u.verified" class="size-4 text-twitter-blue-500" />
         </div>
         <div class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-          @{{ u.username }} · {{ u.distance.toFixed(1) }} km
+          @{{ u.username }} · {{ t('nearby.km_unit', { number: u.distance.toFixed(1) }) }}
         </div>
       </div>
     </NuxtLink>
     <p v-if="!data?.length" class="px-4 py-10 text-center text-twitter-slate-500">
-      No users found nearby.
+      {{ t('nearbypage.noUsers') }}
     </p>
   </section>
 </template>

@@ -16,6 +16,7 @@ const props = defineProps<{
 }>()
 
 const toast = useToast()
+const { t } = useI18n()
 const open = ref(false)
 const dropdown = ref<HTMLElement | null>(null)
 onClickOutside(dropdown, () => { open.value = false })
@@ -40,13 +41,13 @@ async function downloadOne(m: MediaEntity) {
   open.value = false
   const url = m.type === 'photo' ? m.mediaURL : bestVideoUrl(m)
   if (!url) {
-    toast.add({ title: 'Nothing to download', color: 'warning' })
+    toast.add({ title: t('tweet.nothingToDownload'), color: 'warning' })
     return
   }
   // Post the progress toast, remember its id, then dismiss it before
   // posting the success / error so they don't stack on screen.
   const progress = toast.add({
-    title: 'Downloading…',
+    title: t('tweet.downloading'),
     icon: 'i-lucide-loader-circle',
     duration: 0, // persist until we remove it
   })
@@ -63,11 +64,11 @@ async function downloadOne(m: MediaEntity) {
     a.remove()
     URL.revokeObjectURL(objectUrl)
     toast.remove(progress.id)
-    toast.add({ title: 'Download complete', icon: 'i-lucide-check' })
+    toast.add({ title: t('tweet.downloadComplete'), icon: 'i-lucide-check' })
   }
   catch (e) {
     toast.remove(progress.id)
-    toast.add({ title: 'Download failed', description: (e as Error).message, color: 'error' })
+    toast.add({ title: t('tweet.downloadFailed'), description: (e as Error).message, color: 'error' })
   }
 }
 
@@ -85,7 +86,7 @@ function click() {
   <div class="relative">
     <button
       type="button"
-      aria-label="Download media"
+      :aria-label="t('tweet.downloadMedia')"
       class="group inline-flex shrink-0 items-center gap-0.5 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 sm:gap-1 dark:text-twitter-slate-400"
       @click.stop="click"
     >
@@ -110,7 +111,7 @@ function click() {
           :name="m.type === 'photo' ? 'i-lucide-image' : 'i-lucide-video'"
           class="size-4"
         />
-        <span>{{ m.type === 'photo' ? 'Image' : m.type === 'animated_gif' ? 'GIF' : 'Video' }} {{ i + 1 }}</span>
+        <span>{{ t(m.type === 'photo' ? 'tweet.photo' : m.type === 'animated_gif' ? 'tweet.gif' : 'tweet.video') }} {{ i + 1 }}</span>
       </button>
     </div>
   </div>

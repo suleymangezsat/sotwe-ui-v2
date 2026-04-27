@@ -104,10 +104,26 @@ const joinedDate = computed(() =>
     : undefined,
 )
 
+// SEO meta from v1's `userpage.meta.*` keys — preserves the indexed
+// title pattern Google has crawled against `sotwe.com/{username}` for
+// years. The bio fragment ({bio}) is pre-pended with " " so it reads
+// naturally even when empty (per v1).
+const { t } = useI18n()
+const bioFragment = computed(() => {
+  const trimmed = profile.description?.slice(0, 200).trim()
+  return trimmed ? ` ${trimmed}` : ''
+})
 useSotweMeta({
-  title: `${profile.name} (@${profile.screenName}) · Sotwe`,
-  description: profile.description?.slice(0, 200)
-    || `Read @${profile.screenName}'s tweets on Sotwe without a Twitter account.`,
+  title: t('userpage.meta.title', {
+    fullname: profile.name,
+    username: profile.screenName,
+  }),
+  description: t('userpage.meta.description', {
+    username: profile.screenName,
+    followers: profile.followerCount ?? 0,
+    following: profile.followingCount ?? 0,
+    bio: bioFragment.value,
+  }),
   image: profile.profileImageOriginal,
   isSensitive: profile.possiblySensitive,
   ogType: 'profile',
@@ -178,7 +194,7 @@ useSotweMeta({
           v-if="profile.userProtected"
           name="i-lucide-lock"
           class="size-4 shrink-0 text-twitter-slate-500"
-          aria-label="Protected account"
+          :aria-label="t('userpage.protectedAccount')"
         />
       </h1>
       <div class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
@@ -226,7 +242,7 @@ useSotweMeta({
           <Icon name="i-lucide-map-pin" class="size-4" /> {{ profile.location }}
         </span>
         <span v-if="joinedDate" class="inline-flex items-center gap-1">
-          <Icon name="i-lucide-calendar" class="size-4" /> Joined {{ joinedDate }}
+          <Icon name="i-lucide-calendar" class="size-4" /> {{ t('userpage.joinedOn', { date: joinedDate }) }}
         </span>
       </div>
 
@@ -247,18 +263,26 @@ useSotweMeta({
 
       <!-- Stats row: posts / following / followers. Numeric counts use the
            same compact formatter as the tweet action row (1.2K / 5M). -->
+      <!--
+        Stats row (posts / following / followers). Vue's default
+        `whitespace: 'condense'` strips the leading space inside
+        `<span> {{ ... }}</span>`, which would otherwise separate the
+        number from the localized label — TR rendered "101.9KGönderi"
+        before the fix. Embed the leading space inside the mustache
+        itself so Vue can't strip it.
+      -->
       <div class="mt-3 flex flex-wrap gap-5 text-sm">
         <span v-if="profile.postCount != null">
           <b>{{ formatCount(profile.postCount) }}</b>
-          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Posts</span>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400">{{ ` ${t('userpage.posts')}` }}</span>
         </span>
         <span v-if="profile.followingCount != null">
           <b>{{ formatCount(profile.followingCount) }}</b>
-          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Following</span>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400">{{ ` ${t('userpage.following')}` }}</span>
         </span>
         <span v-if="profile.followerCount != null">
           <b>{{ formatCount(profile.followerCount) }}</b>
-          <span class="text-twitter-slate-500 dark:text-twitter-slate-400"> Followers</span>
+          <span class="text-twitter-slate-500 dark:text-twitter-slate-400">{{ ` ${t('userpage.followers')}` }}</span>
         </span>
       </div>
     </div>
@@ -270,8 +294,8 @@ useSotweMeta({
     :load-more="loadMoreTweets"
   >
     <template #default="{ items }">
-      <template v-for="(t, i) in items" :key="t.id">
-        <STweet :tweet="t" />
+      <template v-for="(tw, i) in items" :key="tw.id">
+        <STweet :tweet="tw" />
         <!-- V1 parity: inline "Who to follow" block between tweets #3 and
              #4. Renders once, only when the API returned suggestions and
              the feed is long enough to surround it. Uses the flat inline

@@ -19,9 +19,10 @@ import { useSignupStore } from '~/stores/signup'
 const store = useSignupStore()
 const auth = useAuth()
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Create account · Sotwe',
-  description: 'Create a Sotwe account.',
+  title: t('signupPage.meta.title'),
+  description: t('signupPage.meta.description'),
   noindex: true,
 })
 
@@ -38,9 +39,9 @@ onMounted(() => {
 })
 
 const stepLabel = computed(() => {
-  if (store.step === 1) return 'Create your account'
-  if (store.step === 2) return 'Verify your email'
-  return 'Tell us about you'
+  if (store.step === 1) return t('signup_steps.stepCreate')
+  if (store.step === 2) return t('signup_steps.stepVerify')
+  return t('signup_steps.stepProfile')
 })
 
 function onProfileDone() {
@@ -52,7 +53,7 @@ function onProfileDone() {
 <template>
   <!-- The step heading ("Create your account" / "Verify…" / "Tell us about
        you") is the page h1 — topbar drops to h2. -->
-  <STopBar title="Create account" :show-back="true" :as="'h2'" />
+  <STopBar :title="t('auth.signUp')" :show-back="true" :as="'h2'" />
   <section class="mx-auto flex max-w-sm flex-col gap-6 px-4 py-8">
     <div class="flex flex-col items-center gap-2">
       <SLogo :size="40" />
@@ -61,7 +62,7 @@ function onProfileDone() {
 
     <!-- Progress dots — purely visual hint of where the visitor is in
          the 3-step flow. Aria-current pins the active dot for AT users. -->
-    <div class="flex items-center justify-center gap-2" aria-label="Signup progress">
+    <div class="flex items-center justify-center gap-2" :aria-label="t('signup_steps.progressLabel')">
       <span
         v-for="n in 3"
         :key="n"
@@ -78,9 +79,9 @@ function onProfileDone() {
     <SSignupStepProfile v-else @done="onProfileDone" />
 
     <p class="text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-      Already have an account?
+      {{ t('auth.alreadyHaveAccount') }}
       <NuxtLink to="/login" class="font-semibold text-twitter-blue-500 hover:underline">
-        Sign in
+        {{ t('auth.signIn') }}
       </NuxtLink>
     </p>
   </section>

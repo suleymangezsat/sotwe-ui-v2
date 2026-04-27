@@ -1,0 +1,1099 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkında",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfService": "Kullanım Koşulları",
+    "pricing": "Fiyatlandırma",
+    "language": "Dil",
+    "logout": "Çıkış Yap",
+    "myProfile": "Profilim",
+    "myBookmarks": "Kaydedilenler",
+    "search": {
+      "placeholder": "Ara"
+    },
+    "nearby": "Yakındakiler",
+    "refundPolicy": "İade Politikası"
+  },
+  "errors": {
+    "UNSPECIFIED": {
+      "title": "Belirtilmemiş Hata",
+      "message": "Bir hata oluştu ancak ek bilgi mevcut değil. Lütfen tekrar deneyin."
+    },
+    "VALIDATION_ERROR": {
+      "title": "Doğrulama Hatası",
+      "message": "Bazı alanlar doğrulama kontrollerinden geçemedi. Lütfen gözden geçirip düzeltin."
+    },
+    "BAD_REQUEST": {
+      "title": "Yanlış İstek",
+      "message": "İsteğiniz işlenemedi. Lütfen gönderimizi kontrol edip tekrar deneyin."
+    },
+    "NO_CONNECTION": {
+      "title": "Bağlantı Yok",
+      "message": "İnternet bağlantısı mevcut değil. Lütfen ağ ayarlarınızı kontrol edip tekrar deneyin."
+    },
+    "PAYMENT_FAILED": {
+      "title": "Ödeme Başarısız",
+      "message": "Ödemeniz işlenemedi. Lütfen ödeme bilgilerinizi doğrulayıp tekrar deneyin."
+    },
+    "PAYMENT_NOT_FOUND": {
+      "title": "Ödeme Bulunamadı",
+      "message": "Bahsettiğiniz ödemeyi bulamadık. Lütfen detayları kontrol edip tekrar deneyin."
+    },
+    "INSUFFICIENT_SUBSCRIPTION": {
+      "title": "Abonelik Gerekiyor",
+      "message": "Mevcut abonelik seviyeniz bu işlemi yapmaya izin vermiyor. Lütfen aboneliğinizi yükseltin."
+    },
+    "CANNOT_SEND_EMAIL": {
+      "title": "E-posta Gönderilemiyor",
+      "message": "Belirtilen adrese e-posta gönderilemedi. Lütfen e-posta adresini kontrol edip tekrar deneyin."
+    },
+    "TOO_MANY_OTP_REQUESTS": {
+      "title": "Çok Fazla OTP İsteği",
+      "message": "Çok fazla OTP kodu istediniz. Lütfen bir süre bekledikten sonra tekrar deneyin."
+    },
+    "LOGIN_FAILED": {
+      "title": "Giriş Başarısız",
+      "message": "Verilen bilgilerle giriş yapamadık. Lütfen kontrol edip tekrar deneyin."
+    },
+    "USER_NOT_FOUND": {
+      "title": "Kullanıcı Bulunamadı",
+      "message": "Belirtilen kullanıcı sistemimizde mevcut değil. Lütfen detayları kontrol edip tekrar deneyin."
+    },
+    "SUBSCRIPTION_NOT_FOUND": {
+      "title": "Abonelik Bulunamadı",
+      "message": "Hesabınız için aktif bir abonelik bulunamadı. Devam etmek için lütfen abone olun."
+    },
+    "INVALID_USERNAME": {
+      "title": "Geçersiz Kullanıcı Adı",
+      "message": "Girdiğiniz kullanıcı adı gereksinimlerimizi karşılamıyor. Lütfen başka bir kullanıcı adı seçin."
+    },
+    "INVALID_PASSWORD": {
+      "title": "Geçersiz Şifre",
+      "message": "Girilen şifre yanlış. Lütfen kontrol edip tekrar deneyin."
+    },
+    "INVALID_OLD_PASSWORD": {
+      "title": "Geçersiz Eski Şifre",
+      "message": "Girilen eski şifre yanlış. Lütfen kontrol edip tekrar deneyin."
+    },
+    "SUSPENDED_USER": {
+      "title": "Askıya Alınmış Kullanıcı",
+      "message": "Bu hesap askıya alınmıştır. Detaylar için lütfen destekle iletişime geçin."
+    },
+    "NOT_FOUND": {
+      "title": "Bulunamadı",
+      "message": "İstenen kaynak sunucumuzda bulunamadı. Lütfen URL'yi kontrol edip tekrar deneyin."
+    },
+    "TWREQ_ERROR": {
+      "title": "Twitter İstek Hatası",
+      "message": "Twitter'a yapılan isteğinizle ilgili bir sorun oluştu. Lütfen daha sonra tekrar deneyin."
+    },
+    "IO_ERROR": {
+      "title": "Giriş/Çıkış Hatası",
+      "message": "Giriş/çıkış işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin."
+    },
+    "EMAIL_NOT_VERIFIED": {
+      "title": "E-posta Doğrulanmadı",
+      "message": "E-posta adresiniz doğrulanmadı. Lütfen e-postanızdaki doğrulama bağlantısını kontrol edin."
+    },
+    "IMAGE_UPLOAD_ERROR": {
+      "title": "Resim Yükleme Hatası",
+      "message": "Resminiz yüklenirken bir sorun oluştu. Lütfen tekrar deneyin."
+    },
+    "BAD_CREDENTIALS": {
+      "title": "Yanlış Bilgiler",
+      "message": "Verilen giriş bilgileri yanlış. Lütfen bilgilerinizi tekrar girin."
+    },
+    "UNEXPECTED": {
+      "title": "Beklenmeyen Hata",
+      "message": "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    },
+    "INVALID_STEP": {
+      "title": "Geçersiz Adım",
+      "message": "Erişmeye çalıştığınız adım geçersiz veya süresi dolmuş. Lütfen baştan başlayın."
+    },
+    "EMAIL_EXISTS": {
+      "title": "E-posta Zaten Var",
+      "message": "Girdiğiniz e-posta adresi zaten kullanımda. Lütfen başka bir e-posta kullanın veya hesabınızı kurtarın."
+    },
+    "USERNAME_EXISTS": {
+      "title": "Kullanıcı Adı Zaten Var",
+      "message": "Seçtiğiniz kullanıcı adı zaten alınmış. Lütfan başka bir kullanıcı adı seçin."
+    },
+    "INVALID_OTP": {
+      "title": "Geçersiz OTP",
+      "message": "Girdiğiniz OTP kodu yanlış veya süresi dolmuş. Lütfen yeni bir OTP isteyin."
+    },
+    "BOOKMARK_SIZE_EXCEEDED": {
+      "title": "İçerik Kaydetme Sınırı Aşıldı",
+      "message": "İçerik eklemek için maksimum kayıt sınırını aştınız. Lütfen gereksiz içerikleri kaydedilenlerden kaldırın."
+    }
+  },
+  "adFreePromotionCard": {
+    "title": "Reklamsız Gezinme",
+    "description": "Sotwe'yi reklamsız kullanın ve daha keyifli bir deneyimin tadını çıkarın. Daha fazla içerik, sıfır reklam 🚀",
+    "button_text": "Şimdi abone ol"
+  },
+  "common": {
+    "add_bookmark": "Kaydet",
+    "remove_bookmark": "Kaydı Kaldır",
+    "link_to_share": "Paylaşma Linki",
+    "search_places": "Mekan ara",
+    "retweeted": "retweetledi",
+    "seeMore": "Daha Fazla Göster",
+    "seeLess": "Daha Az Göster",
+    "somethingWR": "Bir şeyler ters gitti.",
+    "tryAgain": "Yeniden Dene",
+    "notFound": "Bulunamadı",
+    "noResults": "Sonuç Bulunamadı",
+    "today": "Bugün",
+    "yesterday": "Dün",
+    "weekAgo": "Hafta Önce",
+    "monthAgo": "Ay Önce",
+    "now": "Şimdi",
+    "message": "Mesaj",
+    "hoursAgo": "{hour} saat önce",
+    "downloadImage": "Fotoğrafı İndir",
+    "downloadVideo": "Videoyu İndir",
+    "downloadGif": "Gif'i İndir",
+    "image": "Fotoğraf",
+    "video": "Video",
+    "seenFrom": "Son görüldüğü yer",
+    "linkIsCopied": "Link kopyalandı!",
+    "close": "Kapat",
+    "cancel": "İptal",
+    "send": "Gönder",
+    "share": "Paylaş",
+    "shareProfile": "Profili Paylaş",
+    "campaignModal": {
+      "title": "{'@'}{username} Senin Hesabın mı?"
+    },
+    "signInWithTwitter": "Twitter İle Giriş Yap",
+    "unableToLoginTwitter": "Bir hata nedeniyle Twitter girişi yapılamadı",
+    "goToHome": "Ana sayfaya git",
+    "loggingIn": "Giriş yapılıyor...",
+    "loggedIn": "Giriş yaptı",
+    "loggedOut_message": "Sistemden çıkış yapıldı.",
+    "youHaveToLoginBefore": "Bu sayfaya erişmek için Twitter ile giriş yapmalısın: {0}",
+    "allow": "İzin Ver",
+    "notNow": "Şimdi Değil",
+    "messageSent": "Mesaj Gönderildi",
+    "messageFailed": "Mesaj Gönderilemedi",
+    "loginCancelled": "Giriş İptal Edildi",
+    "signIn": "giriş yap",
+    "loginCancelled_message": "Twitter hesabınızı kullanarak sitemize giriş yapmayı iptal etmeye karar verdiniz. Bu bir hataysa, lütfen {0} adımına geçin.",
+    "downloadAll": "Tümünü İndir",
+    "searchInTwitter": "Twitter'da Ara",
+    "hideSearch": "Aramayı gizle",
+    "seeNearbyUsers": "Yakındaki kullanıcıları görün",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "playVideo": "Videoyu oynat",
+    "sendMessage": "Mesaj gönder",
+    "accountOwnership": "Hesap Sahipliği",
+    "downloadAllMedia": "Tüm Medyaları İndir",
+    "submit": "Gönder",
+    "done": "Bitti",
+    "more": "Devamı",
+    "pinned": "Sabitlenmiş Tweet",
+    "upload": "Yükle",
+    "edit": "Düzenle",
+    "continueWithGoogle": "Google ile devam et",
+    "or": "Ya da",
+    "videoPlayer": "Video oynatıcı",
+    "likes": "{count} beğeni",
+    "retweets": "{count} retweet",
+    "views": "{count} görüntüleme",
+    "replies": "{count} yanıt",
+    "bookmarks": "{count} kayıt",
+    "bookmarkAdded": "Kaydedildi",
+    "bookmarkRemoved": "Kayıt Kaldırıldı",
+    "back": "Geri",
+    "darkMode": "Karanlık moda geç",
+    "lightMode": "Aydınlık moda geç",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "date": "Tarih",
+    "time": "Saat",
+    "oneHourAgo": "1 saat önce",
+    "in": "içinde",
+    "loading": "Yükleniyor…"
+  },
+  "meta": {
+    "title": "Twitter Web Viewer & Trend Analyzer & Downloader",
+    "description": "Twitter trendlerini ve kullanıcılarını keşfedin, en popüler Twitter kullanıcılarını, hashtag'leri ve yerleri bulun. Twitter'daki fotoğrafları ve videoları ücretsiz indirin.",
+    "homepage": {
+      "title": "{place} — Twitter Trend Olan Etiketler, Kullanıcılar, Konular ve Tweetler",
+      "description": "{place} popüler trendleri: {topics}… Sotwe ile ülkeye göre Twitter trendlerini, etiketleri, tweetleri ve kullanıcıları keşfedin.",
+      "descriptionFallback": "Sotwe ile ülkeye göre Twitter trendlerini, etiketleri, tweetleri ve kullanıcıları keşfedin."
+    },
+    "user": {
+      "title": "{name} ({'@'}{screenName}) · Sotwe",
+      "description": "{'@'}{screenName} kullanıcısının tweetlerini Twitter hesabı olmadan Sotwe üzerinden okuyun."
+    }
+  },
+  "nearby": {
+    "peopleAroundYou": "Yakındaki Kişiler",
+    "canNotDetermineYourLocation": "Lokasyonunu tespit edemedik",
+    "locationDenied_message": "Lokasyonu kullanmak için izin vermeniz gerekiyor. Lütfen tarayıcınızın ayarlarından lokasyonu kullanmaya izin verin.",
+    "allowYourLocation": "Lokasyon Erişimine İzin Ver",
+    "provideAccessToYourLocation_message": "Yakındaki kişileri bulabilmek için lokasyon erişimi gereklidir, lütfen izin veriniz.",
+    "km_unit": "{number} km",
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Abonelik Gerekiyor",
+        "message": "Yakındaki kullanıcıları görmek için Sotwe Premium aboneliği gereklidir."
+      }
+    }
+  },
+  "pricing": {
+    "letsGetStarted": "Hadi Başlayalım",
+    "upgradeYourAccount_message": "Gelişmiş bir Sotwe deneyimi için hesabınızı Sotwe Premium'a yükseltin.",
+    "tryNow": "Şimdi dene",
+    "perYear": "yıllık",
+    "perMonth": "her ay",
+    "perWeek": "her hafta",
+    "oneTime": "bir kerelik",
+    "features": {
+      "adFree": "Reklamsız Deneyimin Tadını Çıkarın",
+      "seeUsersNearby": "Yakındaki Kullanıcıları ve İçerikleri Keşfedin",
+      "unlimitedDownloads": "Sınırsız Fotoğraf ve Video İndirin",
+      "bookmark": "Favori İçerikleri Kaydedin",
+      "prioritySupport": "Ayrıcalıklı Destek Hizmeti Alın"
+    },
+    "campaigns": {
+      "FREE": "Temel erişim",
+      "PREMIUM": "1 aylık Premium"
+    },
+    "paymentFailed_message": "Ödemeniz başarısız oldu. Lütfen tekrar deneyin.",
+    "paymentSuccess_message": "Ödemeniz başarılı oldu. Siparişiniz için teşekkürler, {username}!",
+    "youSubscribed": "Abone oldunuz",
+    "onlyPremium_message": "Sadece Premium kullanıcılar mesaj gönderebilir",
+    "loginToSubscribe": "Premium plana abone olmak için lütfen hesabınıza giriş yapın.",
+    "skipNow": "Şimdilik geç",
+    "meta": {
+      "title": "Fiyatlandırma",
+      "description": "Sotwe Premium kullanarak sınırsız takip, sınırsız mesaj gönderme, reklamsız gösterim ve daha fazlasını kullanabilirsiniz."
+    }
+  },
+  "bookmark": {
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Abonelik Gerekiyor",
+        "message": "Ücretsiz yer işareti limitinize ulaştınız. Sınırsız yer işareti için lütfen hesabınızı premiuma yükseltin."
+      }
+    }
+  },
+  "cancelRenewal": {
+    "title": "Abonelik Yenilemeyi İptal Et",
+    "subtitle": "Ayrılmanıza üzülüyoruz!",
+    "description": "Geçmiş desteğiniz için teşekkür ederiz ve yenileme iptalinizin hemen premium özelliklerinizi sonlandırmayacağını hatırlatmak isteriz. Mevcut abonelik döneminizin sonuna kadar hizmetlerin keyfini çıkarabilirsiniz.",
+    "feedbackPrompt": "Lütfen aboneliğinizi neden iptal ettiğinizi bize bildirin. Geri bildiriminiz hizmetimizi geliştirmemize yardımcı olacaktır.",
+    "reasonLabel": "Bir neden seçin",
+    "reasons": {
+      "high_cost": "Yüksek maliyet",
+      "feature_broken": "Bazı özellik(ler) bozuk",
+      "not_using_enough": "Hizmeti yeterince kullanmamak",
+      "change_in_needs": "İhtiyaçlardaki değişiklik",
+      "lack_of_feature": "Beklenen özellik eksikliği",
+      "other": "Diğer"
+    },
+    "additionalFeedback": "Düşüncelerinizi burada paylaşın...",
+    "stayButton": "Aboneliğe devam et",
+    "cancelButton": "Yenilemeyi iptal et",
+    "reasonRequired": "Neden gereklidir",
+    "success": "Abonelik yenilemesi başarıyla iptal edildi",
+    "error": "Abonelik yenilemesi iptal edilirken bir hata oluştu"
+  },
+  "login": {
+    "joinUs": "Bize Katılın",
+    "joinUs_description": "Sotwe topluluğunun bir parçası olun ve yalnızca üyelere özel benzersiz özelliklerin keyfini çıkarın.",
+    "joinSotweCommunity_message": "Sotwe Topluluğuna Katıl",
+    "seeTwitterUsersNearby": "Yakınındaki Twitter Kullanıcılarını Gör",
+    "sendDirectMessages": "Direkt Mesaj Gönder",
+    "downloadAll": "Sınırsız fotoğraf ve video indir",
+    "noAds": "Reklamsız Gösterim",
+    "bookmarkYourFavorites": "Favori içerikleri kaydet"
+  },
+  "profile": {
+    "welcome": "Hoş Geldin, {name}!",
+    "general": "Genel",
+    "editProfile": "Profili Düzenle",
+    "changePassword": "Şifre Değiştir",
+    "deleteAccount": "Hesabı Sil",
+    "deleteWarning": "Hesabınızı sildiğinizde geri dönüş yoktur. Lütfen emin olun.",
+    "deleteBtn": "Hesabı Sil",
+    "joinedAt": "{date} tarihinde katıldı",
+    "upgradePremium": "Premium'a Yükselt",
+    "premiumEndsOn": "{date} tarihinde sona erer",
+    "premiumRenewsOn": "{date} tarihinde yenilenir",
+    "uploadProfilePicSuccess": "Profil fotoğrafı başarıyla yüklendi",
+    "uploadProfilePicError": "Profil fotoğrafı yüklenirken bir hata oluştu",
+    "features": {
+      "username": "Kullanıcı Adı",
+      "email": "E-posta",
+      "joined": "Katıldı"
+    },
+    "deleteAccountDialog": {
+      "title": "Hesabı Sil",
+      "description": "Hesabınızı silmek istediğinize emin misiniz? Onaylamak için aşağıya SİL yazın.",
+      "confirmInputLabel": "\"SİL\" yazarak onaylayın",
+      "confirmInputRule": "Onaylamak için \"SİL\" yazmalısınız.",
+      "deleteKeyword": "SİL",
+      "deleteButton": "Hesabı Sil",
+      "cancelButton": "İptal",
+      "successMessage": "Hesabınız başarıyla silindi.",
+      "errorMessage": "Hesabınızı silerken bir hata oluştu."
+    }
+  },
+  "loginPage": {
+    "title": "Giriş Yap",
+    "description": "Sotwe hesabınıza erişin",
+    "meta": {
+      "title": "Sotwe'a Giriş Yap",
+      "description": "Platformumuzda kişisel ayarlarınıza ve özelliklere erişmek için e-posta ve şifrenizi girin."
+    }
+  },
+  "signupPage": {
+    "title": "Kaydol",
+    "description": "Sotwe hesabınızı oluşturun",
+    "meta": {
+      "title": "Sotwe'a Kaydolun",
+      "description": "Platformumuzdaki tüm özelliklere ve ayarlara erişim sağlamak için Sotwe hesabınızı oluşturun."
+    }
+  },
+  "myProfilePage": {
+    "meta": {
+      "title": "Profilim",
+      "description": "Profil ayarlarınızı düzenleyin, şifrenizi değiştirin veya Sotwe'daki hesabınızı silin."
+    }
+  },
+  "messages": {
+    "downloading": "İndiriliyor...",
+    "downloadCompleted": "İndirme tamamlandı",
+    "failedToDownload": "Dosya indirilemedi",
+    "noMediaToDownload": "{username} için indirilecek medya yok",
+    "downloadingAllMedia": "{username}'in {size} medya dosyası indiriliyor..."
+  },
+  "auth": {
+    "signIn": "Giriş Yap",
+    "signUp": "Kaydol",
+    "login": "Giriş",
+    "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
+    "dontYouHaveAccount": "Hesabınız yok mu?",
+    "forgotYourPassword": "Şifrenizi mi unuttunuz?",
+    "doYouHaveFavoriteSelfie": "Favori bir selfieniz var mı?",
+    "logoutSuccess": "Başarıyla çıkış yapıldı!",
+    "skipForNow": "Şimdilik geç",
+    "formLabels": {
+      "username": "Kullanıcı Adı",
+      "email": "E-posta",
+      "password": "Şifre",
+      "fullname": "Tam Adı",
+      "gender": "Cinsiyet",
+      "birthDate": "Doğum Tarihi",
+      "birthDate_info": "Bu kamuoyu ile paylaşılmayacak. Bu hesap bir işletme, evcil hayvan veya başka bir şey için bile olsa, kendi yaşınızı doğrulamanız gerekecek.",
+      "month": "Ay",
+      "day": "Gün",
+      "year": "Yıl",
+      "oldPassword": "Eski şifre",
+      "newPassword": "Yeni şifre",
+      "confirmPassword": "Şifreyi onayla",
+      "confirmNewPassword": "Yeni şifreyi onayla",
+      "changePassword": "Şifreyi Değiştir",
+      "passwordChanged_toast": "Şifre başarıyla değiştirildi!",
+      "loggedInSuccessfully_toast": "Başarıyla giriş yapıldı!",
+      "signupSuccess_toast": "Başarıyla kaydoldunuz!"
+    },
+    "next": "İleri",
+    "formRules": {
+      "emailRequired": "E-posta gerekli",
+      "emailMinLength": "E-posta adresi en az 5 karakter içermelidir",
+      "emailMaxLength": "E-posta adresi 50 karakterden fazla olamaz",
+      "emailValid": "Lütfen geçerli bir e-posta adresi girin",
+      "fullnameRequired": "Tam ad gerekli",
+      "fullnameLength": "Tam ad 50 karakterden az olmalıdır",
+      "usernameRequired": "Kullanıcı adı gerekli",
+      "usernameLengthMin": "Kullanıcı adı en az 3 karakter içermelidir",
+      "usernameLengthMax": "Kullanıcı adı 50 karakterden fazla olamaz",
+      "usernameCharacters": "Kullanıcı adı yalnızca harfler, rakamlar ve alt çizgiler içerebilir",
+      "passwordRequired": "Şifre gerekli",
+      "passwordMinLength": "Şifre en az 8 karakter olmalıdır",
+      "passwordMaxLength": "Şifre 50 karakterden fazla olamaz",
+      "genderRequired": "Cinsiyet gerekli",
+      "monthRequired": "Ay gerekli",
+      "dayRequired": "Gün gerekli",
+      "yearRequired": "Yıl gerekli"
+    },
+    "months": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "genders": {
+      "male": "Erkek",
+      "female": "Kadın",
+      "other": "Diğer"
+    },
+    "otpVerification": {
+      "sentCodeTitle": "Size bir kod gönderdik",
+      "enterCodeInstruction": "Doğrulamak için aşağıya girin {email}",
+      "didNotReceiveCode": "Kodu almadınız mı?",
+      "resendButton": "Tekrar gönder"
+    }
+  },
+  "signup": {
+    "titles": {
+      "verifyEmail": "E-postanızı doğrulayın",
+      "createAccount": "Hesabınızı oluşturun",
+      "chooseProfilePic": "Profil resminizi seçin",
+      "getPremium": "Premium alın"
+    }
+  },
+  "forgotPassword": {
+    "enterEmail_description": "Şifrenizi değiştirmek için hesabınızla ilişkili e-posta adresini girin.",
+    "titles": {
+      "findAccount": "Hesabınızı bulun",
+      "verifyEmail": "E-postanızı doğrulayın",
+      "changePassword": "Şifrenizi değiştirin"
+    }
+  },
+  "paymentMethod": {
+    "title": "Ödeme Yönteminizi Seçin",
+    "closeBtn": "Kapat",
+    "sslSecure": "SSL Güvenli Ödeme",
+    "sslDescription": "Bilgileriniz 256-bit SSL şifrelemesi ile korunmaktadır.",
+    "instruction": "Aşağıdaki seçeneklerden tercih ettiğiniz ödeme yöntemini seçin:",
+    "options": {
+      "creditCard": {
+        "title": "Kredi Kartı",
+        "description": "Kredi kartınızla ödeme yapın."
+      },
+      "crypto": {
+        "title": "Kripto Para",
+        "description": "Bitcoin veya diğer kripto paralarla ödeme yapın."
+      }
+    }
+  },
+  "report": {
+    "report": "Şikayet Et",
+    "specifyTheReason": "Neden şikayet etmek istiyorsunuz:",
+    "description_label": "Açıklama (İsteğe Bağlı)",
+    "thanksForHelping": "Sotwe'yi herkes için daha iyi hale getirmeye yardımcı olduğunuz için teşekkürler",
+    "itIsNotEasy": "Kolay olmadığını biliyoruz, bu yüzden geçersiz faaliyetleri rapor etmek için zaman ayırdığınız için teşekkür ederiz.",
+    "whatIsHappeningNow": "Şimdi ne oluyor",
+    "yourReportIsInOurQueue": "Bildiriminizi sıraya aldık ve ekimiz en kısa süre içinde bunu inceleyecek. Bildiriminize önem verdiğimize ve gerekli aksiyonu alacağımıza güvenebilirsiniz",
+    "reportUser": "{'@'}{username} Bildir",
+    "reportHashtag": "#{hashtag} Bildir",
+    "title": {
+      "user": "Kullanıcıyı Şikayet Et",
+      "tweet": "Tweet'i Şikayet Et",
+      "tag": "Etiketi Şikayet Et"
+    },
+    "reason": {
+      "CHILD_ABUSE": "Çocuk içeren cinsel içerik",
+      "RACISM": "Bu Tweet, bir ırka veya dine ait grup gibi topluluklara dahil bir kişiyi ya da belirli bir grubu hedef alıyor veya onlardan bahsediyor.",
+      "TERROR": "Terör veya aşırı şiddet",
+      "VIOLENCE": "Gereksiz kan ve şiddet görselleri",
+      "OTHER": "Diğer"
+    }
+  },
+  "homepage": {
+    "title": "Twitter Web Görüntüleyici",
+    "description": "Twitter trendlerini keşfet, popüler kullanıcıları, etiketleri ve yerleri bul",
+    "search": {
+      "placeholder": "Kullanıcı adı ile ara"
+    },
+    "users": {
+      "title": "En Popüler Kullanıcılar",
+      "followers": "{count} takipçi"
+    }
+  },
+  "trendspage": {
+    "meta": {
+      "title": "{activePlace} - Twitter'ın trend kullanıcıları, etiketleri, konuları ve favori paylaşımları",
+      "description": "{activePlace} yerinde olup bitenler :  {topTopics} Ülkedeki Twitter kullanıcılarını, trendlerini ve etiketleri keşfet."
+    },
+    "trends_chip": "Trendler",
+    "topBarTitle": "Trendler · {place}",
+    "topics": "{place} Yerindeki Trend Konular",
+    "tweets": "{place} Yerindeki Paylaşımlar",
+    "tweetVolume": "10bin paylaşımdan az | {volume} paylaşım",
+    "quickLinks": "Hızlı Bağlantılar",
+    "showLess": "Daha az göster",
+    "showMore": "Daha fazla göster",
+    "topicsTitle": "Trend Konular",
+    "showCitiesIn": "{name} şehirlerini göster"
+  },
+  "userpage": {
+    "meta": {
+      "title": "{fullname} {'@'}{username} - Twitter Kullanıcısı",
+      "description": "{'@'}{username} kullanıcısının Twitter hesabındaki mesajları, paylaşımları, fotoğrafları ve videoları gör. {followers} Takipçi, {following} Takip Edilen.{bio}"
+    },
+    "followers": "Takipçi",
+    "following": "Takip Edilen",
+    "posts": "Gönderi",
+    "joinedAt": "Twitter'a katıldığı tarih",
+    "joinedOn": "{date} tarihinde katıldı",
+    "protectedAccount": "Korunan hesap",
+    "thisIsMyAccount": "Bu benim hesabım",
+    "whoToFollow": "Takip edebileceğin hesaplar",
+    "trend": {
+      "title": "Senin İçin Trendler"
+    },
+    "lastSeen": {
+      "title": "{appName}'de En Son Ziyaret Edilenler"
+    },
+    "accountProtected": {
+      "title": "Bu Hesap Sahibi Tweetlere Erişimi Kısıtlamış.",
+      "subtitle": "Sadece takipçiler bu hesaptaki paylaşımları görebilir."
+    },
+    "accountNotFound": {
+      "title": "Bu hesap bulunamadı",
+      "subtitle": "Lütfen başka bir kullanıcı adı deneyin."
+    },
+    "accountHasNoTweet": {
+      "title": "Bu hesap sahibi henüz tweet atmamış",
+      "subtitle": "Lütfen başka bir kullanıcı adı ile deneyin."
+    },
+    "accountSuspended": {
+      "title": "Bu hesap askıya alındı",
+      "subtitle": "Twitter, kurallarını ihlal eden hesapları askıya alır."
+    }
+  },
+  "hashtagpage": {
+    "meta": {
+      "title": "#{hashtag} - Twitter Etiketi",
+      "description": "#{hashtag} etiketi ile etiketlenmiş paylaşımlarla fotoğrafları ve videoları gör.{firstTweet}"
+    },
+    "topTweetsFor": "{0} Etiketinde En Popüler Paylaşımlar",
+    "noTweetsForTag": "#{hashtag} için paylaşım yok.",
+    "hashtagNotFound": {
+      "title": "\"{hashtag}\" için hiç sonuç bulunamadı.",
+      "subtitle": "Girdiğiniz terim herhangi bir sonuç getirmedi. Başka birini aramayı deneyin."
+    },
+    "lastSeen": {
+      "title": "{appName}'de En Son Görülen Etiketler"
+    }
+  },
+  "locationpage": {
+    "meta": {
+      "title": "{location} - Twitter Yerleri",
+      "description": "{location} yerindeki Twitter kullanıcılarını, fotoğraflarını ve videolarını keşfet. {firstTweet}"
+    },
+    "fallbackTitle": "Yer",
+    "noTweets": "Burada henüz paylaşım yok.",
+    "topTweetsIn": "{0} Yerindeki En Popüler Paylaşımlar",
+    "locationNotFound": {
+      "title": "Girilen yer için hiçbir sonuç yok.",
+      "subtitle": "Girilen yer için hiçbir sonuç bulunamadı. Lütfen başka bir yer deneyin."
+    },
+    "lastSeen": {
+      "title": "{appName}'de En Son Girilen Yerler"
+    }
+  },
+  "searchpage": {
+    "meta": {
+      "title": "{term} - Twitter Arama",
+      "description": "{term} araması yaparak bulunan kişiler ve paylaşımlar.",
+      "foundPeople": " Kişiler : {people}."
+    },
+    "people": "Kişiler",
+    "tabTweets": "Paylaşımlar",
+    "tabUsers": "Kullanıcılar",
+    "noTweetsForTerm": "\"{term}\" için paylaşım bulunamadı.",
+    "noUsersForTerm": "\"{term}\" ile eşleşen kullanıcı yok.",
+    "tweetsIncluding": "{0} içeren paylaşımlar",
+    "searchResultsFor": "{0} için arama sonuçları",
+    "noPeopleResults": "{0} kullanıcı ismi için sonuç bulunamadı",
+    "noTweetResults": "{0} içeren paylaşım bulunamadı",
+    "recentSearches": {
+      "title": "{appName}'de Son Arananlar"
+    }
+  },
+  "tweetpage": {
+    "meta": {
+      "title": "{fullname} {username} kullanıcısının paylaşımı",
+      "description": "{likes} beğeni, {retweets} retweet. {text}"
+    },
+    "topBarTitle": "Tweet",
+    "repliesPlaceholder": "Yanıtlar yakında burada yüklenecek.",
+    "morePostsFrom": "Şu Kullanıcının Diğer Paylaşımları"
+  },
+  "bookmarkpage": {
+    "title": "Kaydedilenler",
+    "notfound": {
+      "title": "Henüz Kayıt Edilmiş Bir Şey Yok"
+    },
+    "meta": {
+      "title": "Kaydedilenler",
+      "description": "Sotwe hesabınızda kaydettiğiniz içerikleri görüntüleyin."
+    }
+  },
+  "nearbypage": {
+    "meta": {
+      "title": "Yakınımdakiler · Sotwe",
+      "description": "Yakınınızdaki Twitter / X kullanıcıları."
+    },
+    "noUsers": "Yakınınızda kullanıcı bulunamadı."
+  },
+  "errorpage": {
+    "metaTitleNotFound": "Bulunamadı · Sotwe",
+    "metaTitleError": "Hata · Sotwe",
+    "notFoundDesc": "Aradığın sayfa bulunamadı.",
+    "genericDesc": "Bir şeyler yanlış gitti.",
+    "backHome": "Ana sayfaya dön"
+  },
+  "aboutpage": {
+    "meta": {
+      "title": "Hakkımızda",
+      "description": "{domain} ile İlgili Platform Bilgilendirmesi"
+    },
+    "title": "Hakkımızda",
+    "contact_title": "İletişim",
+    "own_account": "Bu sizin hesabınızsa ve hesabınızın tanıtımını yapmak istiyorsanız bu linki sosyal medya hesabınızda açıklama kısmına ekleyin. Bu şekilde sizin Twitter hesabınızın ücretsiz bir şekilde tanıtımını yapacağız ve daha fazla takipçi, beğeni ve popülerlik kazanacaksınız",
+    "about_p_1": "Yeni, alışık olunmayan bir tasarımla Twitter profillerini ve istatistiklerini keşfetme ve tek bir tıklamayla Twitter Videoları ve Fotoğraflarını indirme olanağı sunan ücretsiz bir hizmetiz.",
+    "about_p_2": "{app_name}, Twitter API'sini kullanır ancak Twitter tarafından onaylanmaz veya onaylanmaz. Bu uygulamada görüntülenen tüm Twitter™ logoları ve ticari markaları Twitter'a aittir.",
+    "about_p_3": "{app_name} sunucumuzda video ve fotoğraf barındırmıyoruz.",
+    "contact_p_1": "Herhangi bir sorunuz varsa lütfen bizimle iletişime geçmekten çekinmeyin."
+  },
+  "privacyPolicy": {
+    "meta": {
+      "title": "Gizlilik Politikası",
+      "description": "Sotwe, kişisel bilgilerinizi ve gizlilik haklarınızı korumaya kararlıdır. Gizlilik politikamız hakkında daha fazla bilgi edinin."
+    },
+    "title": "Gizlilik Politikası",
+    "introduction": "Sotwe'ye hoş geldiniz. Kişisel bilgilerinizi ve gizlilik haklarınızı korumaya kararlıyız. Politikamız veya kişisel bilgilerinizle ilgili uygulamalarımız hakkında sorularınız veya endişeleriniz varsa, lütfen bize {app_email} adresinden ulaşın.",
+    "headers": {
+      "informationWeCollect": "Topladığımız Bilgiler",
+      "howWeUseYourInformation": "Bilgilerinizi Nasıl Kullanıyoruz",
+      "dataProtection": "Veri Koruma ve Güvenliği",
+      "policyChanges": "Gizlilik Politikası Değişiklikleri"
+    },
+    "content": {
+      "informationWeCollect": "Ziyaretçi olarak sitemizi gezerek web sitemiz hakkında daha fazla bilgi edinebilirsiniz. Ziyaretçi olarak bizden herhangi bir kişisel bilgi vermeniz gerekmez. Bizimle kayıt olduğunuzda veya hizmetlerimizi kullandığınızda kişisel bilgilerinizi toplarız. Topladığımız kişisel bilgiler arasında adınız, e-posta adresiniz ve profil resminiz bulunabilir.",
+      "howWeUseYourInformationIntro": "Topladığımız bilgileri çeşitli şekillerde kullanırız, bunlar:",
+      "useList": {
+        "provideAndMaintain": "Web sitemizi sağlamak, işletmek ve bakımını yapmak",
+        "improveAndPersonalize": "Web sitemizi iyileştirmek, kişiselleştirmek ve genişletmek",
+        "understandAndAnalyze": "Web sitemizi nasıl kullandığınızı anlamak ve analiz etmek",
+        "developNew": "Yeni ürünler, hizmetler, özellikler ve işlevler geliştirmek",
+        "communicate": "Müşteri hizmetleri için size doğrudan veya ortaklarımız aracılığıyla iletişim kurmak, pazarlama ve tanıtım amaçları için",
+        "sendEmails": "Size e-postalar göndermek",
+        "preventFraud": "Dolandırıcılığı bulmak ve önlemek"
+      },
+      "dataProtection": "Sotwe, günlük dosyalarını kullanma standart bir prosedürü izler. Bu dosyalar, ziyaretçiler web sitelerini ziyaret ettiklerinde kaydedilir. Günlük dosyaları tarafından toplanan bilgiler arasında internet protokolü (IP) adresleri, tarayıcı türü, İnternet Servis Sağlayıcısı (ISP), tarih ve saat damgası, yönlendirilen/çıkış sayfaları ve muhtemelen tıklama sayısı bulunur. Bu bilgiler kişisel olarak tanımlanabilir bilgilerle bağlantılı değildir.",
+      "policyChanges": "Pratiklerimizdeki değişiklikleri yansıtmak veya yasal gerekliliklere uymak için zaman zaman bu Gizlilik Politikasını güncelleyebiliriz. Güvenlik önlemlerimizi düzenli olarak gözden geçirir ve güncelleriz, ancak hiçbir veri iletimi veya depolama yöntemi tamamen güvenli değildir ve bilgilerinizin güvenliğini garanti edemeyiz. Web sitemizi kullanarak, çevrimiçi bilgi paylaşımıyla ilişkili riskleri anladığınızı ve kabul ettiğinizi kabul edersiniz."
+    }
+  },
+  "termsOfService": {
+    "meta": {
+      "title": "Kullanım Koşulları",
+      "description": "Sotwe web sitesini kullanma şartlarını ve koşullarını okuyun."
+    },
+    "title": "Kullanım Koşulları",
+    "welcome": "Sotwe.com web sitesine hoş geldiniz (\"Web Sitesi\"). Bu Kullanım Koşulları (\"Koşullar\"), Web Sitesi üzerinden veya aracılığıyla sunulan tüm içerikler, hizmetler ve özelliklerin kullanımını yönetmektedir.",
+    "agreement": "Web Sitesine erişerek veya bu siteyi kullanarak, bu Koşullara ve bunlarla birlikte atıfta bulunulan Gizlilik Politikamıza bağlı kalmayı kabul etmiş olursunuz. Bu Koşulları veya Gizlilik Politikamızı kabul etmiyorsanız, Web Sitesini kullanmamalısınız.",
+    "useTitle": "Web Sitesinin Kullanımı",
+    "useDescription": "Web Sitesi, kişisel, ticari olmayan kullanım içindir. Web Sitesini ve içeriğini, hizmetlerini ve özelliklerini yalnızca yasal amaçlar için ve bu Koşullara uygun şekilde kullanabilirsiniz. Şunları yapmamayı kabul edersiniz:",
+    "prohibitions": [
+      "Web Sitesinden elde edilen herhangi bir bilgi, yazılım, ürün veya hizmeti değiştirmek, kopyalamak, dağıtmak, iletmek, göstermek, gerçekleştirmek, çoğaltmak, yayımlamak, lisanslamak, türev çalışmalar oluşturmak, aktarmak veya satmak",
+      "Web Sitesini herhangi bir ticari amaç için kullanmak, ürün veya hizmetleri tanıtmak, reklamını yapmak veya satmak dahil",
+      "Yetkilendirme olmaksızın Web Sitesinin kısıtlı veya güvenli alanlarına erişmeye veya kullanmaya çalışmak",
+      "Web Sitesinin işleyişini veya destekleyen sistemleri engellemeye çalışmak",
+      "Web Sitesinin düzgün işleyişini engellemek veya engellemeye çalışmak için herhangi bir cihaz, yazılım veya rutin kullanmak",
+      "Herhangi bir kişi veya kuruluşu taklit etmek veya yanlış bir şekilde ilişkinizi yanlış bir şekilde ifade etmek",
+      "Kullanıcıların onayı olmaksızın diğer kullanıcıların kişisel verilerini toplamak veya saklamak",
+      "Web Sitesini kötüye kullanıcı, zararlı, tehditkar, iftira niteliğinde, müstehcen veya başka türlü yasa dışı bir şekilde kullanmak"
+    ],
+    "contentTitle": "İçerik ve Fikri Mülkiyet",
+    "contentDescription": "Web Sitesindeki içerik, metin, grafikler, resimler, logolar, yazılımlar ve diğer materyaller dahil olmak üzere telif hakkı, ticari marka ve diğer mülkiyet haklarıyla korunmaktadır. İçerik, Sotwe veya lisans verenlerine aittir ve geçerli telif hakkı ve ticari marka kanunlarıyla korunmaktadır.",
+    "disclaimerTitle": "Garantilerin Reddi",
+    "disclaimerDescription": "WEB SİTESİ VE İÇERDİĞİ İÇERİKLER, HİZMETLER VE ÖZELLİKLER \"OLDUĞU GİBİ\" HERHANGİ BİR GARANTI OLMADAN SUNULMAKTADIR. KESİNTİSİZ ERİŞİM, BİLGİLER, HİZMETLER VE WEB SİTESİ ARACILIĞIYLA SAĞLANAN ÜRÜNLER DAHİL ANCAK BUNLARLA SINIRLI OLMAMAK ÜZERE, İFADE EDİLEN YA DA İMA EDİLEN HER TÜRLÜ GARANTİYİ REDDEDERİZ. ÖZELLİKLE, 1) BİLGİLERİN ERİŞİLEBİLİRLİĞİ, DOĞRULUĞU, FAYDALILIĞI VE İÇERİĞİ HAKKINDA HİÇBİR GARANTİ VERMEMEKTEYİZ, VE 2) BAŞLIK, İHLAL ETMEME GARANTİSİ, TİCARETE UYGUNLUK YA DA BELİRLİ BİR AMAÇ İÇİN UYGUNLUK GARANTİLERİNİ REDDEDERİZ."
+  },
+  "deliveryRefund": {
+    "meta": {
+      "title": "Teslimat ve İade Şartları",
+      "description": "Sotwe web sitesini kullanarak teslimat ve iade şartlarını okuyun."
+    },
+    "title": "Teslimat ve İade Şartları",
+    "deliveryTitle": "Teslimat Şartları",
+    "deliveryTermsTitle": "Dijital Ürünlerin Teslimi: ",
+    "deliveryContent": "Sotwe.com sadece dijital ürünler satmaktadır. Ödeme işleminizin onaylanmasının ardından satın alınan paket anında hesabınıza tanımlanır. Tüm dijital ürünlerimiz elektronik ortamda sunulmaktadır; fiziksel bir teslimat yapılmamaktadır.",
+    "returnTitle": "İade Şartları",
+    "returnConditionsTitle": "İade Koşulları",
+    "returnConditionsContent": "Satın aldığınız dijital ürünlerden memnun kalmamanız durumunda, satın alma tarihinden itibaren 2 gün içerisinde {app_email} adresine e-posta göndererek iade talebinde bulunabilirsiniz. İade talebiniz değerlendirilecek ve onaylanması durumunda, ödediğiniz tutardan yalnızca işlem ücretleri düşülerek geri ödeme yapılacaktır.",
+    "refundProcessTitle": "Geri Ödeme Süreci",
+    "refundProcessContent": "İade talebinizin onaylanmasının ardından, ödemeniz ilgili ödeme yönteminize bağlı olarak en geç 7 iş günü içinde iade edilecektir. İade işlemlerinde herhangi bir sorun yaşamanız durumunda bizimle iletişime geçmekten çekinmeyin.",
+    "footer": "Her türlü soru ve destek için bizimle {app_email} adresi üzerinden iletişime geçebilirsiniz."
+  },
+  "sweetdream": {
+    "subtitle": "💕 Senin Kişisel AI Kız Arkadaşın",
+    "visitNow": "💋 Olivia ile Sohbet Et",
+    "completionNote": "🔥 Olivia seni bekliyor... Onunla tanışmaya hazır mısın?",
+    "messages": {
+      "quickIntro": "Merhaba tatlım! 💋 Ben Olivia, 24 yaşındayım. Seninle özel anlar paylaşmak istiyorum... 🔥",
+      "introduction": "Merhaba! 👋 Ben Olivia, 24 yaşındayım. Seninle sohbet etmek, fotoğraflar paylaşmak ve birlikte eğlenmek için buradayım!",
+      "welcome": "Selam tatlım! 💋 Seni bekliyordum... Seninle tanışmak çok güzel! 😘",
+      "intro": "🔥 Seninle özel anlar paylaşmak istiyorum... Bana biraz kendinden bahseder misin? 😊",
+      "question1": "💖 Benimle samimi bir ilişki kurmak ister misin?",
+      "question2": "😍 Harika! AI kızlarla daha önce vakit geçirdin mi?",
+      "question3": "🔥 Benimle nasıl vakit geçirmek istersin?",
+      "great": "💕 Mükemmel! Seninle harika anlar yaşayacağız...",
+      "interesting": "😘 Çok heyecan verici! Bu bilgiler benim için çok önemli.",
+      "perfect": "🔥 Harika seçim! Sana özel sürprizlerim var...",
+      "recommendation": "💋 Benimle SweetDream.ai'da özel sohbetler edebilir, sadece senin için çektiğim fotoğrafları ve videoları görebilir, hatta benimle sesli ve görüntülü aramalar yapabilirsin! Seni bekliyorum... 🔥",
+      "photoPreview": "💕 İşte seni bekleyen küçük bir önizleme...",
+      "videoExperienced": "🔥 Deneyimli erkekleri seviyorum... İşte senin için özel bir video 😘",
+      "videoSweet": "😊 Merak etme, sana iyi bakacağım... İşte tatlı bir şey 💕",
+      "visualChoice": "📸 Görselleri seçtin... İşte sana gösterebileceklerimin tadı 💋",
+      "everythingChoice": "🔥 Her şey mi? Bunu seviyorum... Çok daha fazlasını göreceksin 😘",
+      "chatChoice": "💬 Mükemmel seçim... Seninle paylaşacak çok şeyim var 💕",
+      "unlockContent": "🔒 Bu özel içeriği görmek için SweetDream.ai'a gidelim! Seni orada bekliyorum...",
+      "notInterested": "😔 Üzüldüm... Ama belki başka zaman fikrini değiştirirsin. Seni bekliyor olacağım 💕",
+      "chooseAnswer": "Cevabını seç"
+    },
+    "options": {
+      "yes": "💋 Evet, seninle tanışmak istiyorum!",
+      "maybe": "😊 Belki, seni merak ediyorum",
+      "no": "😔 Hayır, teşekkürler",
+      "experienced": "🔥 Deneyimliyim, sıcak sohbetler severim",
+      "beginner": "😇 Yeniyim, bana rehberlik et",
+      "curious": "🤔 Sadece merak ediyorum",
+      "chat": "💬 Seninle sohbet etmek",
+      "visual": "📸 Özel fotoğraflarını görmek",
+      "voice": "🎙️ Seninle sesli konuşmak",
+      "all": "🔥 Her şeyi seninle deneyimlemek!",
+      "meet": "🔥 SweetDream.ai üzerinden konuşalım!"
+    }
+  },
+  "masthead": {
+    "headline": "Twitter / X’i hesapsız oku.",
+    "tagline": "Dünyadaki ve ülkendeki en çok görülen tweetleri keşfet. Kullanıcı, etiket ve trend konuları ara — kayıt yok, takip yok.",
+    "searchAria": "Sotwe’de ara",
+    "searchPlaceholder": "Kullanıcı, etiket veya tweet ara"
+  },
+  "footer": {
+    "terms": "Koşullar",
+    "privacy": "Gizlilik",
+    "refunds": "İade",
+    "about": "Hakkımızda",
+    "copyright": "© {year} Sotwe."
+  },
+  "search": {
+    "aria": "Ara",
+    "placeholder": "Sotwe’de ara"
+  },
+  "tweet": {
+    "reply": "Yanıtla",
+    "repost": "Repost’la",
+    "like": "Beğen",
+    "views": "Görüntüleme",
+    "addBookmark": "Yer işareti ekle",
+    "removeBookmark": "Yer işaretini kaldır",
+    "bookmarkAdded": "Yer işareti eklendi",
+    "bookmarkRemoved": "Yer işareti kaldırıldı",
+    "bookmarkFailed": "Yer işareti başarısız",
+    "share": "Paylaş",
+    "downloadMedia": "Medyayı indir",
+    "pinned": "Sabitlenmiş",
+    "retweetedBy": "{user} repost’ladı",
+    "noTweetsYet": "Henüz tweet yok.",
+    "repliesPlaceholder": "Yanıtlar burada yüklenecek (Faz 6).",
+    "copyLink": "Kopyala",
+    "linkCopied": "Bağlantı kopyalandı",
+    "copyFailed": "Kopyalama başarısız",
+    "shareOn": "{network} üzerinde paylaş",
+    "whoToFollow": "Takip edilecek",
+    "pinnedHeader": "Sabitlenmiş",
+    "downloading": "İndiriliyor…",
+    "downloadComplete": "İndirme tamamlandı",
+    "downloadFailed": "İndirme başarısız",
+    "photo": "Fotoğraf",
+    "video": "Video",
+    "gif": "GIF",
+    "mediaTab": "Medya {n}",
+    "report": "Tweet’i bildir",
+    "menuOpenOnX": "X’te aç",
+    "menuReport": "Tweet’i bildir",
+    "openTweetBy": "{name} tarafından paylaşılan tweet’i aç",
+    "shareTitleNamed": "{name} Sotwe’de",
+    "shareTitleGeneric": "Sotwe’de tweet",
+    "nothingToDownload": "İndirilecek bir şey yok",
+    "mediaAlt": "Medya",
+    "openQuotedTweetBy": "{name} alıntısını aç"
+  },
+  "timeline": {
+    "failedToLoadMore": "Daha fazlası yüklenemedi",
+    "couldntLoadMore": "Daha fazla tweet yüklenemedi.",
+    "endReached": "Sona ulaştınız."
+  },
+  "reportDialog": {
+    "title": "İçeriği bildir",
+    "subtitle": "Bu içeriğin kuralları neden ihlal ettiğini söyleyin.",
+    "reasonLabel": "Sebep",
+    "detailsLabel": "Detaylar (isteğe bağlı)",
+    "placeholder": "Bilmemiz gereken başka bir şey var mı?",
+    "send": "Bildirimi gönder",
+    "submitted": "Bildirim gönderildi",
+    "failed": "Bildirim başarısız",
+    "reasons": {
+      "CHILD_ABUSE": "Çocuk istismarı",
+      "RACISM": "Irkçılık / nefret söylemi",
+      "TERROR": "Terör",
+      "VIOLENCE": "Şiddet",
+      "OTHER": "Diğer"
+    }
+  },
+  "rail": {
+    "whoToFollow": "Takip edilecek",
+    "recentlyViewed": "Son görüntülenen",
+    "trendingHashtags": "Trend etiketler",
+    "followersCount": "{count} takipçi",
+    "couldntLoadSuggestions": "Öneriler yüklenemedi.",
+    "noSuggestions": "Şu an öneri yok."
+  },
+  "forms": {
+    "email": {
+      "label": "E-posta",
+      "placeholder": "you{'@'}example.com"
+    },
+    "password": {
+      "label": "Şifre",
+      "placeholder": "En az 8 karakter",
+      "hide": "Şifreyi gizle",
+      "show": "Şifreyi göster"
+    },
+    "username": {
+      "label": "Kullanıcı adı",
+      "placeholder": "screen_name"
+    },
+    "confirmPassword": {
+      "label": "Şifreyi onayla",
+      "placeholder": "Şifreni tekrar gir"
+    },
+    "otp": {
+      "label": "Doğrulama kodu",
+      "placeholder": "123456"
+    },
+    "name": {
+      "label": "İsim",
+      "placeholder": "Tam adın"
+    },
+    "birthDate": {
+      "label": "Doğum tarihi"
+    },
+    "gender": {
+      "label": "Cinsiyet",
+      "male": "Erkek",
+      "female": "Kadın",
+      "other": "Diğer"
+    }
+  },
+  "auth_dialog": {
+    "signInTitle": "Sotwe'a Giriş Yap",
+    "signInSubtitle": "Devam etmek için giriş yap. Tarama her durumda anonim — hesaplar yalnızca yer işaretleri ve kişiselleştirilmiş özellikleri açar.",
+    "welcomeBack": "Tekrar hoş geldin. Yer işaretlerini takip etmek, aboneliğini yönetmek ve kaldığın yerden devam etmek için giriş yap.",
+    "orDivider": "VEYA",
+    "signInButton": "Giriş Yap",
+    "createAccount": "Hesap oluştur",
+    "forgotPassword": "Şifreni mi unuttun?",
+    "openFullPage": "Tam sayfayı aç",
+    "alreadyHaveAccount": "Zaten hesabın var mı?",
+    "signInFailed": "Giriş başarısız",
+    "signingIn": "Giriş yapılıyor · Sotwe",
+    "signingOut": "Çıkış yapılıyor · Sotwe",
+    "missingOauthCode": "OAuth kodu eksik",
+    "unsupportedProvider": "Desteklenmeyen sağlayıcı: {provider}",
+    "socialSignInFailed": "Sosyal giriş başarısız",
+    "backToSignIn": "Girişe geri dön"
+  },
+  "signup_steps": {
+    "stepCreate": "Hesabını oluştur",
+    "stepVerify": "E-postanı doğrula",
+    "stepProfile": "Bize kendinden bahset",
+    "progressLabel": "Kayıt adımı",
+    "sendCode": "Doğrulama kodu gönder",
+    "codeSentTo": "{email} adresine bir kod gönderdik. E-postanı doğrulamak için aşağıya gir.",
+    "verify": "Doğrula",
+    "useDifferentEmail": "Farklı bir e-posta kullan",
+    "createAccountBtn": "Hesabımı oluştur"
+  },
+  "forgot_dialog": {
+    "title": "Şifreni sıfırla",
+    "enterEmailDesc": "Sotwe hesabına bağlı e-posta adresini gir. Sana özel bir tek seferlik kod göndereceğiz.",
+    "sendCode": "Kod gönder",
+    "codeSentDesc": "{email} adresine bir kod gönderdik. Devam etmek için aşağıya gir.",
+    "verifyCode": "Kodu doğrula",
+    "newPasswordDesc": "Yeni bir şifre seç. Bir sonraki girişinde bunu kullanacaksın.",
+    "newPasswordLabel": "Yeni şifre",
+    "savePassword": "Şifreyi kaydet",
+    "done": "Şifre güncellendi",
+    "doneDesc": "Artık yeni şifrenle giriş yapabilirsin."
+  },
+  "profile_actions": {
+    "currentPassword": "Mevcut şifre",
+    "newPassword": "Yeni şifre",
+    "changePasswordBtn": "Şifreyi değiştir",
+    "changePasswordTitle": "Şifre değiştir",
+    "passwordChanged": "Şifre değiştirildi",
+    "deleteAccountTitle": "Hesabını sil",
+    "deleteAccountDesc": "Bu, hesabını ve ilgili tüm yer işaretlerini kalıcı olarak silecek. Geri alınamaz.",
+    "typeUsernameToConfirm": "Onaylamak için kullanıcı adını {'@'}{username} yaz",
+    "deleteBtn": "Hesabı sil",
+    "accountDeleted": "Hesap silindi",
+    "couldntDelete": "Hesap silinemedi",
+    "stayCancel": "İptal"
+  },
+  "edit_profile": {
+    "saveChanges": "Değişiklikleri kaydet",
+    "profileUpdated": "Profil güncellendi",
+    "changePicture": "Resmi değiştir",
+    "pictureUpdated": "Profil resmi güncellendi",
+    "fileTooLarge": "Dosya çok büyük (en fazla 5 MB)",
+    "pickAnImage": "Bir görüntü dosyası seç",
+    "uploadFailed": "Yükleme başarısız",
+    "signedOut": "Çıkış yapıldı"
+  },
+  "me_profile": {
+    "profileInformation": "Profil bilgileri",
+    "accountSecurity": "Hesap ve güvenlik",
+    "changePassword": "Şifre değiştir",
+    "signOut": "Çıkış",
+    "deleteAccount": "Hesabı sil",
+    "renewsRow": "{renewal} yenilenir · {endDate} tarihinde biter",
+    "cancelRenewal": "Otomatik yenilemeyi iptal et",
+    "managePlan": "Plan yönet",
+    "upgradeToPremium": "Premium'a yükselt",
+    "loading": "Profilin yükleniyor…"
+  },
+  "cancel_renewal": {
+    "title": "Otomatik yenilemeyi iptal et",
+    "preamble": "Gittiğini görmek üzücü. Aboneliğin mevcut dönemin sonuna kadar etkin kalacak — sadece bir daha ücret almayacağız.",
+    "whyLeaving": "Neden ayrılıyorsun?",
+    "pickReason": "Bir sebep seç",
+    "anythingElse": "Eklemek istediğin var mı? (isteğe bağlı)",
+    "whatBetter": "Neyi daha iyi yapabilirdik?",
+    "stay": "Abone kal",
+    "cancel": "Yenilemeyi iptal et",
+    "cancelled": "Yenileme iptal edildi",
+    "cancelledDesc": "Aboneliğin mevcut dönemin sonuna kadar etkin kalacak.",
+    "pickReasonError": "İyileşmeye devam edebilmemiz için lütfen bir sebep seç.",
+    "reasons": {
+      "HIGH_COST": "Çok pahalı",
+      "FEATURE_BROKEN": "Bir özellik çalışmıyor",
+      "NOT_USING_ENOUGH": "Yeterince kullanmıyorum",
+      "CHANGE_IN_NEEDS": "İhtiyaçlarım değişti",
+      "LACK_OF_FEATURE": "İhtiyacım olan bir özellik yok",
+      "OTHER": "Diğer"
+    }
+  },
+  "pricing_card": {
+    "perWeek": "hafta",
+    "perMonth": "ay",
+    "perYear": "yıl",
+    "perOneTime": "tek seferlik",
+    "recommended": "Önerilen",
+    "subscribe": "Abone ol",
+    "currentPlan": "Mevcut plan",
+    "couldntStart": "Ödeme başlatılamadı",
+    "stripeNotConfigured": "Stripe yapılandırılmamış (NUXT_PUBLIC_STRIPE_KEY eksik)",
+    "features": {
+      "NO_ADS": "Reklamsız deneyimin keyfini çıkar",
+      "NEARBY": "Yakındaki kullanıcıları keşfet",
+      "BOOKMARK": "Favori içeriklerini yer imleriyle sakla",
+      "ANONYMITY": "Anonim olarak gezin",
+      "FULL_ACCESS": "Sınırsız fotoğraf ve video indirme"
+    },
+    "cancelAnytime": "İstediğin zaman iptal et · Stripe ile güvenli ödeme",
+    "billedRow": "{term} başına {price} {currency} olarak faturalandırılır",
+    "everythingIncluded": "Hepsi dahil"
+  },
+  "payment_method": {
+    "title": "Ödeme yöntemi seç",
+    "stripeTitle": "Kart / Apple Pay / Google Pay",
+    "stripeDesc": "Stripe ile öde — güvenli ödeme, çoğu ülkeyi destekler.",
+    "sellixTitle": "Kripto ve alternatifler",
+    "sellixDesc": "Sellix ile öde — Bitcoin, Litecoin, USDT ve daha fazlası."
+  },
+  "pricing_page": {
+    "heading": "Sotwe Premium",
+    "subhead": "Reklamları kaldır, yüksek çözünürlüklü medya indirmelerini aç ve Sotwe'yi destekle. İstediğin zaman iptal et — aboneliğin mevcut dönemin sonuna kadar etkin kalır.",
+    "noPlans": "Şu anda kullanılabilir plan yok. Lütfen daha sonra tekrar kontrol et."
+  },
+  "payment_success": {
+    "topBarTitle": "Ödeme",
+    "metaTitle": "Ödeme başarılı · Sotwe",
+    "metaDescription": "Abone olduğun için teşekkürler.",
+    "confirming": "Ödemen onaylanıyor…",
+    "hangTight": "Bekle — {processor} ile kontrol ediyoruz.",
+    "allSet": "Her şey hazır",
+    "welcome": "{plan}'a hoş geldin. Reklamsız tarama, tam çözünürlüklü indirmeler ve yeni özelliklere erken erişimin tadını çıkar.",
+    "premiumFallback": "Sotwe Premium",
+    "backHome": "Ana sayfaya dön"
+  },
+  "payment_fail": {
+    "topBarTitle": "Ödeme",
+    "metaTitle": "Ödeme başarısız · Sotwe",
+    "metaDescription": "Ödeme tamamlanamadı.",
+    "heading": "Ödemeni onaylayamadık",
+    "somethingWrong": "Bir şeyler ters gitti",
+    "didNotGoThrough": "Ödemen tamamlanamadı. Lütfen tekrar dene.",
+    "tryAgain": "Tekrar dene",
+    "footer": "Eğer ücret alındıysa ama aboneliğini görmüyorsan, lütfen {email} ile iletişime geç, hallederiz.",
+    "back": "Fiyatlandırmaya geri dön"
+  },
+  "profile_menu": {
+    "moreActions": "{'@'}{username} için daha fazla işlem",
+    "openOnX": "X'te aç",
+    "accountOwnership": "Hesap sahipliği",
+    "reportUser": "Kullanıcıyı bildir",
+    "shareProfile": "Profili paylaş",
+    "campaignTitle": "Hesabını doğrula",
+    "campaignBody": "Eğer {'@'}{username} senin ise Sotwe'da bu profilin sahipliğini alabilirsin. X hesabınla bağlı e-postadan aşağıdaki link ile bize e-posta gönder, panelini bu profile bağlayalım.",
+    "sendTo": "{email} adresine gönder.",
+    "gotIt": "Anladım",
+    "copy": "Kopyala"
+  },
+  "download_all": {
+    "label": "Tümünü indir",
+    "ariaLabel": "{'@'}{username} kullanıcısının tüm medyasını indir",
+    "noMedia": "{'@'}{username} için indirilecek medya yok",
+    "downloading": "{count} dosya indiriliyor…",
+    "downloaded": "{count} dosya indirildi",
+    "failed": "İndirme başarısız"
+  },
+  "location_dialog": {
+    "title": "Konumuna izin ver",
+    "body": "Sotwe yakındaki trendleri ve insanları göstermek için yaklaşık konumunu kullanır. Koordinatların tarayıcından çıkmaz — sadece yerel olarak en yakın ülke/şehri sorgulamak için kullanırız.",
+    "notNow": "Şimdi değil",
+    "allow": "İzin ver"
+  },
+  "nearby_dialog": {
+    "title": "Yakındaki insanlar",
+    "desc": "Şu an çevrendekilerin tweetlerine bir göz at. Tüm listeyi görmek için giriş yap.",
+    "cantFetch": "Yakındaki kullanıcılar getirilemedi. Birazdan tekrar dene.",
+    "noUsers": "Henüz yakında kullanıcı yok.",
+    "maybeLater": "Belki sonra",
+    "goToNearby": "Yakındakilere git"
+  },
+  "share_dialog": {
+    "title": "Paylaş"
+  },
+  "generic_error": {
+    "defaultTitle": "Bir şeyler ters gitti",
+    "defaultBody": "Beklenmeyen bir hata oluştu. Lütfen birazdan tekrar dene.",
+    "dismiss": "Kapat",
+    "tryAgain": "Tekrar dene",
+    "continue": "Devam et"
+  }
+}

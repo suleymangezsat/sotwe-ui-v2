@@ -11,6 +11,7 @@
 
 const color = useColorMode()
 const isDark = computed(() => color.value === 'dark')
+const { t } = useI18n()
 
 function toggle() {
   color.preference = isDark.value ? 'light' : 'dark'
@@ -18,10 +19,10 @@ function toggle() {
 </script>
 
 <template>
-  <STooltip :text="isDark ? 'Light mode' : 'Dark mode'">
+  <STooltip :text="isDark ? t('common.lightMode') : t('common.darkMode')">
     <button
       type="button"
-      :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+      :aria-label="isDark ? t('common.lightMode') : t('common.darkMode')"
       class="inline-flex size-9 items-center justify-center rounded-full text-twitter-slate-500 transition-colors hover:bg-twitter-slate-50 hover:text-twitter-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400 dark:hover:bg-twitter-slate-900 dark:hover:text-twitter-slate-100"
       @click="toggle"
     >

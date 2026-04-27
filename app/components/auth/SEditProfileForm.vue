@@ -20,6 +20,7 @@ const emit = defineEmits<{ updated: [] }>()
 
 const auth = useAuth()
 const toast = useToast()
+const { t } = useI18n()
 
 const name = ref(props.profile.name ?? '')
 const gender = ref<Gender | undefined>(props.profile.gender)
@@ -53,7 +54,7 @@ async function submit() {
       birthDate: birthDate.value,
     })
     await auth.fetchUser()
-    toast.add({ title: 'Profile updated', icon: 'i-lucide-check', color: 'success' })
+    toast.add({ title: t('edit_profile.profileUpdated'), icon: 'i-lucide-check', color: 'success' })
     emit('updated')
   }
   catch (e) {
@@ -80,7 +81,7 @@ async function submit() {
     <SFormError :code="errorCode" :message="errorMessage" />
 
     <SButton block type="submit" :loading="loading" :disabled="!canSubmit">
-      Save changes
+      {{ t('edit_profile.saveChanges') }}
     </SButton>
   </form>
 </template>

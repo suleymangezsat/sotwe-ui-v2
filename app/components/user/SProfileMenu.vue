@@ -18,6 +18,7 @@ import type { User } from '~shared/types'
 const props = defineProps<{ profile: User }>()
 
 const ui = useUiStore()
+const { t } = useI18n()
 const menu = ref<HTMLElement | null>(null)
 const open = ref(false)
 onClickOutside(menu, () => { open.value = false })
@@ -40,7 +41,7 @@ function openReport() {
   <div ref="menu" class="relative">
     <button
       type="button"
-      :aria-label="`More actions for @${profile.screenName}`"
+      :aria-label="t('profile_menu.moreActions', { username: profile.screenName })"
       :aria-expanded="open"
       class="inline-flex size-9 items-center justify-center rounded-full border border-twitter-slate-200 transition-colors hover:bg-twitter-slate-50 dark:border-twitter-slate-700 dark:hover:bg-twitter-slate-900"
       @click.stop="open = !open"
@@ -62,7 +63,7 @@ function openReport() {
         @click="open = false"
       >
         <Icon name="i-simple-icons-x" class="size-4" />
-        Open on X
+        {{ t('profile_menu.openOnX') }}
       </a>
       <button
         type="button"
@@ -71,7 +72,7 @@ function openReport() {
         @click="openOwnership"
       >
         <Icon name="i-lucide-fingerprint" class="size-4" />
-        Account ownership
+        {{ t('profile_menu.accountOwnership') }}
       </button>
       <button
         type="button"
@@ -80,7 +81,7 @@ function openReport() {
         @click="openReport"
       >
         <Icon name="i-lucide-flag" class="size-4" />
-        Report user
+        {{ t('profile_menu.reportUser') }}
       </button>
     </div>
   </div>

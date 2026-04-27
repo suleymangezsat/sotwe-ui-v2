@@ -20,6 +20,8 @@ import type { PaymentSource } from '~shared/types'
 const open = defineModel<boolean>({ required: true })
 const emit = defineEmits<{ selected: [PaymentSource] }>()
 
+const { t } = useI18n()
+
 function pick(source: PaymentSource) {
   open.value = false
   emit('selected', source)
@@ -27,7 +29,7 @@ function pick(source: PaymentSource) {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Choose a payment method">
+  <SDialog v-model="open" :title="t('payment_method.title')">
     <div class="flex flex-col gap-3">
       <button
         type="button"
@@ -38,9 +40,9 @@ function pick(source: PaymentSource) {
           <Icon name="i-simple-icons-stripe" class="size-5" />
         </span>
         <div class="min-w-0 flex-1">
-          <div class="font-bold">Card / Apple Pay / Google Pay</div>
+          <div class="font-bold">{{ t('payment_method.stripeTitle') }}</div>
           <div class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-            Pay with Stripe — secure checkout, supports most countries.
+            {{ t('payment_method.stripeDesc') }}
           </div>
         </div>
         <Icon name="i-lucide-chevron-right" class="size-4 text-twitter-slate-400" />
@@ -55,9 +57,9 @@ function pick(source: PaymentSource) {
           <Icon name="i-lucide-bitcoin" class="size-5" />
         </span>
         <div class="min-w-0 flex-1">
-          <div class="font-bold">Crypto &amp; alternatives</div>
+          <div class="font-bold">{{ t('payment_method.sellixTitle') }}</div>
           <div class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-            Pay via Sellix — Bitcoin, Litecoin, USDT, and more.
+            {{ t('payment_method.sellixDesc') }}
           </div>
         </div>
         <Icon name="i-lucide-chevron-right" class="size-4 text-twitter-slate-400" />

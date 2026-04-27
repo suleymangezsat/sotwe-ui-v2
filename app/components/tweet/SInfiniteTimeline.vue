@@ -50,6 +50,8 @@ const exhausted = computed(() => !after.value)
 
 const sentinel = ref<HTMLElement | null>(null)
 
+const { t } = useI18n()
+
 async function next() {
   if (loading.value || exhausted.value) return
   loading.value = true
@@ -60,7 +62,7 @@ async function next() {
     after.value = res.after
   }
   catch (e) {
-    errored.value = (e as Error).message || 'Failed to load more'
+    errored.value = (e as Error).message || t('timeline.failedToLoadMore')
   }
   finally {
     loading.value = false
@@ -93,8 +95,8 @@ function retry() {
       v-else-if="errored"
       class="flex flex-col items-center gap-2 px-4 py-6 text-sm text-twitter-slate-500 dark:text-twitter-slate-400"
     >
-      <p>Couldn't load more tweets.</p>
-      <SButton size="sm" variant="outline" @click="retry">Try again</SButton>
+      <p>{{ t('timeline.couldntLoadMore') }}</p>
+      <SButton size="sm" variant="outline" @click="retry">{{ t('common.tryAgain') }}</SButton>
     </div>
 
     <slot
@@ -102,13 +104,13 @@ function retry() {
       name="end"
     >
       <p class="px-4 py-6 text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        You've reached the end.
+        {{ t('timeline.endReached') }}
       </p>
     </slot>
 
     <slot v-else-if="!items.length" name="empty">
       <p class="px-4 py-10 text-center text-twitter-slate-500 dark:text-twitter-slate-400">
-        No Results
+        {{ t('common.noResults') }}
       </p>
     </slot>
   </div>

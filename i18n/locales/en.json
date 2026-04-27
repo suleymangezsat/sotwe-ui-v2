@@ -1,0 +1,1099 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "pricing": "Pricing",
+    "language": "Language",
+    "logout": "Logout",
+    "myProfile": "My Profile",
+    "myBookmarks": "My Bookmarks",
+    "search": {
+      "placeholder": "Search"
+    },
+    "nearby": "Nearby",
+    "refundPolicy": "Refund Policy"
+  },
+  "errors": {
+    "UNSPECIFIED": {
+      "title": "Unspecified Error",
+      "message": "An error occurred, but no additional information is available. Please try again."
+    },
+    "VALIDATION_ERROR": {
+      "title": "Validation Error",
+      "message": "Some fields did not pass our validation checks. Please review and correct them."
+    },
+    "BAD_REQUEST": {
+      "title": "Bad Request",
+      "message": "Your request cannot be processed. Please check your submission and try again."
+    },
+    "NO_CONNECTION": {
+      "title": "No Connection",
+      "message": "No internet connection available. Please check your network settings and try again."
+    },
+    "PAYMENT_FAILED": {
+      "title": "Payment Failed",
+      "message": "Your payment could not be processed. Please verify your payment information and try again."
+    },
+    "PAYMENT_NOT_FOUND": {
+      "title": "Payment Not Found",
+      "message": "We could not find the payment you are referring to. Please verify the details and try again."
+    },
+    "INSUFFICIENT_SUBSCRIPTION": {
+      "title": "Insufficient Subscription Level",
+      "message": "Your current subscription level does not permit this action. Please upgrade your subscription."
+    },
+    "CANNOT_SEND_EMAIL": {
+      "title": "Cannot Send Email",
+      "message": "We were unable to send an email to the provided address. Please check the email address and try again."
+    },
+    "TOO_MANY_OTP_REQUESTS": {
+      "title": "Too Many OTP Requests",
+      "message": "You have requested too many OTP codes. Please wait a while before trying again."
+    },
+    "LOGIN_FAILED": {
+      "title": "Login Failed",
+      "message": "We could not log you in with the provided credentials. Please check and try again."
+    },
+    "USER_NOT_FOUND": {
+      "title": "User Not Found",
+      "message": "The specified user does not exist in our system. Please check the details and try again."
+    },
+    "SUBSCRIPTION_NOT_FOUND": {
+      "title": "Subscription Not Found",
+      "message": "No active subscription found for your account. Please subscribe to continue."
+    },
+    "INVALID_USERNAME": {
+      "title": "Invalid Username",
+      "message": "The username you entered does not meet our requirements. Please choose another one."
+    },
+    "INVALID_PASSWORD": {
+      "title": "Invalid Password",
+      "message": "The password entered is incorrect. Please check and try again."
+    },
+    "INVALID_OLD_PASSWORD": {
+      "title": "Invalid Old Password",
+      "message": "The old password you entered is incorrect. Please check and try again."
+    },
+    "SUSPENDED_USER": {
+      "title": "Suspended User",
+      "message": "This account has been suspended. Please contact support for more details."
+    },
+    "NOT_FOUND": {
+      "title": "Not Found",
+      "message": "The requested resource was not found on our server. Please check the URL and try again."
+    },
+    "TWREQ_ERROR": {
+      "title": "Twitter Request Error",
+      "message": "There was an issue with your request to Twitter. Please try again later."
+    },
+    "IO_ERROR": {
+      "title": "Input/Output Error",
+      "message": "An error occurred during input/output operation. Please try again."
+    },
+    "EMAIL_NOT_VERIFIED": {
+      "title": "Email Not Verified",
+      "message": "Your email address has not been verified. Please check your email for the verification link."
+    },
+    "IMAGE_UPLOAD_ERROR": {
+      "title": "Image Upload Error",
+      "message": "There was a problem uploading your image. Please try again."
+    },
+    "BAD_CREDENTIALS": {
+      "title": "Bad Credentials",
+      "message": "The login credentials provided were incorrect. Please try entering them again."
+    },
+    "UNEXPECTED": {
+      "title": "Unexpected Error",
+      "message": "An unexpected error occurred. Please try again later."
+    },
+    "INVALID_STEP": {
+      "title": "Invalid Step",
+      "message": "The step you are trying to access is invalid or expired. Please start over."
+    },
+    "EMAIL_EXISTS": {
+      "title": "Email Already Exists",
+      "message": "The email address you entered is already in use. Please use another email or recover your account."
+    },
+    "USERNAME_EXISTS": {
+      "title": "Username Already Exists",
+      "message": "The username you have chosen is already taken. Please select a different username."
+    },
+    "INVALID_OTP": {
+      "title": "Invalid OTP",
+      "message": "The OTP code you entered is incorrect or expired. Please request a new OTP."
+    },
+    "BOOKMARK_SIZE_EXCEEDED": {
+      "title": "Bookmark Size Exceeded",
+      "message": "You have reached the maximum number of bookmarks allowed. Please remove some bookmarks to add more."
+    }
+  },
+  "adFreePromotionCard": {
+    "title": "Ad-Free Browsing",
+    "description": "Enjoy Sotwe without ads and experience a more enjoyable browsing. More content, zero ads 🚀",
+    "button_text": "Subscribe now"
+  },
+  "common": {
+    "add_bookmark": "Add Bookmark",
+    "remove_bookmark": "Remove Bookmark",
+    "link_to_share": "Link to share",
+    "search_places": "Search places",
+    "retweeted": "retweeted",
+    "seeMore": "See More",
+    "seeLess": "See Less",
+    "somethingWR": "Something went wrong.",
+    "tryAgain": "Try Again",
+    "notFound": "Not Found",
+    "noResults": "No Results",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "weekAgo": "Week Ago",
+    "monthAgo": "Month Ago",
+    "now": "Now",
+    "message": "Message",
+    "hoursAgo": "{hour} hours ago",
+    "downloadImage": "Download Image",
+    "downloadVideo": "Download Video",
+    "downloadGif": "Download GIF",
+    "image": "Image",
+    "video": "Video",
+    "seenFrom": "Seen from",
+    "linkIsCopied": "The link is copied!",
+    "close": "Close",
+    "cancel": "Cancel",
+    "send": "Send",
+    "share": "Share",
+    "shareProfile": "Share Profile",
+    "campaignModal": {
+      "title": "IS {'@'}{username} YOUR ACCOUNT?"
+    },
+    "signInWithTwitter": "Sign in with Twitter",
+    "unableToLoginTwitter": "Unable to login to Twitter due to an error",
+    "goToHome": "Go to Home",
+    "loggingIn": "Logging in...",
+    "loggedIn": "Logged In",
+    "loggedOut_message": "You've signed out successfully.",
+    "youHaveToLoginBefore": "You have to login before accessing to {0}",
+    "allow": "Allow",
+    "notNow": "Not Now",
+    "messageSent": "Message Sent",
+    "messageFailed": "Message Failed",
+    "loginCancelled": "Login Cancelled",
+    "signIn": "sign in",
+    "loginCancelled_message": "You decided to cancel logging in to our site using your Twitter account. If this was a mistake, please proceed to {0}.",
+    "downloadAll": "Download All",
+    "searchInTwitter": "Search in Twitter",
+    "hideSearch": "Hide search",
+    "seeNearbyUsers": "See nearby users",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "playVideo": "Play video",
+    "sendMessage": "Send message",
+    "accountOwnership": "Account Ownership",
+    "downloadAllMedia": "Download All Media",
+    "submit": "Submit",
+    "done": "Done",
+    "more": "More",
+    "pinned": "Pinned Tweet",
+    "upload": "Upload",
+    "edit": "Edit",
+    "continueWithGoogle": "Continue with Google",
+    "or": "Or",
+    "videoPlayer": "Video player",
+    "likes": "{count} likes",
+    "retweets": "{count} retweets",
+    "views": "{count} views",
+    "replies": "{count} replies",
+    "bookmarks": "{count} bookmarks",
+    "bookmarkAdded": "Added to your Bookmarks",
+    "bookmarkRemoved": "Removed from your Bookmarks",
+    "back": "Back",
+    "darkMode": "Switch to dark mode",
+    "lightMode": "Switch to light mode",
+    "previous": "Previous",
+    "next": "Next",
+    "date": "Date",
+    "time": "Time",
+    "oneHourAgo": "1 hour ago",
+    "in": "in",
+    "loading": "Loading…"
+  },
+  "meta": {
+    "title": "Twitter Web Viewer & Trend Analyzer & Downloader",
+    "description": "Explore Twitter trend topics, users and tweets & find the most popular Twitter users, hashtags and places & download photos and videos embedded in tweets. ",
+    "homepage": {
+      "title": "{place} — Twitter Trending Hashtags, Users, Topics, and Tweets",
+      "description": "Hot trends in {place}: {topics}… Explore top Twitter trends, hashtags, tweets and users by country on Sotwe.",
+      "descriptionFallback": "Explore top Twitter trends, hashtags, tweets and users by country on Sotwe."
+    },
+    "user": {
+      "title": "{name} ({'@'}{screenName}) · Sotwe",
+      "description": "Read {'@'}{screenName}'s tweets on Sotwe without a Twitter account."
+    }
+  },
+  "nearby": {
+    "peopleAroundYou": "People Around You",
+    "canNotDetermineYourLocation": "Can not determine your location",
+    "locationDenied_message": "Sotwe was denied permission to access your location. Give your browser and Sotwe permission to use your current location and try again.",
+    "allowYourLocation": "Allow Your Location",
+    "provideAccessToYourLocation_message": "Please provide us access to your location, which is required to see people nearby",
+    "km_unit": "{number} km",
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Subscription Required",
+        "message": "You need to have a premium subscription to see nearby users. Please upgrade your account to premium."
+      }
+    }
+  },
+  "pricing": {
+    "letsGetStarted": "Let's get started",
+    "upgradeYourAccount_message": "Upgrade your account to Sotwe Premium for an enhanced Sotwe experience.",
+    "tryNow": "Try now",
+    "perYear": "per year",
+    "perMonth": "per month",
+    "perWeek": "per week",
+    "oneTime": "one time",
+    "features": {
+      "adFree": "Enjoy an Ad-Free Experience",
+      "seeUsersNearby": "Discover Users Nearby",
+      "unlimitedDownloads": "Download Unlimited Photos and Videos",
+      "bookmark": "Save Your Favorite Content with Bookmarks",
+      "prioritySupport": "Receive Priority Support"
+    },
+    "campaigns": {
+      "FREE": "Basic access",
+      "PREMIUM": "Premium for 1 month"
+    },
+    "paymentFailed_message": "Your payment is failed. Please try again.",
+    "paymentSuccess_message": "Your payment is successful. Thanks for your order, {username}!",
+    "youSubscribed": "You subscribed",
+    "onlyPremium_message": "Only Premium users can send messages",
+    "loginToSubscribe": "Please log in to your account to subscribe to the Premium plan.",
+    "skipNow": "Skip now",
+    "meta": {
+      "title": "Pricing",
+      "description": "Upgrade your Sotwe for premium features like unlimited follow, unlimited message, ad-free display and more."
+    }
+  },
+  "bookmark": {
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Subscription Required",
+        "message": "You have reached your free bookmark limit. Please upgrade to a premium subscription for unlimited bookmarks."
+      }
+    }
+  },
+  "cancelRenewal": {
+    "title": "Cancel Renewal",
+    "subtitle": "We're sad to see you leave!",
+    "description": "We appreciate your past support and want to remind you that cancelling your renewal does not immediately end your premium features. You can continue to enjoy the services until the end of your current subscription period.",
+    "feedbackPrompt": "Please let us know why you're cancelling your subscription. Your feedback will help us improve our service.",
+    "reasonLabel": "Select a reason",
+    "reasons": {
+      "high_cost": "High cost",
+      "feature_broken": "Some feature(s) are broken",
+      "not_using_enough": "Not using the service enough",
+      "change_in_needs": "Change in needs",
+      "lack_of_feature": "Lack of expected feature",
+      "other": "Other"
+    },
+    "additionalFeedback": "Please share your thoughts here...",
+    "stayButton": "Stay subscribed",
+    "cancelButton": "Cancel renewal",
+    "reasonRequired": "Reason is required",
+    "success": "Subscription renewal cancelled successfully",
+    "error": "An error occurred while cancelling your subscription renewal"
+  },
+  "login": {
+    "joinUs": "Join Us",
+    "joinUs_description": "Become part of the Sotwe community and start enjoying unique features exclusive to members.",
+    "joinSotweCommunity_message": "Join Sotwe private community",
+    "seeTwitterUsersNearby": "See Twitter users near you",
+    "sendDirectMessages": "Send direct messages",
+    "downloadAll": "Download all photos and videos",
+    "noAds": "Ad-free display",
+    "bookmarkYourFavorites": "Save your favorite content with bookmarks"
+  },
+  "profile": {
+    "welcome": "Welcome, {name}!",
+    "general": "General",
+    "editProfile": "Edit Profile",
+    "changePassword": "Change Password",
+    "deleteAccount": "Delete account",
+    "deleteWarning": "Once you delete your account, there is no going back. Please be certain.",
+    "deleteBtn": "Delete Account",
+    "joinedAt": "Joined at {date}",
+    "upgradePremium": "Upgrade to Premium",
+    "premiumEndsOn": "ends on {date}",
+    "premiumRenewsOn": "renews on {date}",
+    "uploadProfilePicSuccess": "Profile picture uploaded successfully!",
+    "uploadProfilePicError": "Profile picture upload failed. Please try again.",
+    "features": {
+      "username": "Username",
+      "email": "Email",
+      "joined": "Joined"
+    },
+    "deleteAccountDialog": {
+      "title": "Delete Account",
+      "description": "Are you sure you want to delete your account? Please type DELETE in the box below to confirm.",
+      "confirmInputLabel": "Type \"DELETE\" to confirm",
+      "confirmInputRule": "You must type \"DELETE\" to confirm.",
+      "deleteKeyword": "DELETE",
+      "deleteButton": "Delete Account",
+      "cancelButton": "Cancel",
+      "successMessage": "Your account has been successfully deleted.",
+      "errorMessage": "An error occurred while deleting your account."
+    }
+  },
+  "loginPage": {
+    "title": "Login",
+    "description": "Access your Sotwe account",
+    "meta": {
+      "title": "Log in to Sotwe",
+      "description": "Enter your email and password to log in and access your personalized settings and features on our platform."
+    }
+  },
+  "signupPage": {
+    "title": "Sign Up",
+    "description": "Create your Sotwe account",
+    "meta": {
+      "title": "Sign up for Sotwe",
+      "description": "Create your account on Sotwe to access all features and settings on our platform."
+    }
+  },
+  "myProfilePage": {
+    "meta": {
+      "title": "My Profile",
+      "description": "Edit your profile settings, change your password, or delete your account on Sotwe."
+    }
+  },
+  "messages": {
+    "downloading": "Downloading...",
+    "downloadCompleted": "Download completed",
+    "failedToDownload": "Failed to download file",
+    "noMediaToDownload": "{username} has no media to download",
+    "downloadingAllMedia": "Downloading {username}'s {size} media files..."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "login": "Login",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontYouHaveAccount": "Don't you have an account?",
+    "forgotYourPassword": "Forgot your password?",
+    "doYouHaveFavoriteSelfie": "Do you have a favorite selfie?",
+    "logoutSuccess": "Logged out successfully!",
+    "skipForNow": "Skip for now",
+    "formLabels": {
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "fullname": "Full Name",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "birthDate_info": "This will not be shown publicly. Even if this account is for a business, pet, or something else, you’ll need to verify your own age.",
+      "month": "Month",
+      "day": "Day",
+      "year": "Year",
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "confirmNewPassword": "Confirm new password",
+      "changePassword": "Change Password",
+      "passwordChanged_toast": "Password changed successfully!",
+      "loggedInSuccessfully_toast": "Logged in successfully!",
+      "signupSuccess_toast": "Signed up successfully!"
+    },
+    "next": "Next",
+    "formRules": {
+      "emailRequired": "Email is required",
+      "emailMinLength": "The e-mail address must contain at least 5 characters",
+      "emailMaxLength": "The e-mail address cannot be longer than 50 characters",
+      "emailValid": "Please enter a valid email address",
+      "fullnameRequired": "Full name is required",
+      "fullnameLength": "Full name must be less than 50 characters",
+      "usernameRequired": "Username is required",
+      "usernameLengthMin": "The username must contain at least 3 characters",
+      "usernameLengthMax": "The username cannot be longer than 50 characters",
+      "usernameCharacters": "The username can only contain letters, numbers, and underscores",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordMaxLength": "Password cannot be longer than 50 characters",
+      "genderRequired": "Gender is required",
+      "monthRequired": "Month is required",
+      "dayRequired": "Day is required",
+      "yearRequired": "Year is required"
+    },
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "genders": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    },
+    "otpVerification": {
+      "sentCodeTitle": "We sent you a code",
+      "enterCodeInstruction": "Enter it below to verify {email}",
+      "didNotReceiveCode": "Didn't receive the code?",
+      "resendButton": "Resend"
+    }
+  },
+  "signup": {
+    "titles": {
+      "verifyEmail": "Verify your email",
+      "createAccount": "Create your account",
+      "chooseProfilePic": "Choose your profile picture",
+      "getPremium": "Get Premium"
+    }
+  },
+  "forgotPassword": {
+    "enterEmail_description": "To change your password, enter the email address associated with your account.",
+    "titles": {
+      "findAccount": "Find your account",
+      "verifyEmail": "Verify your email",
+      "changePassword": "Change your password"
+    }
+  },
+  "paymentMethod": {
+    "title": "Select Your Payment Method",
+    "closeBtn": "Close",
+    "sslSecure": "SSL Secure Payment",
+    "sslDescription": "Your information is protected by 256-bit SSL encryption.",
+    "instruction": "Choose your preferred payment method from the options below:",
+    "options": {
+      "creditCard": {
+        "title": "Credit card",
+        "description": "Pay with your credit card."
+      },
+      "crypto": {
+        "title": "Cryptocurrency",
+        "description": "Pay with Bitcoin or other cryptocurrencies."
+      }
+    }
+  },
+  "report": {
+    "report": "Report",
+    "specifyTheReason": "Please specify the reason you would like to report:",
+    "description_label": "Description (Optional)",
+    "thanksForHelping": "Thanks for helping make Sotwe better for everyone",
+    "itIsNotEasy": "We know it wasn’t easy, so we appreciate you taking the time to report invalid activities.",
+    "whatIsHappeningNow": "What happens next",
+    "yourReportIsInOurQueue": "Your report is in our queue and our team will review your report as soon as they can. Please know that we take your feedback seriously and take required action.",
+    "reportUser": "Report {'@'}{username}",
+    "reportHashtag": "Report #{hashtag}",
+    "title": {
+      "user": "Report User",
+      "tweet": "Report Tweet",
+      "tag": "Report Hashtag"
+    },
+    "reason": {
+      "CHILD_ABUSE": "Child sexual exploitation",
+      "RACISM": "Hateful against people based on their identity, such as race, caste or gender",
+      "TERROR": "Terrorism or violent extremism",
+      "VIOLENCE": "Unnecessary gore or graphic violence",
+      "OTHER": "Something else"
+    }
+  },
+  "homepage": {
+    "title": "Twitter Web Viewer",
+    "description": "Tracks Twitter trends, finds the most popular Twitter users, hashtags and places",
+    "search": {
+      "placeholder": "Search username"
+    },
+    "users": {
+      "title": "Most Popular Users",
+      "followers": "{count} followers"
+    }
+  },
+  "trendspage": {
+    "meta": {
+      "title": "{activePlace} - Twitter Trending Hashtags, Users, Topics, and Tweets",
+      "description": "Hot trends in {activePlace} :  {topTopics} Explore top Twitter trends, hashtags, tweets and users by country."
+    },
+    "trends_chip": "Trends",
+    "topBarTitle": "Trends · {place}",
+    "topics": "Trend Topics in {place}",
+    "tweets": "Tweets in {place}",
+    "tweetVolume": "Under 10K tweets | {volume} tweets",
+    "quickLinks": "Quick Links",
+    "showLess": "Show less",
+    "showMore": "Show more",
+    "topicsTitle": "Trend Topics",
+    "showCitiesIn": "Show cities in {name}"
+  },
+  "userpage": {
+    "meta": {
+      "title": "{fullname} {'@'}{username} - Twitter Profile",
+      "description": "See tweets, replies, photos and videos from {'@'}{username} Twitter profile. {followers} Followers, {following} Following.{bio}"
+    },
+    "followers": "Followers",
+    "following": "Following",
+    "posts": "Posts",
+    "joinedAt": "Joined",
+    "joinedOn": "Joined {date}",
+    "protectedAccount": "Protected account",
+    "thisIsMyAccount": "This is my account",
+    "whoToFollow": "Who to follow",
+    "trend": {
+      "title": "Trends for you"
+    },
+    "lastSeen": {
+      "title": "Last Seen Users on {appName}"
+    },
+    "accountProtected": {
+      "title": "These Tweets are protected.",
+      "subtitle": "Only approved followers can see this account's Tweets."
+    },
+    "accountNotFound": {
+      "title": "This account doesn’t exist",
+      "subtitle": "Try searching for another."
+    },
+    "accountHasNoTweet": {
+      "title": "This account doesn’t have any tweet",
+      "subtitle": "Try searching for another."
+    },
+    "accountSuspended": {
+      "title": "This account suspended",
+      "subtitle": "Twitter suspends accounts that violate the Twitter Rules."
+    }
+  },
+  "hashtagpage": {
+    "meta": {
+      "title": "#{hashtag} - Twitter Hashtag",
+      "description": "See top tweets, photos and videos tagged as #{hashtag}.{firstTweet}"
+    },
+    "topTweetsFor": "Top Tweets for {0}",
+    "noTweetsForTag": "No tweets for #{hashtag}.",
+    "hashtagNotFound": {
+      "title": "No results for \"{hashtag}\"",
+      "subtitle": "The term you entered did not bring up any results. Try searching for another."
+    },
+    "lastSeen": {
+      "title": "Last Seen Hashtags on {appName}"
+    }
+  },
+  "locationpage": {
+    "meta": {
+      "title": "{location} - Twitter Location",
+      "description": "See top tweets, photos and videos located at {location}.{firstTweet}"
+    },
+    "fallbackTitle": "Location",
+    "noTweets": "No tweets posted here yet.",
+    "topTweetsIn": "Top Tweets in {0}",
+    "locationNotFound": {
+      "title": "No results for given location",
+      "subtitle": "The location you entered did not bring up any results. Try searching for another."
+    },
+    "lastSeen": {
+      "title": "Last Seen Locations on {appName}"
+    }
+  },
+  "searchpage": {
+    "meta": {
+      "title": "{term} - Twitter Search",
+      "description": "People and tweets found by searching {term}.",
+      "foundPeople": " People : {people}."
+    },
+    "people": "People",
+    "tabTweets": "Tweets",
+    "tabUsers": "Users",
+    "noTweetsForTerm": "No tweets found for \"{term}\".",
+    "noUsersForTerm": "No users match \"{term}\".",
+    "tweetsIncluding": "Tweets including {0}",
+    "searchResultsFor": "Search results for {0}",
+    "noPeopleResults": "Sorry, no people found for {0}",
+    "noTweetResults": "Sorry, no tweet found for {0}",
+    "recentSearches": {
+      "title": "Recent Searches on {appName}"
+    }
+  },
+  "tweetpage": {
+    "meta": {
+      "title": "See {fullname} {username}'s tweet",
+      "description": "{likes} likes, {retweets} retweets. {text}"
+    },
+    "topBarTitle": "Tweet",
+    "repliesPlaceholder": "Replies will load here soon.",
+    "morePostsFrom": "More posts from "
+  },
+  "bookmarkpage": {
+    "title": "Your Bookmarks",
+    "notfound": {
+      "title": "There is no bookmarked content"
+    },
+    "meta": {
+      "title": "Your Bookmarks",
+      "description": "See your bookmarked contents on Sotwe"
+    }
+  },
+  "nearbypage": {
+    "meta": {
+      "title": "Nearby · Sotwe",
+      "description": "Twitter / X users near you."
+    },
+    "noUsers": "No users found nearby."
+  },
+  "errorpage": {
+    "metaTitleNotFound": "Not found · Sotwe",
+    "metaTitleError": "Error · Sotwe",
+    "notFoundDesc": "The page you're looking for doesn't exist.",
+    "genericDesc": "Something went wrong on our end.",
+    "backHome": "Back to home"
+  },
+  "aboutpage": {
+    "meta": {
+      "title": "About Us",
+      "description": "Platform information regarding to {domain}"
+    },
+    "title": "About Us",
+    "contact_title": "Contact",
+    "own_account": "If this account is yours and you want to get promoted then just copy the link to the bio section of your social media accounts. With this way, we will promote your Twitter account for free and this will return you more followers, likes and popularity",
+    "about_p_1": "We are a free service that offers you ability to explore Twitter profiles and statistics with a new refreshing design and download Twitter Videos and Photos in one click.",
+    "about_p_2": "{app_name} uses the Twitter API but is not endorsed or certified by Twitter.All Twitter™ logos and trademarks displayed on this application are property of Twitter.",
+    "about_p_3": "We do not host videos and photos on our {app_name} server.",
+    "contact_p_1": "Please feel free to contact us if you have any questions."
+  },
+  "privacyPolicy": {
+    "meta": {
+      "title": "Privacy Policy",
+      "description": "Learn about how Sotwe protects and uses your personal information. Read our Privacy Policy to understand your rights and our commitments."
+    },
+    "title": "Privacy Policy",
+    "introduction": "Welcome to Sotwe. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy or our practices with regards to your personal information, please contact us at {app_email}.",
+    "headers": {
+      "informationWeCollect": "Information We Collect",
+      "howWeUseYourInformation": "How We Use Your Information",
+      "dataProtection": "Data Protection and Security",
+      "policyChanges": "Changes to Our Privacy Policy"
+    },
+    "content": {
+      "informationWeCollect": "As a visitor, you can browse our site to find out more about our website. You are not required to provide us with any personal information as a visitor. We collect your personal information when you register with us or when you use our services. The personal information we collect might include your name, email address, and profile picture.",
+      "howWeUseYourInformationIntro": "We use the information we collect in various ways, including to:",
+      "useList": {
+        "provideAndMaintain": "Provide, operate, and maintain our website",
+        "improveAndPersonalize": "Improve, personalize, and expand our website",
+        "understandAndAnalyze": "Understand and analyze how you use our website",
+        "developNew": "Develop new products, services, features, and functionality",
+        "communicate": "Communicate with you, including for customer service and marketing purposes",
+        "sendEmails": "Send you emails",
+        "preventFraud": "Find and prevent fraud"
+      },
+      "dataProtection": "Sotwe follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files include IP addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. This information is not linked to any information that is personally identifiable.",
+      "policyChanges": "We may update this Privacy, and have implemented appropriate technical and organizational measures to secure your information. We regularly review and update our security measures to ensure that your information remains protected. However, no method of transmitting or storing data is completely secure, and we cannot guarantee the security of your information. By using our website, you acknowledge that you understand and accept the risks associated with sharing your information online."
+    }
+  },
+  "termsOfService": {
+    "meta": {
+      "title": "Terms of Service",
+      "description": "Read the terms and conditions of using the Sotwe website."
+    },
+    "title": "Terms of Service",
+    "welcome": "Welcome to Sotwe.com (the \"Website\"). These Terms of Service (the \"Terms\") govern your use of the Website, including all content, services, and features available on or through the Website.",
+    "agreement": "By accessing or using the Website, you agree to be bound by these Terms, as well as our Privacy Policy, which is incorporated into these Terms by reference. If you do not agree to these Terms or our Privacy Policy, you must not use the Website.",
+    "useTitle": "Use of the Website",
+    "useDescription": "The Website is intended for personal, non-commercial use. You may use the Website and its content, services, and features only for lawful purposes, and in accordance with these Terms. You agree not to:",
+    "prohibitions": [
+      "Modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell any information, software, products, or services obtained from the Website",
+      "Use the Website for any commercial purpose, including advertising or soliciting any products or services",
+      "Attempt to access or use any restricted or secure areas of the Website without authorization",
+      "Interfere with the operation of the Website or the systems that support it",
+      "Use any device, software, or routine to interfere with the proper operation of the Website",
+      "Impersonate any person or entity, or falsely state or otherwise misrepresent your affiliation with a person or entity",
+      "Collect or store personal data about other users of the Website without their consent",
+      "Use the Website in a manner that is abusive, harmful, threatening, defamatory, obscene, or otherwise illegal"
+    ],
+    "contentTitle": "Content and Intellectual Property",
+    "contentDescription": "The content on the Website, including text, graphics, images, logos, software, and other material, is protected by copyright, trademark, and other proprietary rights. The content is owned by Sotwe or its licensors, and is protected by applicable copyright and trademark laws.",
+    "disclaimerTitle": "Disclaimer of Warranties",
+    "disclaimerDescription": "THE WEBSITE AND ITS CONTENT, SERVICES, AND FEATURES ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY WARRANTY FOR INFORMATION, SERVICES, UNINTERRUPTED ACCESS, OR PRODUCTS PROVIDED THROUGH OR IN CONNECTION WITH THE WEBSITE. SPECIFICALLY, WE DISCLAIM ANY AND ALL WARRANTIES, INCLUDING WITHOUT LIMITATION: 1) ANY WARRANTIES CONCERNING THE AVAILABILITY, ACCURACY, USEFULNESS, OR CONTENT OF INFORMATION, AND 2) ANY WARRANTIES OF TITLE, WARRANTY OF NON-INFRINGEMENT, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE."
+  },
+  "deliveryRefund": {
+    "meta": {
+      "title": "Delivery And Refund Terms",
+      "description": "Read the delivery and refund terms using the Sotwe website."
+    },
+    "title": "Delivery And Refund Terms",
+    "deliveryTitle": "Delivery Terms",
+    "deliveryTermsTitle": "Delivery of Digital Products: ",
+    "deliveryContent": "Sotwe.com exclusively sells digital products. Once your payment is confirmed, the purchased package is instantly credited to your account. All our digital products are delivered electronically; there is no physical delivery.",
+    "returnTitle": "Refund Terms",
+    "returnConditionsTitle": "Refund Conditions: ",
+    "returnConditionsContent": "If you are not satisfied with the digital products you have purchased, you can request a refund by sending an email to {app_email} within 2 days from the date of purchase. Your return request will be evaluated and, if approved, a refund will be issued minus any transaction fees.",
+    "refundProcessTitle": "Refund Process: ",
+    "refundProcessContent": "Once your refund request is approved, the payment will be refunded to your payment method within a maximum of 7 business days. If you encounter any issues during the refund process, please do not hesitate to contact us.",
+    "footer": "For any questions or support, please contact us at  {app_email}."
+  },
+  "sweetdream": {
+    "subtitle": "💕 Your Personal AI Girlfriend",
+    "visitNow": "💋 Chat with Olivia",
+    "completionNote": "🔥 Olivia is waiting for you... Ready to meet her?",
+    "messages": {
+      "quickIntro": "Hi gorgeous! 💋 I'm Olivia, 24 years old. I want to share some intimate moments with you... 🔥",
+      "introduction": "Hi there! 👋 I'm Olivia, 24 years old. I'm your AI companion ready to chat, share photos, and have some fun together!",
+      "welcome": "It's so nice to meet you! 💋 I've been waiting for someone special like you 😘",
+      "intro": "🔥 I want to share some intimate moments with you... Tell me a little about yourself? 😊",
+      "question1": "💖 Would you like to have an intimate relationship with me?",
+      "question2": "😍 Amazing! Have you spent time with AI girls before?",
+      "question3": "🔥 How would you like to spend time with me?",
+      "great": "💕 Perfect! We're going to have amazing moments together...",
+      "interesting": "😘 So exciting! This information is very important to me.",
+      "perfect": "🔥 Great choice! I have special surprises for you...",
+      "recommendation": "💋 You can have private chats with me on SweetDream.ai, see my exclusive photos and videos made just for you, and even have voice and video calls with me! I'm waiting for you... 🔥",
+      "photoPreview": "💕 Here's a little preview of what's waiting for you...",
+      "videoExperienced": "🔥 I love experienced guys... Here's a special video just for you 😘",
+      "videoSweet": "😊 Don't worry, I'll take good care of you... Here's something sweet 💕",
+      "visualChoice": "📸 You chose visuals... Here's a taste of what I can show you 💋",
+      "everythingChoice": "🔥 Everything? I love that... You're going to see so much more 😘",
+      "chatChoice": "💬 Perfect choice... I have so much more to share with you 💕",
+      "unlockContent": "🔒 Let's go to SweetDream.ai to see this exclusive content! I'll be waiting for you there...",
+      "notInterested": "😔 I'm sad... But maybe you'll change your mind another time. I'll be waiting for you 💕",
+      "chooseAnswer": "Choose your answer"
+    },
+    "options": {
+      "yes": "💋 Yes, I want to meet you!",
+      "maybe": "😊 Maybe, I'm curious about you",
+      "no": "😔 No, thanks",
+      "experienced": "🔥 I'm experienced, I love hot chats",
+      "beginner": "😇 I'm new, guide me",
+      "curious": "🤔 Just curious",
+      "chat": "💬 Chat with you",
+      "visual": "📸 See your exclusive photos",
+      "voice": "🎙️ Talk with you",
+      "all": "🔥 Experience everything with you!",
+      "meet": "🔥 Meet me on SweetDream.ai!"
+    }
+  },
+  "masthead": {
+    "headline": "Read Twitter / X without an account.",
+    "tagline": "Discover the most viewed tweets from your country and around the world. Search users, hashtags, and trending topics — no sign-up, no tracking.",
+    "searchAria": "Search Sotwe",
+    "searchPlaceholder": "Search users, hashtags, or tweets"
+  },
+  "footer": {
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "refunds": "Refunds",
+    "about": "About",
+    "copyright": "© {year} Sotwe."
+  },
+  "search": {
+    "aria": "Search",
+    "placeholder": "Search Sotwe"
+  },
+  "tweet": {
+    "reply": "Reply",
+    "repost": "Repost",
+    "like": "Like",
+    "views": "Views",
+    "addBookmark": "Add bookmark",
+    "removeBookmark": "Remove bookmark",
+    "bookmarkAdded": "Bookmark added",
+    "bookmarkRemoved": "Bookmark removed",
+    "bookmarkFailed": "Bookmark failed",
+    "share": "Share",
+    "downloadMedia": "Download media",
+    "pinned": "Pinned",
+    "retweetedBy": "{user} reposted",
+    "noTweetsYet": "No tweets yet.",
+    "repliesPlaceholder": "Replies will load here in Faz 6.",
+    "copyLink": "Copy",
+    "linkCopied": "Link copied",
+    "copyFailed": "Copy failed",
+    "shareOn": "Share on {network}",
+    "whoToFollow": "Who to follow",
+    "pinnedHeader": "Pinned",
+    "downloading": "Downloading…",
+    "downloadComplete": "Download complete",
+    "downloadFailed": "Download failed",
+    "photo": "Photo",
+    "video": "Video",
+    "gif": "GIF",
+    "mediaTab": "Media {n}",
+    "report": "Report tweet",
+    "menuOpenOnX": "Open on X",
+    "menuReport": "Report tweet",
+    "openTweetBy": "Open tweet by {name}",
+    "shareTitleNamed": "{name} on Sotwe",
+    "shareTitleGeneric": "Tweet on Sotwe",
+    "nothingToDownload": "Nothing to download",
+    "mediaAlt": "Media",
+    "openQuotedTweetBy": "Open quoted tweet by {name}"
+  },
+  "timeline": {
+    "failedToLoadMore": "Failed to load more",
+    "couldntLoadMore": "Couldn't load more tweets.",
+    "endReached": "You've reached the end."
+  },
+  "reportDialog": {
+    "title": "Report content",
+    "subtitle": "Tell us why this content violates the rules.",
+    "reasonLabel": "Reason",
+    "detailsLabel": "Details (optional)",
+    "placeholder": "Anything else we should know?",
+    "send": "Send report",
+    "submitted": "Report submitted",
+    "failed": "Report failed",
+    "reasons": {
+      "CHILD_ABUSE": "Child abuse",
+      "RACISM": "Racism / hate speech",
+      "TERROR": "Terrorism",
+      "VIOLENCE": "Violence",
+      "OTHER": "Other"
+    }
+  },
+  "rail": {
+    "whoToFollow": "Who to follow",
+    "recentlyViewed": "Recently viewed",
+    "trendingHashtags": "Trending hashtags",
+    "followersCount": "{count} followers",
+    "couldntLoadSuggestions": "Couldn't load suggestions.",
+    "noSuggestions": "No suggestions right now."
+  },
+  "forms": {
+    "email": {
+      "label": "Email",
+      "placeholder": "you{'@'}example.com"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "At least 8 characters",
+      "hide": "Hide password",
+      "show": "Show password"
+    },
+    "username": {
+      "label": "Username",
+      "placeholder": "screen_name"
+    },
+    "confirmPassword": {
+      "label": "Confirm password",
+      "placeholder": "Re-enter your password"
+    },
+    "otp": {
+      "label": "Verification code",
+      "placeholder": "123456"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Your full name"
+    },
+    "birthDate": {
+      "label": "Birth date"
+    },
+    "gender": {
+      "label": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    }
+  },
+  "auth_dialog": {
+    "signInTitle": "Sign in to Sotwe",
+    "signInSubtitle": "Sign in to continue. Your browsing stays anonymous either way — accounts only unlock bookmarks and personalised features.",
+    "welcomeBack": "Welcome back. Sign in to follow up on bookmarks, manage your subscription, and pick up where you left off.",
+    "orDivider": "OR",
+    "signInButton": "Sign in",
+    "createAccount": "Create account",
+    "forgotPassword": "Forgot password?",
+    "openFullPage": "Open full page",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInFailed": "Sign-in failed",
+    "signingIn": "Signing in · Sotwe",
+    "signingOut": "Signing out · Sotwe",
+    "missingOauthCode": "Missing OAuth code",
+    "unsupportedProvider": "Unsupported provider: {provider}",
+    "socialSignInFailed": "Social sign-in failed",
+    "backToSignIn": "Back to sign in"
+  },
+  "signup_steps": {
+    "stepCreate": "Create your account",
+    "stepVerify": "Verify your email",
+    "stepProfile": "Tell us about you",
+    "progressLabel": "Signup progress",
+    "sendCode": "Send verification code",
+    "codeSentTo": "We sent a code to {email}. Enter it below to verify your email.",
+    "verify": "Verify",
+    "useDifferentEmail": "Use a different email",
+    "createAccountBtn": "Create my account"
+  },
+  "forgot_dialog": {
+    "title": "Reset your password",
+    "enterEmailDesc": "Enter the email address tied to your Sotwe account. We'll send a one-time code to confirm it's you.",
+    "sendCode": "Send code",
+    "codeSentDesc": "We sent a code to {email}. Enter it below to continue.",
+    "verifyCode": "Verify code",
+    "newPasswordDesc": "Pick a new password. You'll use it the next time you sign in.",
+    "newPasswordLabel": "New password",
+    "savePassword": "Save password",
+    "done": "Password updated",
+    "doneDesc": "You can now sign in with your new password."
+  },
+  "profile_actions": {
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "changePasswordBtn": "Change password",
+    "changePasswordTitle": "Change password",
+    "passwordChanged": "Password changed",
+    "deleteAccountTitle": "Delete your account",
+    "deleteAccountDesc": "This will permanently delete your account and all associated bookmarks. This cannot be undone.",
+    "typeUsernameToConfirm": "Type your username {'@'}{username} to confirm",
+    "deleteBtn": "Delete account",
+    "accountDeleted": "Account deleted",
+    "couldntDelete": "Could not delete account",
+    "stayCancel": "Cancel"
+  },
+  "edit_profile": {
+    "saveChanges": "Save changes",
+    "profileUpdated": "Profile updated",
+    "changePicture": "Change picture",
+    "pictureUpdated": "Profile picture updated",
+    "fileTooLarge": "File too large (max 5 MB)",
+    "pickAnImage": "Pick an image file",
+    "uploadFailed": "Upload failed",
+    "signedOut": "Signed out"
+  },
+  "me_profile": {
+    "profileInformation": "Profile information",
+    "accountSecurity": "Account & security",
+    "changePassword": "Change password",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account",
+    "renewsRow": "Renews {renewal} · ends {endDate}",
+    "cancelRenewal": "Cancel auto-renewal",
+    "managePlan": "Manage plan",
+    "upgradeToPremium": "Upgrade to Premium",
+    "loading": "Loading your profile…"
+  },
+  "cancel_renewal": {
+    "title": "Cancel auto-renewal",
+    "preamble": "Sorry to see you go. Your subscription will stay active until the end of the current period — we just won't bill you again.",
+    "whyLeaving": "Why are you leaving?",
+    "pickReason": "Pick a reason",
+    "anythingElse": "Anything else? (optional)",
+    "whatBetter": "What could we have done better?",
+    "stay": "Stay subscribed",
+    "cancel": "Cancel renewal",
+    "cancelled": "Renewal cancelled",
+    "cancelledDesc": "Your subscription stays active until the end of the current period.",
+    "pickReasonError": "Please pick a reason so we can keep improving.",
+    "reasons": {
+      "HIGH_COST": "Too expensive",
+      "FEATURE_BROKEN": "A feature isn't working",
+      "NOT_USING_ENOUGH": "I'm not using it enough",
+      "CHANGE_IN_NEEDS": "My needs have changed",
+      "LACK_OF_FEATURE": "Missing a feature I need",
+      "OTHER": "Other"
+    }
+  },
+  "pricing_card": {
+    "perWeek": "week",
+    "perMonth": "month",
+    "perYear": "year",
+    "perOneTime": "one-time",
+    "recommended": "Recommended",
+    "subscribe": "Subscribe",
+    "currentPlan": "Current plan",
+    "couldntStart": "Could not start checkout",
+    "stripeNotConfigured": "Stripe is not configured (NUXT_PUBLIC_STRIPE_KEY missing)",
+    "features": {
+      "NO_ADS": "Enjoy an ad-free experience",
+      "NEARBY": "Discover users nearby",
+      "BOOKMARK": "Save your favorite content with bookmarks",
+      "ANONYMITY": "Browse anonymously",
+      "FULL_ACCESS": "Unlimited photo and video downloads"
+    },
+    "cancelAnytime": "Cancel anytime · Secure checkout via Stripe",
+    "billedRow": "Billed {price} {currency} per {term}",
+    "everythingIncluded": "Everything included"
+  },
+  "payment_method": {
+    "title": "Choose a payment method",
+    "stripeTitle": "Card / Apple Pay / Google Pay",
+    "stripeDesc": "Pay with Stripe — secure checkout, supports most countries.",
+    "sellixTitle": "Crypto & alternatives",
+    "sellixDesc": "Pay via Sellix — Bitcoin, Litecoin, USDT, and more."
+  },
+  "pricing_page": {
+    "heading": "Sotwe Premium",
+    "subhead": "Remove ads, unlock high-resolution media downloads, and support Sotwe. Cancel any time — your subscription stays active until the end of the current period.",
+    "noPlans": "No plans are available right now. Please check back later."
+  },
+  "payment_success": {
+    "topBarTitle": "Payment",
+    "metaTitle": "Payment successful · Sotwe",
+    "metaDescription": "Thanks for subscribing.",
+    "confirming": "Confirming your payment…",
+    "hangTight": "Hang tight — we're checking with {processor}.",
+    "allSet": "You're all set",
+    "welcome": "Welcome to {plan}. Enjoy ad-free browsing, full-resolution downloads, and early access to new features.",
+    "premiumFallback": "Sotwe Premium",
+    "backHome": "Back home"
+  },
+  "payment_fail": {
+    "topBarTitle": "Payment",
+    "metaTitle": "Payment failed · Sotwe",
+    "metaDescription": "Checkout was not completed.",
+    "heading": "We couldn't confirm your payment",
+    "somethingWrong": "Something went wrong",
+    "didNotGoThrough": "Your payment didn't go through. Please try again.",
+    "tryAgain": "Try again",
+    "footer": "If you were charged but don't see your subscription, please contact {email} and we'll sort it out.",
+    "back": "Back to pricing"
+  },
+  "profile_menu": {
+    "moreActions": "More actions for {'@'}{username}",
+    "openOnX": "Open on X",
+    "accountOwnership": "Account ownership",
+    "reportUser": "Report user",
+    "shareProfile": "Share profile",
+    "campaignTitle": "Verify your account",
+    "campaignBody": "If {'@'}{username} is yours, you can take ownership of this profile on Sotwe. Email us with the link below — sent from the email tied to your X account — and we'll wire your dashboard to this profile.",
+    "sendTo": "Send to {email}.",
+    "gotIt": "Got it",
+    "copy": "Copy"
+  },
+  "download_all": {
+    "label": "Download all",
+    "ariaLabel": "Download all media from {'@'}{username}",
+    "noMedia": "No media to download for {'@'}{username}",
+    "downloading": "Downloading {count} files…",
+    "downloaded": "Downloaded {count} files",
+    "failed": "Download failed"
+  },
+  "location_dialog": {
+    "title": "Allow your location",
+    "body": "Sotwe uses your approximate location to surface trends and people nearby. Your coordinates never leave your browser — we only use them locally to query the closest country / city.",
+    "notNow": "Not now",
+    "allow": "Allow"
+  },
+  "nearby_dialog": {
+    "title": "People around you",
+    "desc": "A peek at who's tweeting near you right now. Sign in to see the full list.",
+    "cantFetch": "Couldn't fetch nearby users. Try again in a moment.",
+    "noUsers": "No nearby users yet.",
+    "maybeLater": "Maybe later",
+    "goToNearby": "Go to Nearby"
+  },
+  "share_dialog": {
+    "title": "Share"
+  },
+  "generic_error": {
+    "defaultTitle": "Something went wrong",
+    "defaultBody": "An unexpected error happened. Please try again in a moment.",
+    "dismiss": "Dismiss",
+    "tryAgain": "Try again",
+    "continue": "Continue"
+  }
+}

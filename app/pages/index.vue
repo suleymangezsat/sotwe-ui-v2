@@ -26,11 +26,18 @@ const { data } = await useTrendsData(country, undefined, dateParams)
 const placeLabel = computed(() => placeDisplayName(data.value?.country || country, data.value?.city))
 const topTopicsText = computed(() => (data.value?.topics || []).slice(0, 4).map(t => t.name).join(', '))
 
+// Locale-aware meta. Both `/` and `/trends/:country/:city?` share the same
+// SEO key set (`trendspage.meta.*`) since they render the same view —
+// keeps Google's index from splitting trend traffic across two competing
+// title patterns. Param names match v1 verbatim (`activePlace`,
+// `topTopics`) so a single key tree drives all 4 locales.
+const { t } = useI18n()
 useSotweMeta({
-  title: `${placeLabel.value} — Twitter Trending Hashtags, Users, Topics, and Tweets`,
-  description: topTopicsText.value
-    ? `Hot trends in ${placeLabel.value} : ${topTopicsText.value}… Explore top Twitter trends, hashtags, tweets and users by country.`
-    : `Explore top Twitter trends, hashtags, tweets and users by country on Sotwe.`,
+  title: t('trendspage.meta.title', { activePlace: placeLabel.value }),
+  description: t('trendspage.meta.description', {
+    activePlace: placeLabel.value,
+    topTopics: topTopicsText.value,
+  }),
 })
 </script>
 
@@ -38,7 +45,7 @@ useSotweMeta({
   <!-- SMastHead carries the page-level h1 (the SEO-critical hero copy
        Google indexes). The topbar title is navigation chrome only, so it
        drops to h2 to keep this page at exactly one h1. -->
-  <STopBar title="Home" :as="'h2'" />
+  <STopBar :title="t('navigation.home')" :as="'h2'" />
   <SMastHead />
   <STrendsView v-if="data" :data="data" />
 </template>

@@ -1,15 +1,19 @@
 /*
- * ErrorCode → user-facing i18n key mapping.
+ * ErrorCode → translated `{ title, message }` lookup.
  *
- * Mirrors sotwe-ui/js/constants/ErrorMessage.js and the `errors.*` section
- * of each locale (app/locales/{en,tr,id}.js). Every ErrorCode has a matching
- * `errors.<CODE>.title` and `errors.<CODE>.message` translation.
+ * Mirrors v1's `js/constants/ErrorMessage.js` + the `errors.<CODE>.*` keys
+ * in each locale (`i18n/locales/{en,tr,id}.json`). Every backend
+ * `SotweApiError` carries a `code: ErrorCode`; this composable resolves
+ * that to localized title/message strings via vue-i18n's `$t()`.
  *
  * Usage in a component:
- *   const { title, message } = useErrorCode(err.code)
+ *   const { title, message } = useErrorCode(err)
  *
- * Faz 7 wires this up to @nuxtjs/i18n's $t; for now the keys are plain
- * strings so tests can assert on them.
+ * Falls back to UNEXPECTED when the error is not a recognized
+ * `SotweApiError`. When called outside a vue-i18n context (Vitest unit
+ * tests, server routes) the title/message stay as their i18n keys —
+ * still useful for log messages and tests can assert against them
+ * without bootstrapping the full i18n instance.
  */
 
 import { ErrorCode, type SotweApiError } from '~shared/types'
@@ -22,23 +26,30 @@ export interface ErrorDisplay {
   status: number | undefined
 }
 
-export function useErrorCode(err: unknown): ErrorDisplay {
-  if (isSotweApiError(err)) {
-    return {
-      code: err.code,
-      status: err.status,
-      title: `errors.${err.code}.title`,
-      message: `errors.${err.code}.message`,
-    }
+/**
+ * Best-effort `t()` helper. When useI18n() throws (e.g. test context with
+ * no Nuxt app), we return the key as-is so callers still get a meaningful
+ * non-empty string.
+ */
+function translate(key: string): string {
+  try {
+    const { t } = useI18n()
+    return t(key)
   }
+  catch {
+    return key
+  }
+}
 
-  const fallback: ErrorCode = ErrorCode.UNEXPECTED
-  return {
-    code: fallback,
-    status: undefined,
-    title: `errors.${fallback}.title`,
-    message: `errors.${fallback}.message`,
-  }
+export function useErrorCode(err: unknown): ErrorDisplay {
+  const resolve = (code: ErrorCode, status: number | undefined): ErrorDisplay => ({
+    code,
+    status,
+    title: translate(`errors.${code}.title`),
+    message: translate(`errors.${code}.message`),
+  })
+  if (isSotweApiError(err)) return resolve(err.code, err.status)
+  return resolve(ErrorCode.UNEXPECTED, undefined)
 }
 
 export function errorCodeFromStatus(status: number): ErrorCode {

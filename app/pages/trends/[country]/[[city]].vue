@@ -25,15 +25,20 @@ const { data } = await useTrendsData(country, city, dateParams)
 const placeLabel = computed(() => placeDisplayName(country.value, city.value))
 const topTopicsText = computed(() => (data.value?.topics || []).slice(0, 4).map(t => t.name).join(', '))
 
+// Same i18n keys as `/` (index.vue) — both views render the same trends
+// surface, so they share `trendspage.meta.*` to avoid splitting Google's
+// index across competing title patterns.
+const { t } = useI18n()
 useSotweMeta({
-  title: `${placeLabel.value} — Twitter Trending Hashtags, Users, Topics, and Tweets`,
-  description: topTopicsText.value
-    ? `Hot trends in ${placeLabel.value} : ${topTopicsText.value}… Explore top Twitter trends, hashtags, tweets and users by country.`
-    : `Popular tweets and trending topics from ${placeLabel.value}.`,
+  title: t('trendspage.meta.title', { activePlace: placeLabel.value }),
+  description: t('trendspage.meta.description', {
+    activePlace: placeLabel.value,
+    topTopics: topTopicsText.value,
+  }),
 })
 </script>
 
 <template>
-  <STopBar :title="`Trends · ${placeLabel}`" :show-back="true" />
+  <STopBar :title="t('trendspage.topBarTitle', { place: placeLabel })" :show-back="true" />
   <STrendsView v-if="data" :data="data" />
 </template>

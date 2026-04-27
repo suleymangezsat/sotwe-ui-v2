@@ -46,17 +46,19 @@ function startOAuth() {
   })}`
   window.location.replace(url)
 }
+
+const { t } = useI18n()
 </script>
 
 <template>
   <button
     type="button"
     :disabled="!enabled"
-    aria-label="Continue with Google"
+    :aria-label="t('common.continueWithGoogle')"
     class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-twitter-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-twitter-slate-950 transition-colors hover:bg-twitter-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-twitter-slate-700 dark:bg-twitter-slate-950 dark:text-twitter-slate-100 dark:hover:bg-twitter-slate-900"
     @click="startOAuth"
   >
     <Icon name="i-ri-google-fill" class="size-5 text-[#4285F4]" />
-    Continue with Google
+    {{ t('common.continueWithGoogle') }}
   </button>
 </template>

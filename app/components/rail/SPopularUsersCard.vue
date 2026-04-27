@@ -14,6 +14,7 @@ import { formatCount } from '~/utils/formatCount'
 const users = ref<User[]>([])
 const loading = ref(true)
 const error = ref<string | undefined>(undefined)
+const { t } = useI18n()
 
 async function load() {
   loading.value = true
@@ -35,20 +36,20 @@ onMounted(load)
 
 <template>
   <SCard padded>
-    <h2 class="mb-3 text-xl font-bold">Who to follow</h2>
+    <h2 class="mb-3 text-xl font-bold">{{ t('rail.whoToFollow') }}</h2>
 
     <div v-if="loading" class="flex items-center justify-center py-4">
       <Icon name="i-lucide-loader-circle" class="size-5 animate-spin text-twitter-slate-400" />
     </div>
     <p v-else-if="error" class="py-2 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-      Couldn't load suggestions.
+      {{ t('rail.couldntLoadSuggestions') }}
     </p>
     <p v-else-if="!users.length" class="py-2 text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-      No suggestions right now.
+      {{ t('rail.noSuggestions') }}
     </p>
     <ul v-else class="-mx-2">
       <li v-for="u in users" :key="u.id">
-        <SUserRow :user="u" :subtitle="u.followerCount ? `${formatCount(u.followerCount)} followers` : undefined" />
+        <SUserRow :user="u" :subtitle="u.followerCount ? t('rail.followersCount', { count: formatCount(u.followerCount) }) : undefined" />
       </li>
     </ul>
   </SCard>

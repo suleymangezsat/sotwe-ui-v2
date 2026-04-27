@@ -31,27 +31,28 @@ async function submit() {
 function back() {
   store.step = 1
 }
+
+const { t } = useI18n()
 </script>
 
 <template>
   <form class="flex flex-col gap-4" @submit.prevent="submit">
     <p class="text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-      We sent a code to <span class="font-semibold">{{ store.email }}</span>.
-      Enter it below to verify your email.
+      {{ t('signup_steps.codeSentTo', { email: store.email }) }}
     </p>
     <SOtpField v-model="store.otpCode" @update:error="otpError = $event" />
 
     <SFormError :code="errorCode" />
 
     <SButton block type="submit" :loading="store.loading" :disabled="!canSubmit">
-      Verify
+      {{ t('signup_steps.verify') }}
     </SButton>
     <button
       type="button"
       class="text-sm text-twitter-blue-500 hover:underline"
       @click="back"
     >
-      Use a different email
+      {{ t('signup_steps.useDifferentEmail') }}
     </button>
   </form>
 </template>

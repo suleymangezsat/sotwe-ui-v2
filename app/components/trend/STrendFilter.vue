@@ -20,6 +20,7 @@ const open = ref(false)
 const search = ref('')
 const countries = useCountriesStore()
 const router = useRouter()
+const { t } = useI18n()
 
 function toggle() {
   open.value = !open.value
@@ -72,16 +73,16 @@ function toggleExpand(code: string) {
         <input
           v-model="search"
           type="search"
-          placeholder="Search places"
+          :placeholder="t('common.search_places')"
           class="w-full rounded-full bg-twitter-slate-50 px-3 py-2 text-sm placeholder:text-twitter-slate-500 focus:outline-none dark:bg-twitter-slate-900"
         >
       </div>
 
       <ul v-if="countries.loading" class="py-6 text-center text-sm text-twitter-slate-500">
-        Loading…
+        {{ t('common.loading') }}
       </ul>
       <ul v-else-if="!filtered.length" class="py-6 text-center text-sm text-twitter-slate-500">
-        No results
+        {{ t('common.noResults') }}
       </ul>
       <ul v-else>
         <li v-for="w in filtered" :key="w.fullname" class="border-b border-twitter-slate-100 last:border-b-0 dark:border-twitter-slate-800">
@@ -97,7 +98,7 @@ function toggleExpand(code: string) {
               v-if="(w.cities || []).length"
               type="button"
               class="rounded-full p-1 hover:bg-twitter-slate-100 dark:hover:bg-twitter-slate-800"
-              :aria-label="`Show cities in ${w.name}`"
+              :aria-label="t('trendspage.showCitiesIn', { name: w.name })"
               @click="toggleExpand(w.fullname)"
             >
               <Icon :name="expandedCountry === w.fullname ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'" class="size-4 text-twitter-slate-500" />

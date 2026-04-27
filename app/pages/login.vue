@@ -32,9 +32,10 @@ const route = useRoute()
 const auth = useAuth()
 const redirect = computed(() => (route.query.redirect as string | undefined) || '/me/profile')
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Sign in · Sotwe',
-  description: 'Sign in to Sotwe.',
+  title: t('loginPage.meta.title'),
+  description: t('loginPage.meta.description'),
   noindex: true,
 })
 
@@ -56,7 +57,7 @@ async function submit() {
     }
     else {
       errorCode.value = ErrorCode.UNEXPECTED
-      errorMessage.value = (e as Error).message || 'Sign-in failed'
+      errorMessage.value = (e as Error).message || t('auth_dialog.signInFailed')
     }
   }
   finally {
@@ -67,14 +68,13 @@ async function submit() {
 
 <template>
   <!-- The page hero ("Sign in to Sotwe") is the h1 — topbar drops to h2. -->
-  <STopBar title="Sign in" :show-back="true" :as="'h2'" />
+  <STopBar :title="t('auth.signIn')" :show-back="true" :as="'h2'" />
   <section class="mx-auto flex max-w-sm flex-col gap-6 px-4 py-8">
     <div class="flex flex-col items-center gap-2">
       <SLogo :size="40" />
-      <h1 class="text-center text-2xl font-bold">Sign in to Sotwe</h1>
+      <h1 class="text-center text-2xl font-bold">{{ t('auth_dialog.signInTitle') }}</h1>
       <p class="text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Welcome back. Sign in to follow up on bookmarks, manage your
-        subscription, and pick up where you left off.
+        {{ t('auth_dialog.welcomeBack') }}
       </p>
     </div>
 
@@ -82,7 +82,7 @@ async function submit() {
 
     <div class="flex items-center gap-3 text-xs text-twitter-slate-400">
       <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
-      OR
+      {{ t('auth_dialog.orDivider') }}
       <span class="h-px flex-1 bg-twitter-slate-100 dark:bg-twitter-slate-800" />
     </div>
 
@@ -108,20 +108,20 @@ async function submit() {
         :loading="loading"
         :disabled="!email || !password"
       >
-        Sign in
+        {{ t('auth_dialog.signInButton') }}
       </SButton>
     </form>
 
     <div class="flex items-center justify-between text-sm">
       <NuxtLink to="/signup" class="font-semibold text-twitter-blue-500 hover:underline">
-        Create account
+        {{ t('auth_dialog.createAccount') }}
       </NuxtLink>
       <button
         type="button"
         class="text-twitter-slate-500 hover:underline dark:text-twitter-slate-400"
         @click="forgotOpen = true"
       >
-        Forgot password?
+        {{ t('auth_dialog.forgotPassword') }}
       </button>
     </div>
 

@@ -14,6 +14,7 @@
 const ui = useUiStore()
 const config = useRuntimeConfig()
 const toast = useToast()
+const { t } = useI18n()
 
 const open = computed({
   get: () => ui.displayCampaignModal,
@@ -36,37 +37,34 @@ const profileLink = computed(() => {
 async function copy() {
   try {
     await navigator.clipboard.writeText(profileLink.value)
-    toast.add({ title: 'Link copied', icon: 'i-lucide-link' })
+    toast.add({ title: t('tweet.linkCopied'), icon: 'i-lucide-link' })
   }
   catch {
-    toast.add({ title: 'Copy failed', color: 'error' })
+    toast.add({ title: t('tweet.copyFailed'), color: 'error' })
   }
 }
 </script>
 
 <template>
-  <SDialog v-model="open" title="Verify your account">
+  <SDialog v-model="open" :title="t('profile_menu.campaignTitle')">
     <div class="flex flex-col gap-4">
       <p class="text-sm text-twitter-slate-700 dark:text-twitter-slate-300">
-        If <span class="font-semibold">@{{ screenName }}</span> is yours,
-        you can take ownership of this profile on Sotwe. Email us with
-        the link below — sent from the email tied to your X account — and
-        we'll wire your dashboard to this profile.
+        {{ t('profile_menu.campaignBody', { username: screenName }) }}
       </p>
 
       <div class="flex items-stretch gap-2 rounded-lg border border-twitter-slate-100 bg-twitter-slate-50 p-1 text-sm dark:border-twitter-slate-700 dark:bg-twitter-slate-900">
         <span class="min-w-0 flex-1 truncate px-2 py-2 font-mono text-xs text-twitter-slate-700 dark:text-twitter-slate-300">
           {{ profileLink }}
         </span>
-        <SButton size="sm" icon="i-lucide-copy" @click="copy">Copy</SButton>
+        <SButton size="sm" icon="i-lucide-copy" @click="copy">{{ t('profile_menu.copy') }}</SButton>
       </div>
 
       <p class="text-xs text-twitter-slate-500 dark:text-twitter-slate-400">
-        Send to <a href="mailto:contact@sotwe.com" class="text-twitter-blue-500 hover:underline">contact@sotwe.com</a>.
+        {{ t('profile_menu.sendTo', { email: 'contact@sotwe.com' }) }}
       </p>
 
       <div class="flex justify-end">
-        <SButton @click="open = false">Got it</SButton>
+        <SButton @click="open = false">{{ t('profile_menu.gotIt') }}</SButton>
       </div>
     </div>
   </SDialog>

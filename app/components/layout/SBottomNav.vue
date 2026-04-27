@@ -5,13 +5,14 @@
  * which is invisible on mobile (use the Explore search).
  */
 
-const items = [
-  { label: 'Home', to: '/', icon: 'i-lucide-house' },
-  { label: 'Nearby', to: '/me/nearby', icon: 'i-lucide-map-pin' },
-  { label: 'Bookmarks', to: '/me/bookmarks', icon: 'i-lucide-bookmark' },
-  { label: 'Profile', to: '/me/profile', icon: 'i-lucide-user-round' },
-  { label: 'Premium', to: '/pricing', icon: 'i-lucide-badge-check' },
-]
+const { t } = useI18n()
+const items = computed(() => [
+  { label: t('navigation.home'), to: '/', icon: 'i-lucide-house' },
+  { label: t('navigation.nearby'), to: '/me/nearby', icon: 'i-lucide-map-pin' },
+  { label: t('navigation.myBookmarks'), to: '/me/bookmarks', icon: 'i-lucide-bookmark' },
+  { label: t('navigation.myProfile'), to: '/me/profile', icon: 'i-lucide-user-round' },
+  { label: t('navigation.pricing'), to: '/pricing', icon: 'i-lucide-badge-check' },
+])
 
 const route = useRoute()
 </script>

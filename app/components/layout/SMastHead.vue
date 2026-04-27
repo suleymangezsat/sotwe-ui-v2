@@ -8,6 +8,7 @@
 
 const q = ref('')
 const router = useRouter()
+const { t } = useI18n()
 
 function submit() {
   const term = q.value.trim()
@@ -22,14 +23,14 @@ function submit() {
   <section class="border-b border-twitter-slate-100 px-6 py-10 dark:border-twitter-slate-700">
     <SLogo :size="44" class="mb-5" />
     <h1 class="text-3xl font-bold tracking-tight text-twitter-slate-950 dark:text-twitter-slate-100">
-      Read Twitter / X without an account.
+      {{ t('masthead.headline') }}
     </h1>
     <p class="mt-2 max-w-lg text-twitter-slate-500 dark:text-twitter-slate-400">
-      Discover the most viewed tweets from your country and around the world. Search users, hashtags, and trending topics — no sign-up, no tracking.
+      {{ t('masthead.tagline') }}
     </p>
 
     <form role="search" class="mt-5 max-w-md" @submit.prevent="submit">
-      <label class="sr-only" for="sotwe-masthead-search">Search Sotwe</label>
+      <label class="sr-only" for="sotwe-masthead-search">{{ t('masthead.searchAria') }}</label>
       <div
         class="flex items-center gap-2 rounded-full border border-transparent bg-twitter-slate-50 px-4 py-3 text-base transition-colors focus-within:border-twitter-blue-500 focus-within:bg-white dark:bg-twitter-slate-900 dark:focus-within:bg-black"
       >
@@ -39,7 +40,7 @@ function submit() {
           v-model="q"
           type="search"
           autocomplete="off"
-          placeholder="Search users, hashtags, or tweets"
+          :placeholder="t('masthead.searchPlaceholder')"
           class="w-full bg-transparent placeholder:text-twitter-slate-500 focus:outline-none"
         >
       </div>

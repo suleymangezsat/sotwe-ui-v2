@@ -15,6 +15,7 @@ import { useSignupStore } from '~/stores/signup'
 
 const ui = useUiStore()
 const store = useSignupStore()
+const { t } = useI18n()
 
 const open = computed({
   get: () => ui.signupDialog.display,
@@ -26,9 +27,9 @@ watch(open, (v) => {
 })
 
 const stepLabel = computed(() => {
-  if (store.step === 1) return 'Create your account'
-  if (store.step === 2) return 'Verify your email'
-  return 'Tell us about you'
+  if (store.step === 1) return t('signup_steps.stepCreate')
+  if (store.step === 2) return t('signup_steps.stepVerify')
+  return t('signup_steps.stepProfile')
 })
 
 function onProfileDone() {
@@ -41,7 +42,7 @@ function onProfileDone() {
 <template>
   <SDialog v-model="open" :title="stepLabel">
     <div class="flex flex-col gap-4">
-      <div class="flex items-center justify-center gap-2" aria-label="Signup progress">
+      <div class="flex items-center justify-center gap-2" :aria-label="t('signup_steps.progressLabel')">
         <span
           v-for="n in 3"
           :key="n"
@@ -58,13 +59,13 @@ function onProfileDone() {
       <SSignupStepProfile v-else @done="onProfileDone" />
 
       <p class="text-center text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-        Already have an account?
+        {{ t('auth_dialog.alreadyHaveAccount') }}
         <button
           type="button"
           class="font-semibold text-twitter-blue-500 hover:underline"
           @click="open = false; ui.loginDialog.display = true"
         >
-          Sign in
+          {{ t('auth_dialog.signInButton') }}
         </button>
       </p>
     </div>

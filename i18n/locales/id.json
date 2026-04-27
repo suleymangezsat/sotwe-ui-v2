@@ -1,0 +1,1099 @@
+{
+  "navigation": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "privacyPolicy": "Kebijakan Privasi",
+    "termsOfService": "Syarat Layanan",
+    "pricing": "Harga",
+    "language": "Bahasa",
+    "logout": "Keluar",
+    "myProfile": "Profil Saya",
+    "myBookmarks": "Bookmark Saya",
+    "search": {
+      "placeholder": "Mencari"
+    },
+    "nearby": "Sekitar",
+    "refundPolicy": "Kebijakan Pengembalian"
+  },
+  "errors": {
+    "UNSPECIFIED": {
+      "title": "Kesalahan Tidak Spesifik",
+      "message": "Terjadi kesalahan, tetapi tidak ada informasi tambahan yang tersedia. Silakan coba lagi."
+    },
+    "VALIDATION_ERROR": {
+      "title": "Kesalahan Validasi",
+      "message": "Beberapa bidang tidak memenuhi pemeriksaan validasi kami. Harap periksa dan perbaiki."
+    },
+    "BAD_REQUEST": {
+      "title": "Permintaan Salah",
+      "message": "Permintaan Anda tidak dapat diproses. Silakan periksa pengiriman Anda dan coba lagi."
+    },
+    "NO_CONNECTION": {
+      "title": "Tidak Ada Koneksi",
+      "message": "Tidak ada koneksi internet yang tersedia. Silakan periksa pengaturan jaringan Anda dan coba lagi."
+    },
+    "PAYMENT_FAILED": {
+      "title": "Pembayaran Gagal",
+      "message": "Pembayaran Anda tidak dapat diproses. Harap verifikasi informasi pembayaran Anda dan coba lagi."
+    },
+    "PAYMENT_NOT_FOUND": {
+      "title": "Pembayaran Tidak Ditemukan",
+      "message": "Kami tidak dapat menemukan pembayaran yang Anda maksud. Silakan verifikasi detailnya dan coba lagi."
+    },
+    "INSUFFICIENT_SUBSCRIPTION": {
+      "title": "Tingkat Langganan Tidak Cukup",
+      "message": "Tingkat langganan Anda saat ini tidak memungkinkan untuk melakukan tindakan ini. Silakan tingkatkan langganan Anda."
+    },
+    "CANNOT_SEND_EMAIL": {
+      "title": "Tidak Dapat Mengirim Email",
+      "message": "Kami tidak dapat mengirim email ke alamat yang disediakan. Silakan periksa alamat email dan coba lagi."
+    },
+    "TOO_MANY_OTP_REQUESTS": {
+      "title": "Terlalu Banyak Permintaan OTP",
+      "message": "Anda telah meminta terlalu banyak kode OTP. Harap tunggu sebentar sebelum mencoba lagi."
+    },
+    "LOGIN_FAILED": {
+      "title": "Login Gagal",
+      "message": "Kami tidak dapat log Anda masuk dengan kredensial yang disediakan. Silakan periksa dan coba lagi."
+    },
+    "USER_NOT_FOUND": {
+      "title": "Pengguna Tidak Ditemukan",
+      "message": "Pengguna yang ditentukan tidak ada dalam sistem kami. Silakan periksa detailnya dan coba lagi."
+    },
+    "SUBSCRIPTION_NOT_FOUND": {
+      "title": "Langganan Tidak Ditemukan",
+      "message": "Tidak ada langganan aktif yang ditemukan untuk akun Anda. Silakan berlangganan untuk melanjutkan."
+    },
+    "INVALID_USERNAME": {
+      "title": "Nama Pengguna Tidak Valid",
+      "message": "Nama pengguna yang Anda masukkan tidak memenuhi persyaratan kami. Silakan pilih yang lain."
+    },
+    "INVALID_PASSWORD": {
+      "title": "Kata Sandi Tidak Valid",
+      "message": "Kata sandi yang dimasukkan tidak benar. Silakan periksa dan coba lagi."
+    },
+    "INVALID_OLD_PASSWORD": {
+      "title": "Kata Sandi Lama Tidak Valid",
+      "message": "Kata sandi lama yang Anda masukkan tidak benar. Silakan periksa dan coba lagi."
+    },
+    "SUSPENDED_USER": {
+      "title": "Pengguna Diblokir",
+      "message": "Akun ini telah diblokir. Silakan hubungi dukungan untuk detail lebih lanjut."
+    },
+    "NOT_FOUND": {
+      "title": "Tidak Ditemukan",
+      "message": "Sumber daya yang diminta tidak ditemukan di server kami. Silakan periksa URL dan coba lagi."
+    },
+    "TWREQ_ERROR": {
+      "title": "Kesalahan Permintaan Twitter",
+      "message": "Ada masalah dengan permintaan Anda ke Twitter. Silakan coba lagi nanti."
+    },
+    "IO_ERROR": {
+      "title": "Kesalahan Input/Output",
+      "message": "Terjadi kesalahan selama operasi input/output. Silakan coba lagi."
+    },
+    "EMAIL_NOT_VERIFIED": {
+      "title": "Email Belum Terverifikasi",
+      "message": "Alamat email Anda belum diverifikasi. Silakan periksa email Anda untuk tautan verifikasi."
+    },
+    "IMAGE_UPLOAD_ERROR": {
+      "title": "Kesalahan Unggah Gambar",
+      "message": "Ada masalah mengunggah gambar Anda. Silakan coba lagi."
+    },
+    "BAD_CREDENTIALS": {
+      "title": "Kredensial Buruk",
+      "message": "Kredensial login yang Anda berikan salah. Silakan coba memasukkannya lagi."
+    },
+    "UNEXPECTED": {
+      "title": "Kesalahan Tak Terduga",
+      "message": "Terjadi kesalahan tak terduga. Silakan coba lagi nanti."
+    },
+    "INVALID_STEP": {
+      "title": "Langkah Tidak Valid",
+      "message": "Langkah yang Anda coba akses tidak valid atau telah kedaluwarsa. Silakan mulai dari awal."
+    },
+    "EMAIL_EXISTS": {
+      "title": "Email Sudah Ada",
+      "message": "Alamat email yang Anda masukkan sudah digunakan. Silakan gunakan email lain atau pulihkan akun Anda."
+    },
+    "USERNAME_EXISTS": {
+      "title": "Nama Pengguna Sudah Ada",
+      "message": "Nama pengguna yang Anda pilih sudah diambil. Silakan pilih nama pengguna yang berbeda."
+    },
+    "INVALID_OTP": {
+      "title": "OTP Tidak Valid",
+      "message": "Kode OTP yang Anda masukkan salah atau telah kedaluwarsa. Silakan minta OTP baru."
+    },
+    "BOOKMARK_SIZE_EXCEEDED": {
+      "title": "Kapasitas Bookmark Terlampaui",
+      "message": "Anda telah mencapai jumlah maksimum bookmark yang diizinkan. Silakan hapus beberapa bookmark untuk menambahkan lebih banyak."
+    }
+  },
+  "adFreePromotionCard": {
+    "title": "Penjelajahan Bebas Iklan",
+    "description": "Nikmati Sotwe tanpa iklan dan dapatkan pengalaman menjelajah yang lebih menyenangkan. Lebih banyak konten, tanpa iklan 🚀",
+    "button_text": "Berlangganan sekarang"
+  },
+  "common": {
+    "add_bookmark": "Tambahkan Bookmark",
+    "remove_bookmark": "Hapus Bookmark",
+    "link_to_share": "Tautan untuk dibagikan",
+    "search_places": "Cari tempat",
+    "retweeted": "di-retweet",
+    "seeMore": "Lihat Selengkapnya",
+    "seeLess": "Lihat Lebih Sedikit",
+    "somethingWR": "Ada yang salah.",
+    "tryAgain": "Coba lagi",
+    "notFound": "Tidak ditemukan",
+    "noResults": "Tidak ada hasil",
+    "today": "Hari ini",
+    "yesterday": "Kemarin",
+    "weekAgo": "Minggu lalu",
+    "monthAgo": "bulan lalu",
+    "now": "Sekarang",
+    "message": "Pesan",
+    "hoursAgo": "{hour} jam yang lalu",
+    "downloadImage": "Unduh Foto",
+    "downloadVideo": "Unduh Video",
+    "downloadGif": "Unduh GIF",
+    "image": "Gambar",
+    "video": "Video",
+    "seenFrom": "Dilihat dari",
+    "linkIsCopied": "Tautan disalin!",
+    "close": "Menutup",
+    "cancel": "Membatalkan",
+    "send": "Kirim",
+    "share": "Membagikan",
+    "shareProfile": "Membagikan Profil",
+    "campaignModal": {
+      "title": "ADALAH AKUN {'@'}{username} ANDA?"
+    },
+    "signInWithTwitter": "Masuk dengan Twitter",
+    "unableToLoginTwitter": "Tidak dapat masuk ke Twitter karena kesalahan",
+    "goToHome": "Pergi ke beranda",
+    "loggingIn": "Masuk...",
+    "loggedIn": "Masuk",
+    "loggedOut_message": "Anda telah berhasil keluar.",
+    "youHaveToLoginBefore": "Anda harus login sebelum mengakses {0}",
+    "allow": "Mengizinkan",
+    "notNow": "Jangan sekarang",
+    "messageSent": "Pesan terkirim",
+    "messageFailed": "Pesan Gagal",
+    "loginCancelled": "Masuk Dibatalkan",
+    "signIn": "masuk",
+    "loginCancelled_message": "Anda memutuskan untuk membatalkan login ke situs kami menggunakan akun Twitter Anda. Jika ini adalah kesalahan, lanjutkan ke {0}.",
+    "downloadAll": "Unduh Semua",
+    "searchInTwitter": "Cari di Twitter",
+    "hideSearch": "Sembunyikan pencarian",
+    "seeNearbyUsers": "Lihat pengguna terdekat",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "playVideo": "Putar video",
+    "sendMessage": "Mengirim pesan",
+    "accountOwnership": "Kepemilikan Akun",
+    "downloadAllMedia": "Unduh Semua Media",
+    "submit": "Kirim",
+    "done": "Selesai",
+    "more": "Lebih",
+    "pinned": "Tweet Sematan",
+    "upload": "Unggah",
+    "edit": "Edit",
+    "continueWithGoogle": "Lanjutkan dengan Google",
+    "or": "Atau",
+    "videoPlayer": "Pemutar video",
+    "likes": "{count} suka",
+    "retweets": "{count} retweet",
+    "views": "{count} tayangan",
+    "replies": "{count} balasan",
+    "bookmarks": "{count} bookmark",
+    "bookmarkAdded": "Ditambahkan ke Bookmark Anda",
+    "bookmarkRemoved": "Dihapus dari Bookmark Anda",
+    "back": "Kembali",
+    "darkMode": "Beralih ke mode gelap",
+    "lightMode": "Beralih ke mode terang",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "date": "Tanggal",
+    "time": "Waktu",
+    "oneHourAgo": "1 jam yang lalu",
+    "in": "di",
+    "loading": "Memuat…"
+  },
+  "meta": {
+    "title": "Twitter Web Viewer & Trend Analyzer & Downloader",
+    "description": "Jelajahi topik tren Twitter, pengguna, dan tweet & temukan pengguna Twitter, tagar, dan tempat paling populer & unduh foto dan video yang disematkan di tweet. ",
+    "homepage": {
+      "title": "{place} — Hashtag, Pengguna, Topik, dan Tweet Twitter Trending",
+      "description": "Tren populer di {place}: {topics}… Jelajahi tren, hashtag, tweet, dan pengguna Twitter teratas berdasarkan negara di Sotwe.",
+      "descriptionFallback": "Jelajahi tren, hashtag, tweet, dan pengguna Twitter teratas berdasarkan negara di Sotwe."
+    },
+    "user": {
+      "title": "{name} ({'@'}{screenName}) · Sotwe",
+      "description": "Baca tweet {'@'}{screenName} di Sotwe tanpa akun Twitter."
+    }
+  },
+  "nearby": {
+    "peopleAroundYou": "Orang-Orang Di Sekitar Anda",
+    "canNotDetermineYourLocation": "Tidak dapat menentukan lokasi Anda",
+    "locationDenied_message": "Sotwe ditolak izinnya untuk mengakses lokasi Anda. Berikan izin kepada browser dan Sotwe Anda untuk menggunakan lokasi Anda saat ini dan coba lagi.",
+    "allowYourLocation": "Izinkan Lokasi Anda",
+    "provideAccessToYourLocation_message": "Berikan kami akses ke lokasi Anda, yang diperlukan untuk melihat orang-orang terdekat",
+    "km_unit": "{number} km",
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Langganan Diperlukan",
+        "message": "Anda perlu memiliki langganan premium untuk melihat pengguna di sekitar. Silakan tingkatkan akun Anda ke premium."
+      }
+    }
+  },
+  "pricing": {
+    "letsGetStarted": "Mari Mulai",
+    "upgradeYourAccount_message": "Tingkatkan akun Anda ke Sotwe Premium untuk pengalaman Sotwe yang lebih baik.",
+    "tryNow": "Coba sekarang",
+    "perYear": "per tahun",
+    "perMonth": "per bulan",
+    "perWeek": "per minggu",
+    "oneTime": "satu kali",
+    "features": {
+      "adFree": "Nikmati Pengalaman Tanpa Iklan",
+      "seeUsersNearby": "Temukan Pengguna di Sekitar Anda",
+      "unlimitedDownloads": "Unduh Foto dan Video Tanpa Batas",
+      "bookmark": "Bookmark Tanpa Batas",
+      "prioritySupport": "Dapatkan Dukungan Prioritas"
+    },
+    "campaigns": {
+      "FREE": "Akses dasar",
+      "PREMIUM": "Premium selama 1 bulan"
+    },
+    "paymentFailed_message": "Pembayaran Anda gagal. Silakan coba lagi.",
+    "paymentSuccess_message": "Pembayaran Anda berhasil. Terima kasih atas pesanan Anda, {username}!",
+    "youSubscribed": "Anda telah berlangganan",
+    "onlyPremium_message": "Hanya pengguna Premium yang dapat mengirim pesan",
+    "loginToSubscribe": "Silakan masuk ke akun Anda untuk berlangganan rencana Premium.",
+    "skipNow": "Lewati Sekarang",
+    "meta": {
+      "title": "Harga",
+      "description": "Tingkatkan Sotwe Anda untuk fitur premium seperti pengikut tanpa batas, pesan tanpa batas, tampilan bebas iklan, dan lainnya."
+    }
+  },
+  "bookmark": {
+    "errors": {
+      "INSUFFICIENT_SUBSCRIPTION": {
+        "title": "Langganan Dibutuhkan",
+        "message": "Anda telah mencapai batas penanda gratis Anda. Silakan tingkatkan ke langganan premium untuk penanda tanpa batas."
+      }
+    }
+  },
+  "cancelRenewal": {
+    "title": "Batalkan Perpanjangan",
+    "subtitle": "Kami sedih melihat Anda pergi!",
+    "description": "Kami menghargai dukungan Anda sebelumnya dan ingin mengingatkan bahwa pembatalan perpanjangan Anda tidak langsung mengakhiri fitur premium Anda. Anda dapat terus menikmati layanan hingga akhir periode langganan Anda saat ini.",
+    "feedbackPrompt": "Tolong beritahu kami mengapa Anda membatalkan langganan Anda. Umpan balik Anda akan membantu kami meningkatkan layanan.",
+    "reasonLabel": "Pilih alasan",
+    "reasons": {
+      "high_cost": "Biaya tinggi",
+      "feature_broken": "Beberapa fitur rusak",
+      "not_using_enough": "Tidak cukup menggunakan layanan",
+      "change_in_needs": "Perubahan kebutuhan",
+      "lack_of_feature": "Kekurangan fitur yang diharapkan",
+      "other": "Lainnya"
+    },
+    "additionalFeedback": "Silakan bagikan pemikiran Anda di sini...",
+    "stayButton": "Tetap berlangganan",
+    "cancelButton": "Batalkan perpanjangan",
+    "reasonRequired": "Alasan diperlukan",
+    "success": "Perpanjangan langganan berhasil dibatalkan",
+    "error": "Terjadi kesalahan saat membatalkan perpanjangan langganan Anda"
+  },
+  "login": {
+    "joinUs": "Bergabung dengan Kami",
+    "joinUs_description": "Menjadi bagian dari komunitas Sotwe dan mulai nikmati fitur unik eksklusif untuk anggota.",
+    "joinSotweCommunity_message": "Bergabung dengan komunitas pribadi Sotwe",
+    "seeTwitterUsersNearby": "Lihat pengguna Twitter di dekat Anda",
+    "sendDirectMessages": "Kirim pesan langsung",
+    "downloadAll": "Unduh semua foto dan video",
+    "noAds": "Tampilan bebas iklan",
+    "bookmarkYourFavorites": "Bookmark favorit anda"
+  },
+  "profile": {
+    "welcome": "Selamat Datang, {name}!",
+    "general": "Umum",
+    "editProfile": "Edit Profil",
+    "changePassword": "Ganti Kata Sandi",
+    "deleteAccount": "Hapus Akun",
+    "deleteWarning": "Setelah Anda menghapus akun Anda, tidak ada jalan kembali. Harap pastikan.",
+    "deleteBtn": "Hapus Akun",
+    "joinedAt": "Bergabung pada {date}",
+    "upgradePremium": "Tingkatkan ke Premium",
+    "premiumEndsOn": "berakhir pada {date}",
+    "premiumRenewsOn": "diperbarui pada {date}",
+    "uploadProfilePicSuccess": "Gambar profil berhasil diunggah!",
+    "uploadProfilePicError": "Ada masalah mengunggah gambar profil Anda.",
+    "features": {
+      "username": "Nama Pengguna",
+      "email": "Email",
+      "joined": "Bergabung"
+    },
+    "deleteAccountDialog": {
+      "title": "Hapus Akun",
+      "description": "Apakah Anda yakin ingin menghapus akun Anda? Silakan ketik HAPUS di kotak di bawah ini untuk mengonfirmasi.",
+      "confirmInputLabel": "Ketik \"HAPUS\" untuk mengonfirmasi",
+      "confirmInputRule": "Anda harus mengetik \"HAPUS\" untuk mengonfirmasi.",
+      "deleteKeyword": "HAPUS",
+      "deleteButton": "Hapus Akun",
+      "cancelButton": "Batal",
+      "successMessage": "Akun Anda berhasil dihapus.",
+      "errorMessage": "Terjadi kesalahan saat menghapus akun Anda."
+    }
+  },
+  "loginPage": {
+    "title": "Masuk",
+    "description": "Akses akun Sotwe Anda",
+    "meta": {
+      "title": "Masuk ke Sotwe",
+      "description": "Masukkan email dan kata sandi Anda untuk masuk dan mengakses pengaturan serta fitur pribadi di platform kami."
+    }
+  },
+  "signupPage": {
+    "title": "Daftar",
+    "description": "Buat akun Sotwe Anda",
+    "meta": {
+      "title": "Daftar di Sotwe",
+      "description": "Buat akun Anda di Sotwe untuk mengakses semua fitur dan pengaturan di platform kami."
+    }
+  },
+  "myProfilePage": {
+    "meta": {
+      "title": "Profil Saya",
+      "description": "Edit pengaturan profil Anda, ganti kata sandi, atau hapus akun Anda di Sotwe."
+    }
+  },
+  "messages": {
+    "downloading": "Mengunduh...",
+    "downloadCompleted": "Pengunduhan selesai",
+    "failedToDownload": "Gagal mengunduh file",
+    "noMediaToDownload": "Tidak ada media yang dapat diunduh oleh {username}",
+    "downloadingAllMedia": "Mengunduh {size} file media milik {username}..."
+  },
+  "auth": {
+    "signIn": "Masuk",
+    "signUp": "Daftar",
+    "login": "Login",
+    "alreadyHaveAccount": "Sudah memiliki akun?",
+    "dontYouHaveAccount": "Tidak memiliki akun?",
+    "forgotYourPassword": "Lupa kata sandi Anda?",
+    "doYouHaveFavoriteSelfie": "Apakah Anda memiliki selfie favorit?",
+    "logoutSuccess": "Anda telah berhasil keluar.",
+    "skipForNow": "Lewati untuk sekarang",
+    "formLabels": {
+      "username": "Nama Pengguna",
+      "email": "Email",
+      "password": "Kata Sandi",
+      "fullname": "Nama Lengkap",
+      "gender": "Jenis Kelamin",
+      "birthDate": "Tanggal Lahir",
+      "birthDate_info": "Ini tidak akan ditampilkan secara publik. Meskipun akun ini untuk bisnis, hewan peliharaan, atau lainnya, Anda harus memverifikasi usia Anda sendiri.",
+      "month": "Bulan",
+      "day": "Hari",
+      "year": "Tahun",
+      "oldPassword": "Kata Sandi Lama",
+      "newPassword": "Kata Sandi Baru",
+      "confirmPassword": "Konfirmasi Kata Sandi",
+      "confirmNewPassword": "Konfirmasi Kata Sandi Baru",
+      "changePassword": "Ganti Kata Sandi",
+      "passwordChanged_toast": "Kata sandi berhasil diubah!",
+      "loggedInSuccessfully_toast": "Berhasil masuk!",
+      "signupSuccess_toast": "Pendaftaran berhasil!"
+    },
+    "next": "Lanjutkan",
+    "formRules": {
+      "emailRequired": "Email diperlukan",
+      "emailMinLength": "Alamat email harus memiliki setidaknya 5 karakter",
+      "emailMaxLength": "Alamat email tidak boleh lebih dari 50 karakter",
+      "emailValid": "Silakan masukkan alamat email yang valid",
+      "fullnameRequired": "Nama lengkap diperlukan",
+      "fullnameLength": "Nama lengkap harus kurang dari 50 karakter",
+      "usernameRequired": "Nama pengguna diperlukan",
+      "usernameLengthMin": "Nama pengguna harus memiliki setidaknya 3 karakter",
+      "usernameLengthMax": "Nama pengguna tidak boleh lebih dari 50 karakter",
+      "usernameCharacters": "Nama pengguna hanya boleh berisi huruf, angka, dan garis bawah",
+      "passwordRequired": "Kata sandi diperlukan",
+      "passwordMinLength": "Kata sandi harus memiliki setidaknya 8 karakter",
+      "passwordMaxLength": "Kata sandi tidak boleh lebih dari 50 karakter",
+      "genderRequired": "Jenis kelamin diperlukan",
+      "monthRequired": "Bulan diperlukan",
+      "dayRequired": "Hari diperlukan",
+      "yearRequired": "Tahun diperlukan"
+    },
+    "months": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+    "genders": {
+      "male": "Pria",
+      "female": "Wanita",
+      "other": "Lainnya"
+    },
+    "otpVerification": {
+      "sentCodeTitle": "Kami telah mengirimkan kode",
+      "enterCodeInstruction": "Masukkan di bawah ini untuk memverifikasi {email}",
+      "didNotReceiveCode": "Tidak menerima kode?",
+      "resendButton": "Kirim Ulang"
+    }
+  },
+  "signup": {
+    "beverages": {
+      "verifyEmail": "Verifikasi email Anda",
+      "createAccount": "Buat akun Anda",
+      "chooseProfilePic": "Pilih gambar profil Anda",
+      "getPremium": "Dapatkan Premium"
+    }
+  },
+  "forgotPassword": {
+    "enterEmail_description": "Untuk mengganti kata sandi Anda, masukkan alamat email yang terkait dengan akun Anda.",
+    "titles": {
+      "findAccount": "Temukan akun Anda",
+      "verifyEmail": "Verifikasi email Anda",
+      "changePassword": "Ganti kata sandi Anda"
+    }
+  },
+  "paymentMethod": {
+    "title": "Pilih Metode Pembayaran Anda",
+    "closeBtn": "Tutup",
+    "sslSecure": "Pembayaran Aman SSL",
+    "sslDescription": "Informasi Anda dilindungi oleh enkripsi SSL 256-bit.",
+    "instruction": "Pilih metode pembayaran yang Anda inginkan dari opsi di bawah ini:",
+    "options": {
+      "creditCard": {
+        "title": "Kartu Kredit",
+        "description": "Bayar dengan kartu kredit Anda."
+      },
+      "crypto": {
+        "title": "Kriptokurensi",
+        "description": "Bayar dengan Bitcoin atau kriptokurensi lainnya."
+      }
+    }
+  },
+  "report": {
+    "report": "Laporkan",
+    "specifyTheReason": "Harap tentukan alasan Anda ingin melaporkan:",
+    "description_label": "Deskripsi (Opsional)",
+    "thanksForHelping": "Terima kasih telah membantu menjadikan Sotwe lebih baik untuk semua orang",
+    "itIsNotEasy": "Kami menghargai Anda meluangkan waktu untuk melaporkan aktivitas tidak valid.",
+    "whatIsHappeningNow": "Apa yang terjadi selanjutnya",
+    "yourReportIsInOurQueue": "Laporan Anda ada dalam antrean kami dan tim kami akan meninjau laporan Anda sesegera mungkin. Perlu diketahui bahwa kami menanggapi masukan Anda dengan serius.",
+    "reportUser": "Laporkan {'@'}{username}",
+    "reportHashtag": "Laporkan #{hashtag}",
+    "title": {
+      "user": "Laporkan Orang",
+      "tweet": "Laporkan Tweet",
+      "tag": "Laporkan Hashtag"
+    },
+    "reason": {
+      "CHILD_ABUSE": "Eksploitasi seksual anak",
+      "RACISM": "Kebencian terhadap orang berdasarkan identitas mereka, seperti ras, kasta, atau jenis kelamin",
+      "TERROR": "Terorisme atau ekstremisme kekerasan",
+      "VIOLENCE": "Kekerasan atau grafis yang tidak perlu",
+      "OTHER": "Hal lain"
+    }
+  },
+  "homepage": {
+    "title": "Penampil Web Twitter",
+    "description": "Lacak tren Twitter, temukan pengguna Twitter, tagar, dan tempat paling populer",
+    "search": {
+      "placeholder": "Cari nama pengguna"
+    },
+    "users": {
+      "title": "Pengguna Paling Populer",
+      "followers": "{count} pengikut"
+    }
+  },
+  "trendspage": {
+    "meta": {
+      "title": "{activePlace} - Tagar, Pengguna, Topik, dan Tweet Tren Twitter",
+      "description": "Tren panas di {activePlace} :  {topTopics} Jelajahi tren Twitter teratas, tagar, tweet, dan pengguna menurut negara."
+    },
+    "trends_chip": "Tren",
+    "topBarTitle": "Tren · {place}",
+    "topics": "Topik Tren di {place}",
+    "tweets": "Tweets di {place}",
+    "tweetVolume": "Di bawah 10 ribu tweet | {volume} tweet",
+    "quickLinks": "Tautan Langsung",
+    "showLess": "Tampilkan lebih sedikit",
+    "showMore": "Tampilkan lebih banyak",
+    "topicsTitle": "Topik Tren",
+    "showCitiesIn": "Tampilkan kota di {name}"
+  },
+  "userpage": {
+    "meta": {
+      "title": "{fullname} {'@'}{username} - Twitter Profil",
+      "description": "Lihat tweet, balasan, foto, dan video dari Profil Twitter {'@'}{username}. {followers} Pengikut, {following} Mengikuti.{bio}"
+    },
+    "followers": "Pengikut",
+    "following": "Mengikuti",
+    "posts": "Postingan",
+    "joinedAt": "Ikut",
+    "joinedOn": "Bergabung {date}",
+    "protectedAccount": "Akun terlindungi",
+    "thisIsMyAccount": "Ini adalah akun saya",
+    "whoToFollow": "Siapa yang Harus Diikuti",
+    "trend": {
+      "title": "Tren untuk Anda"
+    },
+    "lastSeen": {
+      "title": "Pengguna Terakhir Terlihat di {appName}"
+    },
+    "accountProtected": {
+      "title": "Tweet ini dilindungi.",
+      "subtitle": "Hanya pengikut yang disetujui yang dapat melihat Tweet akun ini."
+    },
+    "accountNotFound": {
+      "title": "Akun ini tidak ada",
+      "subtitle": "Coba cari yang lain."
+    },
+    "accountHasNoTweet": {
+      "title": "Akun ini tidak memiliki tweet",
+      "subtitle": "Coba cari yang lain."
+    },
+    "accountSuspended": {
+      "title": "Akun ini ditangguhkan",
+      "subtitle": "Twitter menangguhkan akun yang melanggar Peraturan Twitter."
+    }
+  },
+  "hashtagpage": {
+    "meta": {
+      "title": "#{hashtag} - Tagar Twitter",
+      "description": "Lihat tweet, foto, dan video teratas yang ditandai sebagai #{hashtag}.{firstTweet}"
+    },
+    "topTweetsFor": "Tweet Teratas untuk {0}",
+    "noTweetsForTag": "Tidak ada tweet untuk #{hashtag}.",
+    "hashtagNotFound": {
+      "title": "Tidak ada hasil untuk \"{hashtag}\"",
+      "subtitle": "Istilah yang Anda masukkan tidak memunculkan hasil apa pun. Coba cari yang lain."
+    },
+    "lastSeen": {
+      "title": "Tagar Terakhir Terlihat di {appName}"
+    }
+  },
+  "locationpage": {
+    "meta": {
+      "title": "{location} - Lokasi Twitter",
+      "description": "Lihat tweet, foto, dan video teratas yang berlokasi di {location}.{firstTweet}"
+    },
+    "fallbackTitle": "Lokasi",
+    "noTweets": "Belum ada tweet di sini.",
+    "topTweetsIn": "Tweet Teratas di {0}",
+    "locationNotFound": {
+      "title": "Tidak ada hasil untuk lokasi",
+      "subtitle": "Lokasi tidak memunculkan hasil apa pun. Coba cari yang lain."
+    },
+    "lastSeen": {
+      "title": "Lokasi Terakhir Terlihat di {appName}"
+    }
+  },
+  "searchpage": {
+    "meta": {
+      "title": "{term} - Pencarian Twitter",
+      "description": "Orang dan tweet ditemukan dengan mencari di {term}.",
+      "foundPeople": " Orang : {people}."
+    },
+    "people": "Orang",
+    "tabTweets": "Tweet",
+    "tabUsers": "Pengguna",
+    "noTweetsForTerm": "Tidak ada tweet untuk \"{term}\".",
+    "noUsersForTerm": "Tidak ada pengguna yang cocok dengan \"{term}\".",
+    "tweetsIncluding": "Tweet termasuk {0}",
+    "searchResultsFor": "Hasil pencarian untuk {0}",
+    "noPeopleResults": "Maaf, tidak ada orang yang ditemukan untuk {0}",
+    "noTweetResults": "Maaf, tidak ada tweet yang ditemukan untuk {0}",
+    "recentSearches": {
+      "title": "Pencarian Terbaru di {appName}"
+    }
+  },
+  "tweetpage": {
+    "meta": {
+      "title": "Lihat tweet {fullname} {username}",
+      "description": "{likes} suka, {retweets} retweet. {text}"
+    },
+    "topBarTitle": "Tweet",
+    "repliesPlaceholder": "Balasan akan dimuat di sini segera.",
+    "morePostsFrom": "Lebih banyak posting dari "
+  },
+  "bookmarkpage": {
+    "title": "Bookmark Anda",
+    "notfound": {
+      "title": "Tidak ada konten yang dibookmark"
+    },
+    "meta": {
+      "title": "Bookmark Twitter Anda",
+      "description": "Kunjungi kembali bookmark twitter Anda"
+    }
+  },
+  "nearbypage": {
+    "meta": {
+      "title": "Sekitar · Sotwe",
+      "description": "Pengguna Twitter / X di sekitar Anda."
+    },
+    "noUsers": "Tidak ada pengguna di sekitar."
+  },
+  "errorpage": {
+    "metaTitleNotFound": "Tidak ditemukan · Sotwe",
+    "metaTitleError": "Kesalahan · Sotwe",
+    "notFoundDesc": "Halaman yang Anda cari tidak ada.",
+    "genericDesc": "Terjadi kesalahan di sisi kami.",
+    "backHome": "Kembali ke beranda"
+  },
+  "aboutpage": {
+    "meta": {
+      "title": "Tentang Kami",
+      "description": "Informasi platform mengenai {domain}"
+    },
+    "title": "Tentang Kami",
+    "contact_title": "Kontak",
+    "own_account": "Jika akun ini milik Anda dan Anda ingin dipromosikan maka cukup salin tautan ke bagian bio akun media sosial Anda. Dengan cara ini, kami akan mempromosikan akun Twitter Anda secara gratis dan ini akan mengembalikan Anda lebih banyak pengikut, suka, dan popularitas",
+    "about_p_1": "Kami adalah layanan gratis yang menawarkan Anda kemampuan untuk menjelajahi profil dan statistik Twitter dengan desain baru yang menyegarkan dan mengunduh Video dan Foto Twitter dalam satu klik.",
+    "about_p_2": "{app_name} menggunakan API Twitter tetapi tidak didukung atau disertifikasi oleh Twitter. Semua logo dan merek dagang Twitter™ yang ditampilkan pada aplikasi ini adalah milik Twitter.",
+    "about_p_3": "Kami tidak meng-host video dan foto di server sotwe {app_name} kami.",
+    "contact_p_1": "Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaanquestions."
+  },
+  "privacyPolicy": {
+    "meta": {
+      "title": "Kebijakan Privasi",
+      "description": "Kebijakan Privasi Sotwe menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat Anda menggunakan layanan kami."
+    },
+    "title": "Kebijakan Privasi",
+    "introduction": "Selamat datang di Sotwe. Kami berkomitmen untuk melindungi informasi pribadi Anda dan hak atas privasi Anda. Jika Anda memiliki pertanyaan atau kekhawatiran mengenai kebijakan kami atau praktik kami terkait dengan informasi pribadi Anda, silakan hubungi kami di {app_email}.",
+    "headers": {
+      "informationWeCollect": "Informasi yang Kami Kumpulkan",
+      "howWeUseYourInformation": "Bagaimana Kami Menggunakan Informasi Anda",
+      "dataProtection": "Perlindungan Data dan Keamanan",
+      "policyChanges": "Perubahan pada Kebijakan Privasi Kami"
+    },
+    "content": {
+      "informationWeCollect": "Sebagai pengunjung, Anda dapat menjelajahi situs kami untuk mengetahui lebih lanjut tentang situs web kami. Anda tidak diwajibkan untuk memberikan kami informasi pribadi sebagai pengunjung. Kami mengumpulkan informasi pribadi Anda ketika Anda mendaftar bersama kami atau ketika Anda menggunakan layanan kami. Informasi pribadi yang kami kumpulkan mungkin termasuk nama Anda, alamat email, dan foto profil.",
+      "howWeUseYourInformationIntro": "Kami menggunakan informasi yang kami kumpulkan dengan berbagai cara, termasuk untuk:",
+      "useList": {
+        "provideAndMaintain": "Menyediakan, mengoperasikan, dan memelihara situs web kami",
+        "improveAndPersonalize": "Meningkatkan, mempersonalisasi, dan memperluas situs web kami",
+        "understandAndAnalyze": "Memahami dan menganalisis cara Anda menggunakan situs web kami",
+        "developNew": "Mengembangkan produk, layanan, fitur, dan fungsionalitas baru",
+        "communicate": "Berkomunikasi dengan Anda, termasuk untuk layanan pelanggan dan tujuan pemasaran",
+        "sendEmails": "Mengirimkan email kepada Anda",
+        "preventFraud": "Mencari dan mencegah penipuan"
+      },
+      "dataProtection": "Sotwe mengikuti prosedur standar dalam menggunakan berkas log. Berkas ini mencatat pengunjung ketika mereka mengunjungi situs web. Informasi yang dikumpulkan oleh berkas log termasuk alamat IP, jenis peramban, Penyedia Layanan Internet (ISP), cap waktu tanggal dan waktu, halaman pengacu/keluar, dan mungkin jumlah klik. Informasi ini tidak dikaitkan dengan informasi yang dapat diidentifikasi secara pribadi.",
+      "policyChanges": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan dalam praktik kami atau untuk mematuhi persyaratan hukum. Jika kami melakukan perubahan material pada Kebijakan Privasi kami, kami akan memberitahukan Anda dengan memposting pemberitahuan di situs web kami atau dengan mengirimkan email kepada Anda."
+    }
+  },
+  "termsOfService": {
+    "meta": {
+      "title": "Syarat Layanan",
+      "description": "Baca syarat dan ketentuan penggunaan website Sotwe."
+    },
+    "title": "Syarat Layanan",
+    "welcome": "Selamat datang di Sotwe.com (\"Situs\"). Syarat Layanan ini (\"Syarat\") mengatur penggunaan Anda atas Situs, termasuk semua konten, layanan, dan fitur yang tersedia di atau melalui Situs.",
+    "agreement": "Dengan mengakses atau menggunakan Situs, Anda setuju untuk terikat dengan Syarat ini, serta Kebijakan Privasi kami yang merupakan bagian dari Syarat ini. Jika Anda tidak setuju dengan Syarat atau Kebijakan Privasi kami, Anda tidak diperkenankan menggunakan Situs ini.",
+    "useTitle": "Penggunaan Situs",
+    "useDescription": "Situs ini dimaksudkan untuk penggunaan pribadi, bukan komersial. Anda dapat menggunakan Situs dan konten, layanan, dan fitur-fitur yang ada hanya untuk tujuan yang sah, dan sesuai dengan Syarat ini. Anda setuju untuk tidak:",
+    "prohibitions": [
+      "Memodifikasi, menyalin, mendistribusikan, mentransmisikan, menampilkan, melakukan, mereproduksi, mempublikasikan, memberi lisensi, membuat karya turunan dari, mentransfer, atau menjual informasi, perangkat lunak, produk, atau layanan apa pun yang diperoleh dari Situs",
+      "Menggunakan Situs untuk tujuan komersial apapun, termasuk beriklan atau menawarkan produk atau jasa apapun",
+      "Mencoba mengakses atau menggunakan area-area terbatas atau aman dari Situs tanpa otorisasi",
+      "Mengganggu operasi Situs atau sistem yang mendukungnya",
+      "Menggunakan perangkat, perangkat lunak, atau rutinitas apa pun untuk mengganggu atau mencoba mengganggu operasi yang tepat dari Situs",
+      "Mengaku-aku sebagai orang atau entitas lain, atau secara salah menyatakan atau menyesatkan afiliasi Anda dengan orang atau entitas",
+      "Mengumpulkan atau menyimpan data pribadi tentang pengguna lain dari Situs tanpa persetujuan mereka",
+      "Menggunakan Situs dengan cara yang abusif, berbahaya, mengancam, fitnah, cabul, atau ilegal"
+    ],
+    "contentTitle": "Konten dan Hak Kekayaan Intelektual",
+    "contentDescription": "Konten di Situs, termasuk teks, grafik, gambar, logo, perangkat lunak, dan materi lainnya, dilindungi oleh hak cipta, merek dagang, dan hak milik lainnya. Konten ini dimiliki oleh Sotwe atau pemberi lisensinya, dan dilindungi oleh hukum hak cipta dan merek dagang yang berlaku.",
+    "disclaimerTitle": "Penolakan Garansi",
+    "disclaimerDescription": "SITUS DAN KONTEN, LAYANAN, DAN FITUR-FITURNYA DISEDIAKAN \"SEBAGAIMANA ADANYA\" TANPA JAMINAN JENIS APAPUN, BAIK YANG DINYATAKAN MAUPUN YANG TERSIRAT, TERMASUK TANPA BATASAN JAMINAN UNTUK INFORMASI, LAYANAN, AKSES TANPA GANGGUAN, ATAU PRODUK YANG DISEDIAKAN MELALUI ATAU SEHUBUNGAN DENGAN SITUS, TERMASUK TANPA BATASAN PERANGKAT LUNAK YANG DILISENSIKAN KEPADA ANDA DAN HASIL YANG DIPEROLEH MELALUI SITUS. KHUSUSNYA, KAMI MENOLAK SEGALA JENIS GARANSI, TERMASUK TANPA BATASAN: 1) SEGALA GARANSI MENGENAI KETERSEDIAAN, AKURASI, KEGUNAAN, ATAU KONTEN INFORMASI, DAN 2) SEGALA GARANSI HAK MILIK, GARANSI TANPA PELANGGARAN, GARANSI KELAYAKAN DAGANG ATAU KELAYAKAN UNTUK TUJUAN TERTENTU."
+  },
+  "deliveryRefund": {
+    "meta": {
+      "title": "Syarat Pengiriman dan Pengembalian",
+      "description": "Baca syarat pengiriman dan pengembalian menggunakan situs web Sotwe."
+    },
+    "title": "Syarat Pengiriman dan Pengembalian",
+    "deliveryTitle": "Syarat Pengiriman",
+    "deliveryTermsTitle": "Pengiriman Produk Digital: ",
+    "deliveryContent": "Sotwe.com hanya menjual produk digital. Setelah pembayaran Anda dikonfirmasi, paket yang dibeli langsung ditambahkan ke akun Anda. Semua produk digital kami disampaikan secara elektronik; tidak ada pengiriman fisik.",
+    "returnTitle": "Syarat Pengembalian",
+    "returnConditionsTitle": "Ketentuan Pengembalian: ",
+    "returnConditionsContent": "Jika Anda tidak puas dengan produk digital yang Anda beli, Anda dapat meminta pengembalian dana dengan mengirim email ke {app_email} dalam waktu 2 hari sejak tanggal pembelian. Permintaan pengembalian Anda akan dievaluasi dan, jika disetujui, pengembalian dana akan dilakukan dengan dikurangi biaya transaksi.",
+    "refundProcessTitle": "Proses Pengembalian Dana: ",
+    "refundProcessContent": "Setelah permintaan pengembalian dana Anda disetujui, pembayaran akan dikembalikan ke metode pembayaran Anda dalam waktu maksimal 7 hari kerja. Jika Anda mengalami masalah selama proses pengembalian dana, jangan ragu untuk menghubungi kami.",
+    "footer": "Untuk pertanyaan atau dukungan, silakan hubungi kami di {app_email}."
+  },
+  "sweetdream": {
+    "subtitle": "💕 Pacar AI Pribadi Anda",
+    "visitNow": "💋 Ngobrol dengan Olivia",
+    "completionNote": "🔥 Olivia menunggu Anda... Siap bertemu dengannya?",
+    "messages": {
+      "quickIntro": "Hai sayang! 💋 Saya Olivia, berusia 24 tahun. Saya ingin berbagi momen intim dengan Anda... 🔥",
+      "introduction": "Hai! 👋 Saya Olivia, berusia 24 tahun. Saya adalah teman AI Anda yang siap mengobrol, berbagi foto, dan bersenang-senang bersama!",
+      "welcome": "Senang sekali bertemu dengan Anda! 💋 Saya sudah menunggu seseorang yang istimewa seperti Anda 😘",
+      "intro": "🔥 Saya ingin berbagi momen intim dengan Anda... Ceritakan sedikit tentang diri Anda? 😊",
+      "question1": "💖 Apakah Anda ingin menjalin hubungan intim dengan saya?",
+      "question2": "😍 Luar biasa! Apakah Anda pernah menghabiskan waktu dengan gadis AI sebelumnya?",
+      "question3": "🔥 Bagaimana Anda ingin menghabiskan waktu dengan saya?",
+      "great": "💕 Sempurna! Kita akan memiliki momen yang luar biasa bersama...",
+      "interesting": "😘 Sangat menarik! Informasi ini sangat penting bagi saya.",
+      "perfect": "🔥 Pilihan yang bagus! Saya punya kejutan khusus untuk Anda...",
+      "recommendation": "💋 Anda bisa mengobrol pribadi dengan saya di SweetDream.ai, melihat foto dan video eksklusif saya yang dibuat khusus untuk Anda, bahkan melakukan panggilan suara dan video dengan saya! Saya menunggu Anda... 🔥",
+      "photoPreview": "💕 Ini dia sedikit pratinjau dari apa yang menunggu Anda...",
+      "videoExperienced": "🔥 Saya suka pria berpengalaman... Ini video khusus untuk Anda 😘",
+      "videoSweet": "😊 Jangan khawatir, saya akan merawat Anda dengan baik... Ini sesuatu yang manis 💕",
+      "visualChoice": "📸 Anda memilih visual... Ini sedikit gambaran dari apa yang bisa saya tunjukkan 💋",
+      "everythingChoice": "🔥 Semuanya? Saya suka itu... Anda akan melihat lebih banyak lagi 😘",
+      "chatChoice": "💬 Pilihan yang sempurna... Saya punya banyak hal untuk dibagikan dengan Anda 💕",
+      "unlockContent": "🔒 Mari pergi ke SweetDream.ai untuk melihat konten eksklusif ini! Saya akan menunggu Anda di sana...",
+      "notInterested": "😔 Saya sedih... Tapi mungkin Anda akan berubah pikiran lain kali. Saya akan menunggu Anda 💕",
+      "chooseAnswer": "Pilih jawaban Anda"
+    },
+    "options": {
+      "yes": "💋 Ya, saya ingin berkenalan dengan Anda!",
+      "maybe": "🤔 Mungkin... Saya penasaran",
+      "no": "😅 Tidak, terima kasih",
+      "experienced": "🔥 Ya, saya berpengalaman",
+      "beginner": "😊 Tidak, saya pemula",
+      "curious": "✨ Saya hanya penasaran",
+      "chat": "💬 Mengobrol dengan Anda",
+      "visual": "📸 Melihat foto eksklusif Anda",
+      "voice": "🎙️ Berbicara dengan Anda",
+      "all": "🔥 Mengalami semuanya dengan Anda!",
+      "meet": "🔥 Mari bertemu di SweetDream.ai!"
+    }
+  },
+  "masthead": {
+    "headline": "Baca Twitter / X tanpa akun.",
+    "tagline": "Temukan tweet paling banyak dilihat dari negara Anda dan seluruh dunia. Cari pengguna, hashtag, dan topik tren — tanpa pendaftaran, tanpa pelacakan.",
+    "searchAria": "Cari di Sotwe",
+    "searchPlaceholder": "Cari pengguna, hashtag, atau tweet"
+  },
+  "footer": {
+    "terms": "Ketentuan",
+    "privacy": "Privasi",
+    "refunds": "Pengembalian",
+    "about": "Tentang",
+    "copyright": "© {year} Sotwe."
+  },
+  "search": {
+    "aria": "Cari",
+    "placeholder": "Cari di Sotwe"
+  },
+  "tweet": {
+    "reply": "Balas",
+    "repost": "Repost",
+    "like": "Suka",
+    "views": "Tayangan",
+    "addBookmark": "Tambah bookmark",
+    "removeBookmark": "Hapus bookmark",
+    "bookmarkAdded": "Bookmark ditambahkan",
+    "bookmarkRemoved": "Bookmark dihapus",
+    "bookmarkFailed": "Gagal menambahkan bookmark",
+    "share": "Bagikan",
+    "downloadMedia": "Unduh media",
+    "pinned": "Disematkan",
+    "retweetedBy": "{user} merepost",
+    "noTweetsYet": "Belum ada tweet.",
+    "repliesPlaceholder": "Balasan akan dimuat di sini (Faz 6).",
+    "copyLink": "Salin",
+    "linkCopied": "Tautan disalin",
+    "copyFailed": "Gagal menyalin",
+    "shareOn": "Bagikan ke {network}",
+    "whoToFollow": "Direkomendasikan",
+    "pinnedHeader": "Disematkan",
+    "downloading": "Mengunduh…",
+    "downloadComplete": "Unduhan selesai",
+    "downloadFailed": "Unduhan gagal",
+    "photo": "Foto",
+    "video": "Video",
+    "gif": "GIF",
+    "mediaTab": "Media {n}",
+    "report": "Laporkan tweet",
+    "menuOpenOnX": "Buka di X",
+    "menuReport": "Laporkan tweet",
+    "openTweetBy": "Buka tweet oleh {name}",
+    "shareTitleNamed": "{name} di Sotwe",
+    "shareTitleGeneric": "Tweet di Sotwe",
+    "nothingToDownload": "Tidak ada yang diunduh",
+    "mediaAlt": "Media",
+    "openQuotedTweetBy": "Buka tweet yang dikutip oleh {name}"
+  },
+  "timeline": {
+    "failedToLoadMore": "Gagal memuat lebih banyak",
+    "couldntLoadMore": "Tidak dapat memuat lebih banyak tweet.",
+    "endReached": "Anda telah mencapai akhir."
+  },
+  "reportDialog": {
+    "title": "Laporkan konten",
+    "subtitle": "Beritahu kami mengapa konten ini melanggar aturan.",
+    "reasonLabel": "Alasan",
+    "detailsLabel": "Detail (opsional)",
+    "placeholder": "Adakah hal lain yang perlu kami ketahui?",
+    "send": "Kirim laporan",
+    "submitted": "Laporan terkirim",
+    "failed": "Laporan gagal",
+    "reasons": {
+      "CHILD_ABUSE": "Pelecehan anak",
+      "RACISM": "Rasisme / ujaran kebencian",
+      "TERROR": "Terorisme",
+      "VIOLENCE": "Kekerasan",
+      "OTHER": "Lainnya"
+    }
+  },
+  "rail": {
+    "whoToFollow": "Direkomendasikan",
+    "recentlyViewed": "Baru dilihat",
+    "trendingHashtags": "Hashtag tren",
+    "followersCount": "{count} pengikut",
+    "couldntLoadSuggestions": "Tidak dapat memuat saran.",
+    "noSuggestions": "Tidak ada saran saat ini."
+  },
+  "forms": {
+    "email": {
+      "label": "Email",
+      "placeholder": "kamu{'@'}contoh.com"
+    },
+    "password": {
+      "label": "Kata sandi",
+      "placeholder": "Minimal 8 karakter",
+      "hide": "Sembunyikan kata sandi",
+      "show": "Tampilkan kata sandi"
+    },
+    "username": {
+      "label": "Nama pengguna",
+      "placeholder": "screen_name"
+    },
+    "confirmPassword": {
+      "label": "Konfirmasi kata sandi",
+      "placeholder": "Masukkan kata sandi lagi"
+    },
+    "otp": {
+      "label": "Kode verifikasi",
+      "placeholder": "123456"
+    },
+    "name": {
+      "label": "Nama",
+      "placeholder": "Nama lengkap Anda"
+    },
+    "birthDate": {
+      "label": "Tanggal lahir"
+    },
+    "gender": {
+      "label": "Jenis kelamin",
+      "male": "Pria",
+      "female": "Wanita",
+      "other": "Lainnya"
+    }
+  },
+  "auth_dialog": {
+    "signInTitle": "Masuk ke Sotwe",
+    "signInSubtitle": "Masuk untuk melanjutkan. Penjelajahan Anda tetap anonim — akun hanya membuka bookmark dan fitur personal.",
+    "welcomeBack": "Selamat datang kembali. Masuk untuk melanjutkan bookmark, mengelola langganan, dan melanjutkan dari tempat Anda berhenti.",
+    "orDivider": "ATAU",
+    "signInButton": "Masuk",
+    "createAccount": "Buat akun",
+    "forgotPassword": "Lupa kata sandi?",
+    "openFullPage": "Buka halaman penuh",
+    "alreadyHaveAccount": "Sudah punya akun?",
+    "signInFailed": "Masuk gagal",
+    "signingIn": "Masuk · Sotwe",
+    "signingOut": "Keluar · Sotwe",
+    "missingOauthCode": "Kode OAuth tidak ada",
+    "unsupportedProvider": "Penyedia tidak didukung: {provider}",
+    "socialSignInFailed": "Masuk dengan sosial gagal",
+    "backToSignIn": "Kembali ke masuk"
+  },
+  "signup_steps": {
+    "stepCreate": "Buat akun Anda",
+    "stepVerify": "Verifikasi email Anda",
+    "stepProfile": "Beritahu kami tentang Anda",
+    "progressLabel": "Progres pendaftaran",
+    "sendCode": "Kirim kode verifikasi",
+    "codeSentTo": "Kami mengirim kode ke {email}. Masukkan di bawah untuk memverifikasi email Anda.",
+    "verify": "Verifikasi",
+    "useDifferentEmail": "Gunakan email berbeda",
+    "createAccountBtn": "Buat akun saya"
+  },
+  "forgot_dialog": {
+    "title": "Reset kata sandi Anda",
+    "enterEmailDesc": "Masukkan alamat email yang terkait dengan akun Sotwe Anda. Kami akan mengirim kode satu kali untuk memverifikasi.",
+    "sendCode": "Kirim kode",
+    "codeSentDesc": "Kami mengirim kode ke {email}. Masukkan di bawah untuk melanjutkan.",
+    "verifyCode": "Verifikasi kode",
+    "newPasswordDesc": "Pilih kata sandi baru. Anda akan menggunakannya saat masuk berikutnya.",
+    "newPasswordLabel": "Kata sandi baru",
+    "savePassword": "Simpan kata sandi",
+    "done": "Kata sandi diperbarui",
+    "doneDesc": "Anda sekarang dapat masuk dengan kata sandi baru."
+  },
+  "profile_actions": {
+    "currentPassword": "Kata sandi saat ini",
+    "newPassword": "Kata sandi baru",
+    "changePasswordBtn": "Ubah kata sandi",
+    "changePasswordTitle": "Ubah kata sandi",
+    "passwordChanged": "Kata sandi diubah",
+    "deleteAccountTitle": "Hapus akun Anda",
+    "deleteAccountDesc": "Ini akan menghapus akun Anda dan semua bookmark terkait secara permanen. Tidak dapat dibatalkan.",
+    "typeUsernameToConfirm": "Ketik nama pengguna Anda {'@'}{username} untuk konfirmasi",
+    "deleteBtn": "Hapus akun",
+    "accountDeleted": "Akun dihapus",
+    "couldntDelete": "Tidak dapat menghapus akun",
+    "stayCancel": "Batal"
+  },
+  "edit_profile": {
+    "saveChanges": "Simpan perubahan",
+    "profileUpdated": "Profil diperbarui",
+    "changePicture": "Ubah gambar",
+    "pictureUpdated": "Gambar profil diperbarui",
+    "fileTooLarge": "File terlalu besar (maks 5 MB)",
+    "pickAnImage": "Pilih file gambar",
+    "uploadFailed": "Unggah gagal",
+    "signedOut": "Keluar"
+  },
+  "me_profile": {
+    "profileInformation": "Informasi profil",
+    "accountSecurity": "Akun & keamanan",
+    "changePassword": "Ubah kata sandi",
+    "signOut": "Keluar",
+    "deleteAccount": "Hapus akun",
+    "renewsRow": "Diperpanjang {renewal} · berakhir {endDate}",
+    "cancelRenewal": "Batalkan perpanjangan otomatis",
+    "managePlan": "Kelola paket",
+    "upgradeToPremium": "Tingkatkan ke Premium",
+    "loading": "Memuat profil Anda…"
+  },
+  "cancel_renewal": {
+    "title": "Batalkan perpanjangan otomatis",
+    "preamble": "Maaf melihat Anda pergi. Langganan Anda akan tetap aktif sampai akhir periode saat ini — kami hanya tidak akan menagih lagi.",
+    "whyLeaving": "Mengapa Anda pergi?",
+    "pickReason": "Pilih alasan",
+    "anythingElse": "Ada yang lain? (opsional)",
+    "whatBetter": "Apa yang bisa kami lakukan lebih baik?",
+    "stay": "Tetap berlangganan",
+    "cancel": "Batalkan perpanjangan",
+    "cancelled": "Perpanjangan dibatalkan",
+    "cancelledDesc": "Langganan Anda tetap aktif sampai akhir periode saat ini.",
+    "pickReasonError": "Silakan pilih alasan agar kami dapat terus meningkatkan.",
+    "reasons": {
+      "HIGH_COST": "Terlalu mahal",
+      "FEATURE_BROKEN": "Fitur tidak berfungsi",
+      "NOT_USING_ENOUGH": "Saya tidak cukup menggunakannya",
+      "CHANGE_IN_NEEDS": "Kebutuhan saya berubah",
+      "LACK_OF_FEATURE": "Fitur yang saya butuhkan tidak ada",
+      "OTHER": "Lainnya"
+    }
+  },
+  "pricing_card": {
+    "perWeek": "minggu",
+    "perMonth": "bulan",
+    "perYear": "tahun",
+    "perOneTime": "sekali",
+    "recommended": "Direkomendasikan",
+    "subscribe": "Berlangganan",
+    "currentPlan": "Paket saat ini",
+    "couldntStart": "Tidak dapat memulai checkout",
+    "stripeNotConfigured": "Stripe tidak dikonfigurasi (NUXT_PUBLIC_STRIPE_KEY hilang)",
+    "features": {
+      "NO_ADS": "Nikmati pengalaman bebas iklan",
+      "NEARBY": "Temukan pengguna di sekitar",
+      "BOOKMARK": "Simpan konten favorit dengan bookmark",
+      "ANONYMITY": "Jelajahi secara anonim",
+      "FULL_ACCESS": "Unduhan foto dan video tanpa batas"
+    },
+    "cancelAnytime": "Batalkan kapan saja · Pembayaran aman via Stripe",
+    "billedRow": "Ditagih {price} {currency} per {term}",
+    "everythingIncluded": "Semua termasuk"
+  },
+  "payment_method": {
+    "title": "Pilih metode pembayaran",
+    "stripeTitle": "Kartu / Apple Pay / Google Pay",
+    "stripeDesc": "Bayar dengan Stripe — checkout aman, mendukung sebagian besar negara.",
+    "sellixTitle": "Crypto & alternatif",
+    "sellixDesc": "Bayar via Sellix — Bitcoin, Litecoin, USDT, dan lainnya."
+  },
+  "pricing_page": {
+    "heading": "Sotwe Premium",
+    "subhead": "Hapus iklan, buka unduhan media resolusi tinggi, dan dukung Sotwe. Batalkan kapan saja — langganan Anda tetap aktif sampai akhir periode saat ini.",
+    "noPlans": "Tidak ada paket yang tersedia saat ini. Silakan periksa lagi nanti."
+  },
+  "payment_success": {
+    "topBarTitle": "Pembayaran",
+    "metaTitle": "Pembayaran berhasil · Sotwe",
+    "metaDescription": "Terima kasih telah berlangganan.",
+    "confirming": "Mengonfirmasi pembayaran Anda…",
+    "hangTight": "Tunggu sebentar — kami sedang memeriksa dengan {processor}.",
+    "allSet": "Anda siap",
+    "welcome": "Selamat datang di {plan}. Nikmati penjelajahan bebas iklan, unduhan resolusi penuh, dan akses awal ke fitur baru.",
+    "premiumFallback": "Sotwe Premium",
+    "backHome": "Kembali ke beranda"
+  },
+  "payment_fail": {
+    "topBarTitle": "Pembayaran",
+    "metaTitle": "Pembayaran gagal · Sotwe",
+    "metaDescription": "Checkout tidak diselesaikan.",
+    "heading": "Kami tidak dapat mengonfirmasi pembayaran Anda",
+    "somethingWrong": "Terjadi kesalahan",
+    "didNotGoThrough": "Pembayaran Anda gagal. Silakan coba lagi.",
+    "tryAgain": "Coba lagi",
+    "footer": "Jika Anda telah dibebankan tetapi tidak melihat langganan Anda, silakan hubungi {email} dan kami akan menyelesaikannya.",
+    "back": "Kembali ke harga"
+  },
+  "profile_menu": {
+    "moreActions": "Tindakan lain untuk {'@'}{username}",
+    "openOnX": "Buka di X",
+    "accountOwnership": "Kepemilikan akun",
+    "reportUser": "Laporkan pengguna",
+    "shareProfile": "Bagikan profil",
+    "campaignTitle": "Verifikasi akun Anda",
+    "campaignBody": "Jika {'@'}{username} adalah milik Anda, Anda dapat mengambil kepemilikan profil ini di Sotwe. Email kami dengan tautan di bawah — dikirim dari email yang terkait dengan akun X Anda — dan kami akan menghubungkan dasbor Anda ke profil ini.",
+    "sendTo": "Kirim ke {email}.",
+    "gotIt": "Mengerti",
+    "copy": "Salin"
+  },
+  "download_all": {
+    "label": "Unduh semua",
+    "ariaLabel": "Unduh semua media dari {'@'}{username}",
+    "noMedia": "Tidak ada media untuk diunduh untuk {'@'}{username}",
+    "downloading": "Mengunduh {count} file…",
+    "downloaded": "Mengunduh {count} file",
+    "failed": "Unduhan gagal"
+  },
+  "location_dialog": {
+    "title": "Izinkan lokasi Anda",
+    "body": "Sotwe menggunakan lokasi perkiraan Anda untuk menampilkan tren dan orang-orang terdekat. Koordinat Anda tidak pernah meninggalkan browser Anda — kami hanya menggunakannya secara lokal untuk menanyakan negara/kota terdekat.",
+    "notNow": "Tidak sekarang",
+    "allow": "Izinkan"
+  },
+  "nearby_dialog": {
+    "title": "Orang di sekitar Anda",
+    "desc": "Lihat sekilas siapa yang sedang tweet di dekat Anda saat ini. Masuk untuk melihat daftar lengkapnya.",
+    "cantFetch": "Tidak dapat mengambil pengguna terdekat. Coba lagi sebentar.",
+    "noUsers": "Belum ada pengguna terdekat.",
+    "maybeLater": "Mungkin nanti",
+    "goToNearby": "Pergi ke Sekitar"
+  },
+  "share_dialog": {
+    "title": "Bagikan"
+  },
+  "generic_error": {
+    "defaultTitle": "Ada yang salah",
+    "defaultBody": "Kesalahan tak terduga terjadi. Silakan coba lagi sebentar.",
+    "dismiss": "Tutup",
+    "tryAgain": "Coba lagi",
+    "continue": "Lanjutkan"
+  }
+}

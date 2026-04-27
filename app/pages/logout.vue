@@ -17,7 +17,8 @@ if (import.meta.client) {
   navigateTo('/', { replace: true })
 }
 
-useSeoMeta({ title: 'Signing out · Sotwe', robots: 'noindex' })
+const { t } = useI18n()
+useSeoMeta({ title: t('auth_dialog.signingOut'), robots: 'noindex' })
 </script>
 
 <template>

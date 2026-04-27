@@ -20,6 +20,7 @@
 
 const route = useRoute()
 const router = useRouter()
+const { t } = useI18n()
 
 const MIN_DATE = '2020-10-01'
 
@@ -58,7 +59,7 @@ const selectedHour = computed(() => {
 })
 
 const dateLabel = computed(() => {
-  if (isToday.value) return 'Today'
+  if (isToday.value) return t('common.today')
   return new Date(selectedIso.value).toLocaleDateString(undefined, {
     year: 'numeric', month: 'short', day: 'numeric',
   })
@@ -67,9 +68,9 @@ const dateLabel = computed(() => {
 const timeLabel = computed(() => {
   if (isToday.value) {
     const ago = urlAgo.value ?? 0
-    if (ago === 0) return 'Now'
-    if (ago === 1) return '1 hour ago'
-    return `${ago} hours ago`
+    if (ago === 0) return t('common.now')
+    if (ago === 1) return t('common.oneHourAgo')
+    return t('common.hoursAgo', { hour: ago })
   }
   return `${String(selectedHour.value).padStart(2, '0')}:00`
 })
@@ -122,9 +123,9 @@ function hourLabel(h: number) {
   if (isToday.value) {
     const nowHour = new Date().getHours()
     const ago = (nowHour - h + 24) % 24
-    if (ago === 0) return 'Now'
-    if (ago === 1) return '1 hour ago'
-    return `${ago} hours ago`
+    if (ago === 0) return t('common.now')
+    if (ago === 1) return t('common.oneHourAgo')
+    return t('common.hoursAgo', { hour: ago })
   }
   return `${String(h).padStart(2, '0')}:00`
 }
@@ -153,32 +154,32 @@ function hourLabel(h: number) {
           class="rounded-full bg-twitter-slate-50 px-3 py-1 text-xs font-semibold hover:bg-twitter-slate-100 dark:bg-twitter-slate-900 dark:hover:bg-twitter-slate-800"
           @click="pickNow"
         >
-          Now
+          {{ t('common.now') }}
         </button>
         <button
           type="button"
           class="rounded-full bg-twitter-slate-50 px-3 py-1 text-xs font-semibold hover:bg-twitter-slate-100 dark:bg-twitter-slate-900 dark:hover:bg-twitter-slate-800"
           @click="pickQuick(1)"
         >
-          Yesterday
+          {{ t('common.yesterday') }}
         </button>
         <button
           type="button"
           class="rounded-full bg-twitter-slate-50 px-3 py-1 text-xs font-semibold hover:bg-twitter-slate-100 dark:bg-twitter-slate-900 dark:hover:bg-twitter-slate-800"
           @click="pickQuick(7)"
         >
-          Week ago
+          {{ t('common.weekAgo') }}
         </button>
         <button
           type="button"
           class="rounded-full bg-twitter-slate-50 px-3 py-1 text-xs font-semibold hover:bg-twitter-slate-100 dark:bg-twitter-slate-900 dark:hover:bg-twitter-slate-800"
           @click="pickQuick(30)"
         >
-          Month ago
+          {{ t('common.monthAgo') }}
         </button>
       </div>
 
-      <label class="mb-1 block text-xs font-semibold text-twitter-slate-500">Date</label>
+      <label class="mb-1 block text-xs font-semibold text-twitter-slate-500">{{ t('common.date') }}</label>
       <input
         type="date"
         :value="selectedIso"
@@ -188,7 +189,7 @@ function hourLabel(h: number) {
         @change="(e) => pickDate((e.target as HTMLInputElement).value)"
       >
 
-      <label class="mb-1 mt-3 block text-xs font-semibold text-twitter-slate-500">Time</label>
+      <label class="mb-1 mt-3 block text-xs font-semibold text-twitter-slate-500">{{ t('common.time') }}</label>
       <select
         :value="selectedHour"
         class="w-full rounded-lg border border-twitter-slate-100 bg-white px-2 py-1.5 text-sm focus:border-twitter-blue-500 focus:outline-none dark:border-twitter-slate-700 dark:bg-twitter-slate-900"

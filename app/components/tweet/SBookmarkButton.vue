@@ -21,6 +21,7 @@ const bookmarks = useBookmarkIdsStore()
 const ui = useUiStore()
 const toast = useToast()
 const router = useRouter()
+const { t } = useI18n()
 
 const token = useCookie<string | undefined>('sotwe-access-token')
 
@@ -45,11 +46,11 @@ async function toggle() {
   try {
     if (isBookmarked.value) {
       await bookmarks.remove(props.tweet.id)
-      toast.add({ title: 'Bookmark removed', icon: 'i-lucide-bookmark' })
+      toast.add({ title: t('tweet.bookmarkRemoved'), icon: 'i-lucide-bookmark' })
     }
     else {
       await bookmarks.add(props.tweet.id)
-      toast.add({ title: 'Bookmark added', icon: 'i-lucide-bookmark' })
+      toast.add({ title: t('tweet.bookmarkAdded'), icon: 'i-lucide-bookmark' })
     }
   }
   catch (e) {
@@ -62,7 +63,7 @@ async function toggle() {
       ui.loginDialog.display = true
       return
     }
-    toast.add({ title: 'Bookmark failed', description: err.message, color: 'error' })
+    toast.add({ title: t('tweet.bookmarkFailed'), description: err.message, color: 'error' })
   }
 }
 </script>
@@ -74,7 +75,7 @@ async function toggle() {
        row stays cohesive. -->
   <button
     type="button"
-    :aria-label="isBookmarked ? 'Remove bookmark' : 'Add bookmark'"
+    :aria-label="isBookmarked ? t('tweet.removeBookmark') : t('tweet.addBookmark')"
     :aria-pressed="isBookmarked"
     class="group inline-flex shrink-0 items-center gap-1 rounded-full text-twitter-slate-500 transition-colors hover:text-twitter-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-twitter-blue-500 dark:text-twitter-slate-400"
     :class="{ 'text-twitter-blue-500': isBookmarked }"

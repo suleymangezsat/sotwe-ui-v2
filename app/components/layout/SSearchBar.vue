@@ -9,6 +9,7 @@
 
 const q = ref('')
 const router = useRouter()
+const { t } = useI18n()
 
 function submit() {
   const term = q.value.trim()
@@ -28,7 +29,7 @@ function submit() {
 
 <template>
   <form role="search" class="w-full" @submit.prevent="submit">
-    <label class="sr-only" for="sotwe-search">Search</label>
+    <label class="sr-only" for="sotwe-search">{{ t('search.aria') }}</label>
     <div
       class="flex items-center gap-2 rounded-full border border-transparent bg-twitter-slate-50 px-4 py-2 transition-colors focus-within:border-twitter-blue-500 focus-within:bg-white dark:bg-twitter-slate-900 dark:focus-within:bg-black"
     >
@@ -38,7 +39,7 @@ function submit() {
         v-model="q"
         type="search"
         autocomplete="off"
-        placeholder="Search Sotwe"
+        :placeholder="t('search.placeholder')"
         class="w-full bg-transparent text-base placeholder:text-twitter-slate-500 focus:outline-none"
       >
     </div>

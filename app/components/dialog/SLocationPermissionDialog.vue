@@ -16,6 +16,7 @@
  */
 
 const ui = useUiStore()
+const { t } = useI18n()
 const open = computed({
   get: () => ui.locationPermissionDialog.display,
   set: v => (ui.locationPermissionDialog.display = v),
@@ -35,19 +36,17 @@ function deny() {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Allow your location" persistent>
+  <SDialog v-model="open" :title="t('location_dialog.title')" persistent>
     <div class="flex flex-col items-center gap-4 py-2 text-center">
       <div class="inline-flex size-16 items-center justify-center rounded-full bg-twitter-blue-50 text-twitter-blue-500 dark:bg-twitter-blue-950">
         <Icon name="i-lucide-map-pin" class="size-8" />
       </div>
       <p class="text-sm text-twitter-slate-700 dark:text-twitter-slate-300">
-        Sotwe uses your approximate location to surface trends and people
-        nearby. Your coordinates never leave your browser — we only use
-        them locally to query the closest country / city.
+        {{ t('location_dialog.body') }}
       </p>
       <div class="flex w-full gap-2">
-        <SButton block variant="ghost" @click="deny">Not now</SButton>
-        <SButton block @click="allow">Allow</SButton>
+        <SButton block variant="ghost" @click="deny">{{ t('location_dialog.notNow') }}</SButton>
+        <SButton block @click="allow">{{ t('location_dialog.allow') }}</SButton>
       </div>
     </div>
   </SDialog>

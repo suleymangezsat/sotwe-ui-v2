@@ -1,21 +1,35 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const config = useRuntimeConfig()
+
 useSotweMeta({
-  title: 'Refund Policy · Sotwe',
-  description: 'Refund policy for Sotwe Premium subscriptions.',
+  title: t('deliveryRefund.meta.title'),
+  description: t('deliveryRefund.meta.description'),
 })
+
+const appEmail = config.public.siteEmail
 </script>
 
 <template>
-  <STopBar title="Refund Policy" :show-back="true" />
+  <STopBar :title="t('deliveryRefund.title')" :show-back="true" />
   <article class="prose prose-slate max-w-none px-4 py-6 dark:prose-invert">
+    <h3>{{ t('deliveryRefund.deliveryTitle') }}</h3>
     <p>
-      Faz 9 copies the v1 refund policy from <code>sotwe-ui/pages/deliveryrefund.vue</code>
-      verbatim. In summary:
+      <span class="font-bold">{{ t('deliveryRefund.deliveryTermsTitle') }}</span>
+      <span>{{ t('deliveryRefund.deliveryContent') }}</span>
     </p>
-    <ul>
-      <li>Subscriptions can be cancelled any time; you keep access until the end of the paid period.</li>
-      <li>Refunds within 14 days of an initial purchase are granted if no heavy usage has occurred.</li>
-      <li>Refund requests go to <a href="mailto:info@sotwe.com">info@sotwe.com</a>.</li>
-    </ul>
+
+    <h3>{{ t('deliveryRefund.returnTitle') }}</h3>
+    <p>
+      <span class="font-bold">{{ t('deliveryRefund.returnConditionsTitle') }}</span>
+      <span>{{ t('deliveryRefund.returnConditionsContent', { app_email: appEmail }) }}</span>
+    </p>
+
+    <p>
+      <span class="font-bold">{{ t('deliveryRefund.refundProcessTitle') }}</span>
+      <span>{{ t('deliveryRefund.refundProcessContent') }}</span>
+    </p>
+
+    <p>{{ t('deliveryRefund.footer', { app_email: appEmail }) }}</p>
   </article>
 </template>

@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@nuxt/eslint',
@@ -67,7 +68,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'en' },
+      // `htmlAttrs.lang` is intentionally NOT set here — `@nuxtjs/i18n`
+      // owns the html lang attribute and updates it per-request based on
+      // the resolved locale (/tr/* → "tr", /id/* → "id", default → "en").
+      // Hard-coding "en" here would override i18n's value and serve the
+      // same lang attribute for every locale, which Google flags as a
+      // hreflang/lang mismatch.
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, minimum-scale=1',
       meta: [
@@ -95,6 +101,7 @@ export default defineNuxtConfig({
     privateApiUrl: process.env.NUXT_PRIVATE_API_URL || 'http://161.35.240.135/',
     public: {
       siteName: 'Sotwe',
+      siteEmail: process.env.NUXT_PUBLIC_SITE_EMAIL || 'info@sotwe.com',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.sotwe.com',
       // Dev defaults to the relative `/api` path which Nitro's devProxy
       // forwards to the backend IP. Avoids both CORS and the Cloudflare
@@ -203,6 +210,52 @@ export default defineNuxtConfig({
 
   ui: {
     // Populated in app/app.config.ts
+  },
+
+  /*
+   * i18n / locale strategy. v1 supports en (default) + tr + id and applies
+   * a 4-layer detection (`?lang` → cookie → Accept-Language → default).
+   *
+   *  - `strategy: 'no_prefix'` matches v1's URL scheme exactly: every
+   *    page lives at one canonical URL (`/elonmusk`, not `/tr/elonmusk`)
+   *    and the locale is resolved from cookie + Accept-Language at
+   *    request time. Switching to `prefix_except_default` would split
+   *    every existing search-indexed URL into `/foo` and `/tr/foo`,
+   *    halving Sotwe's PageRank overnight — non-starter.
+   *  - `useCookie: true` with key `i18n_redirected` keeps v1's persisted
+   *    locale choice working for returning visitors.
+   *  - `?lang=XX` query override is the only remaining v1 layer; that's
+   *    handled in `app/middleware/i18n.global.ts`.
+   */
+  i18n: {
+    strategy: 'no_prefix',
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'tr', language: 'tr-TR', name: 'Türkçe', file: 'tr.json' },
+      { code: 'id', language: 'id-ID', name: 'Bahasa Indonesia', file: 'id.json' },
+    ],
+    // `runtimeOnly: false` forces vue-i18n to ship its message compiler so
+    // formats are parsed at runtime instead of build-time precompilation.
+    // Build-time compilation chokes on our larger v1 catalog (~36KB
+    // per locale) — runtime parse is slightly slower but reliable.
+    // `optimizeTranslationDirective: false` skips the static AST scan
+    // unplugin-vue-i18n runs against `<i18n-t>` tags.
+    bundle: {
+      optimizeTranslationDirective: false,
+      runtimeOnly: false,
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      cookieSecure: false,
+      cookieCrossOrigin: false,
+      // No automatic redirect — `no_prefix` keeps the URL stable.
+      redirectOn: 'no prefix',
+      alwaysRedirect: false,
+      fallbackLocale: 'en',
+    },
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.sotwe.com',
   },
 
   // Auto-import `use*Store` composables from app/stores/** so layouts +

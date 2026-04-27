@@ -22,6 +22,7 @@ const errorCode = ref<ErrorCode | undefined>(undefined)
 const errorMessage = ref<string | undefined>(undefined)
 
 const toast = useToast()
+const { t } = useI18n()
 
 const canSubmit = computed(() =>
   !loading.value
@@ -49,7 +50,7 @@ async function submit() {
       oldPassword: oldPassword.value,
       newPassword: newPassword.value,
     })
-    toast.add({ title: 'Password changed', icon: 'i-lucide-check', color: 'success' })
+    toast.add({ title: t('profile_actions.passwordChanged'), icon: 'i-lucide-check', color: 'success' })
     open.value = false
   }
   catch (e) {
@@ -68,17 +69,17 @@ async function submit() {
 </script>
 
 <template>
-  <SDialog v-model="open" title="Change password">
+  <SDialog v-model="open" :title="t('profile_actions.changePasswordTitle')">
     <form class="flex flex-col gap-4" @submit.prevent="submit">
       <SPasswordField
         v-model="oldPassword"
-        label="Current password"
+        :label="t('profile_actions.currentPassword')"
         autocomplete="current-password"
         no-validate
       />
       <SPasswordField
         v-model="newPassword"
-        label="New password"
+        :label="t('profile_actions.newPassword')"
         autocomplete="new-password"
         @update:error="newPasswordError = $event"
       />
@@ -91,7 +92,7 @@ async function submit() {
       <SFormError :code="errorCode" :message="errorMessage" />
 
       <SButton block type="submit" :loading="loading" :disabled="!canSubmit">
-        Change password
+        {{ t('profile_actions.changePasswordBtn') }}
       </SButton>
     </form>
   </SDialog>

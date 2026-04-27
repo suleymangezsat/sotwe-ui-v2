@@ -19,6 +19,7 @@ const props = defineProps<{
 }>()
 
 const placeLabel = computed(() => placeDisplayName(props.data.country, props.data.city))
+const { t } = useI18n()
 
 async function loadMoreTweets(after: string) {
   const res = await useApi().trend.tweetsByLocation({
@@ -44,7 +45,7 @@ async function loadMoreTweets(after: string) {
 
   <header class="border-b border-twitter-slate-100 px-4 pb-1 pt-3 dark:border-twitter-slate-700">
     <h2 class="text-lg font-bold text-twitter-slate-950 dark:text-twitter-slate-100">
-      Tweets in {{ placeLabel }}
+      {{ t('trendspage.tweets', { place: placeLabel }) }}
     </h2>
   </header>
 
@@ -54,11 +55,11 @@ async function loadMoreTweets(after: string) {
     :load-more="loadMoreTweets"
   >
     <template #default="{ items }">
-      <STweet v-for="t in items" :key="t.id" :tweet="t" />
+      <STweet v-for="tw in items" :key="tw.id" :tweet="tw" />
     </template>
     <template #empty>
       <p class="px-4 py-10 text-center text-twitter-slate-500 dark:text-twitter-slate-400">
-        No Results
+        {{ t('common.noResults') }}
       </p>
     </template>
   </SInfiniteTimeline>

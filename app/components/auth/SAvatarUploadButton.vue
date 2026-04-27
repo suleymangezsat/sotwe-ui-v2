@@ -13,6 +13,7 @@ const MAX_BYTES = 5 * 1024 * 1024
 
 const auth = useAuth()
 const toast = useToast()
+const { t } = useI18n()
 const input = ref<HTMLInputElement | null>(null)
 const loading = ref(false)
 
@@ -24,11 +25,11 @@ async function onChange(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
   if (!file.type.startsWith('image/')) {
-    toast.add({ title: 'Pick an image file', color: 'error', icon: 'i-lucide-alert-circle' })
+    toast.add({ title: t('edit_profile.pickAnImage'), color: 'error', icon: 'i-lucide-alert-circle' })
     return
   }
   if (file.size > MAX_BYTES) {
-    toast.add({ title: 'File too large (max 5 MB)', color: 'error', icon: 'i-lucide-alert-circle' })
+    toast.add({ title: t('edit_profile.fileTooLarge'), color: 'error', icon: 'i-lucide-alert-circle' })
     return
   }
 
@@ -39,11 +40,11 @@ async function onChange(e: Event) {
   try {
     await useApi().me.uploadPicture(form)
     await auth.fetchUser()
-    toast.add({ title: 'Profile picture updated', icon: 'i-lucide-check', color: 'success' })
+    toast.add({ title: t('edit_profile.pictureUpdated'), icon: 'i-lucide-check', color: 'success' })
   }
   catch (err) {
     toast.add({
-      title: 'Upload failed',
+      title: t('edit_profile.uploadFailed'),
       description: (err as Error).message,
       color: 'error',
       icon: 'i-lucide-alert-circle',
@@ -72,7 +73,7 @@ async function onChange(e: Event) {
       :loading="loading"
       @click="pick"
     >
-      Change picture
+      {{ t('edit_profile.changePicture') }}
     </SButton>
   </div>
 </template>

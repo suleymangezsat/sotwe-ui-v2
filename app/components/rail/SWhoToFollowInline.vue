@@ -21,6 +21,7 @@ const props = defineProps<{
 }>()
 
 const visible = computed(() => props.users.slice(0, 3))
+const { t } = useI18n()
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const visible = computed(() => props.users.slice(0, 3))
       id="s-who-to-follow-title"
       class="px-4 py-3 text-xl font-bold text-twitter-slate-950 dark:text-twitter-slate-100"
     >
-      {{ title || 'Who to follow' }}
+      {{ title || t('rail.whoToFollow') }}
     </h2>
 
     <ul class="divide-y divide-twitter-slate-100 dark:divide-twitter-slate-700">
@@ -51,7 +52,7 @@ const visible = computed(() => props.users.slice(0, 3))
               <SVerifiedBadge v-if="u.verified" class="size-4 shrink-0 text-twitter-blue-500" />
             </div>
             <div class="truncate text-sm text-twitter-slate-500 dark:text-twitter-slate-400">
-              @{{ u.screenName }}<span v-if="u.followerCount"> · {{ formatCount(u.followerCount) }} followers</span>
+              @{{ u.screenName }}<span v-if="u.followerCount"> · {{ t('rail.followersCount', { count: formatCount(u.followerCount) }) }}</span>
             </div>
             <p
               v-if="u.description"
@@ -69,7 +70,7 @@ const visible = computed(() => props.users.slice(0, 3))
       :to="seeMoreHref"
       class="block px-4 py-3 text-sm text-twitter-blue-500 hover:bg-twitter-slate-100 dark:hover:bg-twitter-slate-800"
     >
-      Show more
+      {{ t('common.showMore') }}
     </NuxtLink>
   </section>
 </template>

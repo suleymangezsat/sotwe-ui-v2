@@ -8,8 +8,10 @@
 
 definePageMeta({ layout: false })
 
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Signing in · Sotwe',
+  title: t('auth_dialog.signingIn'),
   robots: 'noindex',
 })
 
@@ -23,7 +25,7 @@ const auth = useAuth()
 onMounted(async () => {
   const code = route.query.code as string | undefined
   if (!code) {
-    errorMessage.value = 'Missing OAuth code'
+    errorMessage.value = t('auth_dialog.missingOauthCode')
     loading.value = false
     return
   }
@@ -32,12 +34,12 @@ onMounted(async () => {
       await auth.signInWithGoogle({ code })
     }
     else {
-      throw new Error(`Unsupported provider: ${provider.value}`)
+      throw new Error(t('auth_dialog.unsupportedProvider', { provider: provider.value }))
     }
     navigateTo('/me/profile', { replace: true })
   }
   catch (e) {
-    errorMessage.value = (e as Error).message || 'Social sign-in failed'
+    errorMessage.value = (e as Error).message || t('auth_dialog.socialSignInFailed')
     loading.value = false
   }
 })
@@ -48,7 +50,7 @@ onMounted(async () => {
     <div class="flex flex-col items-center gap-4">
       <Icon v-if="loading" name="i-lucide-loader-circle" class="size-8 animate-spin text-twitter-blue-500" />
       <p v-if="errorMessage" class="text-sm text-red-500">{{ errorMessage }}</p>
-      <SButton v-if="errorMessage" to="/login" variant="outline">Back to sign in</SButton>
+      <SButton v-if="errorMessage" to="/login" variant="outline">{{ t('auth_dialog.backToSignIn') }}</SButton>
     </div>
   </main>
 </template>

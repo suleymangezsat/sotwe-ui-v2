@@ -12,14 +12,16 @@ defineProps<{
   users: User[]
   title?: string
 }>()
+
+const { t } = useI18n()
 </script>
 
 <template>
   <SCard v-if="users.length" padded>
-    <h2 class="mb-3 text-xl font-bold">{{ title || 'Who to follow' }}</h2>
+    <h2 class="mb-3 text-xl font-bold">{{ title || t('rail.whoToFollow') }}</h2>
     <ul class="-mx-2">
       <li v-for="u in users" :key="u.id">
-        <SUserRow :user="u" :subtitle="u.followerCount ? `${formatCount(u.followerCount)} followers` : undefined" />
+        <SUserRow :user="u" :subtitle="u.followerCount ? t('rail.followersCount', { count: formatCount(u.followerCount) }) : undefined" />
       </li>
     </ul>
   </SCard>

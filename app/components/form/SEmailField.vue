@@ -20,13 +20,17 @@ const props = withDefaults(defineProps<{
   noValidate?: boolean
   disabled?: boolean
 }>(), {
-  label: 'Email',
-  placeholder: 'you@example.com',
+  label: undefined,
+  placeholder: undefined,
   autocomplete: 'email',
   required: true,
   noValidate: false,
   disabled: false,
 })
+
+const { t } = useI18n()
+const labelText = computed(() => props.label ?? t('forms.email.label'))
+const placeholderText = computed(() => props.placeholder ?? t('forms.email.placeholder'))
 
 const model = defineModel<string>({ required: true })
 const emit = defineEmits<{ 'update:error': [string | undefined] }>()
@@ -41,11 +45,11 @@ const errorMessage = computed(() => translateValidationKey(error.value))
 </script>
 
 <template>
-  <UFormField :label="label" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
+  <UFormField :label="labelText" :error="errorMessage" :required="required" :ui="{ root: 'w-full' }">
     <UInput
       v-model="model"
       type="email"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       :autocomplete="autocomplete"
       :disabled="disabled"
       class="w-full"

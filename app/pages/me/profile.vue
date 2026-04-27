@@ -35,9 +35,10 @@ watchEffect(() => {
   if (profile.value) auth.user.value = profile.value
 })
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Profile · Sotwe',
-  description: 'Manage your Sotwe account.',
+  title: t('myProfilePage.meta.title'),
+  description: t('myProfilePage.meta.description'),
   noindex: true,
 })
 
@@ -47,13 +48,13 @@ const cancelRenewalOpen = ref(false)
 
 function signOut() {
   auth.signOut()
-  toast.add({ title: 'Signed out', icon: 'i-lucide-check', color: 'success' })
+  toast.add({ title: t('edit_profile.signedOut'), icon: 'i-lucide-check', color: 'success' })
   navigateTo('/', { replace: true })
 }
 </script>
 
 <template>
-  <STopBar title="Profile" />
+  <STopBar :title="t('navigation.myProfile')" />
 
   <section v-if="profile" class="flex flex-col gap-6 px-4 py-6">
     <div class="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:text-left">
@@ -87,46 +88,48 @@ function signOut() {
         {{ profile.subscription.description }}
       </p>
       <p class="text-xs text-twitter-slate-500 dark:text-twitter-slate-400">
-        Renews {{ profile.subscription.renewal }} · ends
-        {{ new Date(profile.subscription.endDate).toLocaleDateString() }}
+        {{ t('me_profile.renewsRow', {
+          renewal: profile.subscription.renewal,
+          endDate: new Date(profile.subscription.endDate).toLocaleDateString(),
+        }) }}
       </p>
       <!-- Cancel-renewal trigger only shows for paid tiers (priority > 0).
            Free-tier users have nothing to cancel — the button would 4xx
            from the backend. -->
       <div v-if="profile.subscription.priority > 0" class="flex flex-wrap gap-2">
         <SButton size="sm" variant="ghost" color="error" icon="i-lucide-x-circle" @click="cancelRenewalOpen = true">
-          Cancel auto-renewal
+          {{ t('me_profile.cancelRenewal') }}
         </SButton>
         <SButton size="sm" variant="ghost" to="/pricing" icon="i-lucide-arrow-up-right">
-          Manage plan
+          {{ t('me_profile.managePlan') }}
         </SButton>
       </div>
       <SButton v-else size="sm" to="/pricing" icon="i-lucide-sparkles">
-        Upgrade to Premium
+        {{ t('me_profile.upgradeToPremium') }}
       </SButton>
     </div>
 
     <section class="flex flex-col gap-3">
-      <h2 class="text-lg font-bold">Profile information</h2>
+      <h2 class="text-lg font-bold">{{ t('me_profile.profileInformation') }}</h2>
       <SEditProfileForm :profile="profile" @updated="refresh" />
     </section>
 
     <section class="flex flex-col gap-3">
-      <h2 class="text-lg font-bold">Account &amp; security</h2>
+      <h2 class="text-lg font-bold">{{ t('me_profile.accountSecurity') }}</h2>
       <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         <SButton
           variant="outline"
           icon="i-lucide-key-round"
           @click="changePasswordOpen = true"
         >
-          Change password
+          {{ t('me_profile.changePassword') }}
         </SButton>
         <SButton
           variant="ghost"
           icon="i-lucide-log-out"
           @click="signOut"
         >
-          Sign out
+          {{ t('me_profile.signOut') }}
         </SButton>
         <SButton
           variant="ghost"
@@ -134,7 +137,7 @@ function signOut() {
           icon="i-lucide-trash-2"
           @click="deleteOpen = true"
         >
-          Delete account
+          {{ t('me_profile.deleteAccount') }}
         </SButton>
       </div>
     </section>
@@ -147,7 +150,7 @@ function signOut() {
   <section v-else class="flex min-h-dvh items-center justify-center">
     <div class="flex flex-col items-center gap-3">
       <Icon name="i-lucide-loader-circle" class="size-8 animate-spin text-twitter-blue-500" />
-      <p class="text-sm text-twitter-slate-500">Loading your profile…</p>
+      <p class="text-sm text-twitter-slate-500">{{ t('me_profile.loading') }}</p>
     </div>
   </section>
 </template>

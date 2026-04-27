@@ -18,26 +18,27 @@ async function loadMore(page: number) {
   return { items: res.data, after: res.after }
 }
 
+const { t } = useI18n()
 useSotweMeta({
-  title: 'Bookmarks · Sotwe',
-  description: 'Your saved tweets.',
+  title: t('bookmarkpage.meta.title'),
+  description: t('bookmarkpage.meta.description'),
   noindex: true,
 })
 </script>
 
 <template>
-  <STopBar title="Bookmarks" />
+  <STopBar :title="t('bookmarkpage.title')" />
   <SInfiniteTimeline
     :initial-items="data.tweets"
     :initial-after="data.after"
     :load-more="loadMore"
   >
     <template #default="{ items }">
-      <STweet v-for="t in items" :key="t.id" :tweet="t" />
+      <STweet v-for="tw in items" :key="tw.id" :tweet="tw" />
     </template>
     <template #empty>
       <p class="px-4 py-10 text-center text-twitter-slate-500">
-        You haven't saved any tweets yet.
+        {{ t('bookmarkpage.notfound.title') }}
       </p>
     </template>
   </SInfiniteTimeline>

@@ -10,12 +10,17 @@ defineProps<{
   /** Hide the text wordmark and keep just the glyph — for the sidebar collapsed state. */
   compact?: boolean
 }>()
+
+const config = useRuntimeConfig()
+const { t } = useI18n()
+const brandName = config.public.siteName
+const ariaLabel = computed(() => `${brandName} ${t('navigation.home')}`)
 </script>
 
 <template>
   <NuxtLink
     to="/"
-    :aria-label="compact ? 'Sotwe' : 'Sotwe home'"
+    :aria-label="compact ? brandName : ariaLabel"
     class="inline-flex items-center gap-2 text-twitter-slate-950 dark:text-twitter-slate-100"
   >
     <svg
