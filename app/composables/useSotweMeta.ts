@@ -12,8 +12,10 @@
  *   - Twitter cards switch between `summary` and `summary_large_image`
  *     based on whether an image is supplied
  *
- * See also docs/ui-mapping.md. A Faz 10 snapshot test compares this
- * composable's output against the v1 MetaHelper so SEO can't regress.
+ * The pure builder (`buildSotweMeta`) is exported separately so the
+ * Faz 10 SEO-snapshot tests can pin the meta tag set without booting a
+ * full Nuxt instance — they call `buildSotweMeta(opts, ctx)` and assert
+ * on the resulting object shape directly.
  */
 
 export interface SotweMetaOptions {
@@ -33,32 +35,60 @@ export interface SotweMetaOptions {
   ogType?: 'website' | 'article' | 'profile'
 }
 
-export function useSotweMeta(opts: SotweMetaOptions) {
-  const config = useRuntimeConfig()
-  const route = useRoute()
+/**
+ * Context the builder needs to derive a canonical URL — site origin
+ * (from `runtimeConfig.public.siteUrl`), site name (`Sotwe`), and the
+ * current request path (from `useRoute().path`). Tests pass these in
+ * directly; the composable below resolves them from Nuxt.
+ */
+export interface SotweMetaContext {
+  siteUrl: string
+  siteName: string
+  routePath: string
+}
 
-  const origin = config.public.siteUrl.replace(/\/+$/, '')
-  const derivedUrl = `${origin}${route.path || '/'}`.toLowerCase()
+export interface SotweMetaOutput {
+  seoMeta: {
+    title: string
+    description: string
+    ogTitle: string
+    ogDescription: string
+    ogImage?: string
+    ogUrl: string
+    ogType: 'website' | 'article' | 'profile'
+    ogSiteName: string
+    twitterCard: 'summary' | 'summary_large_image'
+    twitterTitle: string
+    twitterDescription: string
+    twitterImage?: string
+    robots?: 'noindex'
+  }
+  link: { rel: 'canonical', href: string }[]
+  script: { type: 'application/ld+json', innerHTML: string }[]
+}
+
+export function buildSotweMeta(opts: SotweMetaOptions, ctx: SotweMetaContext): SotweMetaOutput {
+  const origin = ctx.siteUrl.replace(/\/+$/, '')
+  const derivedUrl = `${origin}${ctx.routePath || '/'}`.toLowerCase()
   const canonical = (opts.canonical ?? derivedUrl).toLowerCase()
-  const robots = (opts.noindex || opts.isSensitive) ? 'noindex' : undefined
+  const robots = (opts.noindex || opts.isSensitive) ? 'noindex' as const : undefined
 
-  useSeoMeta({
-    title: opts.title,
-    description: opts.description,
-    ogTitle: opts.title,
-    ogDescription: opts.description,
-    ogImage: opts.image,
-    ogUrl: canonical,
-    ogType: opts.ogType ?? 'website',
-    ogSiteName: config.public.siteName,
-    twitterCard: opts.image ? 'summary_large_image' : 'summary',
-    twitterTitle: opts.title,
-    twitterDescription: opts.description,
-    twitterImage: opts.image,
-    robots,
-  })
-
-  useHead({
+  return {
+    seoMeta: {
+      title: opts.title,
+      description: opts.description,
+      ogTitle: opts.title,
+      ogDescription: opts.description,
+      ogImage: opts.image,
+      ogUrl: canonical,
+      ogType: opts.ogType ?? 'website',
+      ogSiteName: ctx.siteName,
+      twitterCard: opts.image ? 'summary_large_image' : 'summary',
+      twitterTitle: opts.title,
+      twitterDescription: opts.description,
+      twitterImage: opts.image,
+      robots,
+    },
     link: [{ rel: 'canonical', href: canonical }],
     script: opts.jsonLd
       ? [{
@@ -66,5 +96,22 @@ export function useSotweMeta(opts: SotweMetaOptions) {
           innerHTML: JSON.stringify(opts.jsonLd),
         }]
       : [],
+  }
+}
+
+export function useSotweMeta(opts: SotweMetaOptions) {
+  const config = useRuntimeConfig()
+  const route = useRoute()
+
+  const out = buildSotweMeta(opts, {
+    siteUrl: config.public.siteUrl,
+    siteName: config.public.siteName,
+    routePath: route.path,
+  })
+
+  useSeoMeta(out.seoMeta)
+  useHead({
+    link: out.link,
+    script: out.script,
   })
 }

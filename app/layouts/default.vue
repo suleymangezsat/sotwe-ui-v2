@@ -77,6 +77,15 @@ useHead(() => ({
       <SLocationPermissionDialog />
       <SCampaignDialog />
       <SNearbyDialog />
+      <!--
+        Rotated ad slot. Reads `useAdsStore().activeAd`, which the
+        global server plugin already picked for this request — so the
+        slot only renders when (a) ads are enabled and (b) the route
+        isn't on the NoAds list. The component itself is a hidden
+        injector for the network's bootstrap snippet, not a visible
+        layout block.
+      -->
+      <SSocialBarAd />
     </ClientOnly>
   </div>
 </template>

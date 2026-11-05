@@ -32,12 +32,37 @@ const topTopicsText = computed(() => (data.value?.topics || []).slice(0, 4).map(
 // title patterns. Param names match v1 verbatim (`activePlace`,
 // `topTopics`) so a single key tree drives all 4 locales.
 const { t } = useI18n()
+const config = useRuntimeConfig()
+
+// Home is the canonical site root; emit the `WebSite` schema with a
+// SearchAction so Google can render the sitelinks search box for
+// "sotwe" queries — Google's documented opt-in for the search-box
+// rich result lives here, not on /search/*.
+// See https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox
+const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': config.public.siteName,
+  'alternateName': 'Sotwe — Twitter / X reader',
+  'url': siteUrl,
+  'potentialAction': {
+    '@type': 'SearchAction',
+    'target': {
+      '@type': 'EntryPoint',
+      'urlTemplate': `${siteUrl}/search/{search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 useSotweMeta({
   title: t('trendspage.meta.title', { activePlace: placeLabel.value }),
   description: t('trendspage.meta.description', {
     activePlace: placeLabel.value,
     topTopics: topTopicsText.value,
   }),
+  jsonLd: homeJsonLd,
 })
 </script>
 

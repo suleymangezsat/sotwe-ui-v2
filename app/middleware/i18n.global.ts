@@ -17,27 +17,32 @@
  */
 
 export default defineNuxtRouteMiddleware(async (to) => {
-  const lang = (to.query.lang as string | undefined)?.toLowerCase()
-  if (!lang) return
-
   // Middleware runs outside a setup() scope, so `useI18n()` would crash.
   // Reach for the i18n instance via `useNuxtApp().$i18n` instead — same
   // shape, just bypasses the composable's setup-context guard.
   const { $i18n } = useNuxtApp()
   if (!$i18n) return
+
   type LocaleCode = typeof $i18n.locale.value
   const supported = $i18n.locales.value
     .map((l: unknown) => (typeof l === 'string' ? l : (l as { code: string }).code)) as LocaleCode[]
-  if (!supported.includes(lang as LocaleCode)) return
+
+  // `resolveLangOverride` is the pure decision step — easy to unit-test
+  // and we only spend the cookie + setLocale round-trip when it tells
+  // us to. See its comment for the v1 detection-priority rules.
+  const action = resolveLangOverride({
+    query: to.query.lang as string | string[] | undefined,
+    supported,
+    current: $i18n.locale.value,
+  })
+  if (action.kind === 'noop') return
 
   // `setLocale` is async — it lazy-loads the locale's message catalog and
   // flips `$i18n.locale.value` once that's resolved. We MUST await before
   // returning so the page renders against the new locale on this same
   // SSR pass; otherwise the rendered HTML reflects the previous (default)
   // locale and a client-side flicker re-renders everything.
-  if ($i18n.locale.value !== lang) {
-    await $i18n.setLocale(lang as LocaleCode)
-  }
+  await $i18n.setLocale(action.locale as LocaleCode)
 
   // Persist to the same cookie name v1 used so returning visits stick
   // even when the `?lang` parameter is dropped from the URL.
@@ -46,5 +51,5 @@ export default defineNuxtRouteMiddleware(async (to) => {
     sameSite: 'lax',
     path: '/',
   })
-  cookie.value = lang
+  cookie.value = action.locale
 })

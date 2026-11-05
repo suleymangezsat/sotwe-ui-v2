@@ -147,3 +147,18 @@ export const NoAdsPages = [
   'pricing-fail',
 ] as const
 export type NoAdsPage = (typeof NoAdsPages)[number]
+
+// Ad networks v1 rotates between via weighted RNG. Names match the
+// keys in v1's `store/index.js` `ads` map verbatim — so the impression
+// tracker on the SocialBarAd events ("ad_provider: monetag") keeps
+// reporting the same labels into GA4.
+export const ActiveAds = [
+  'adsterra',
+  'propellerads',
+  'evadav',
+  'admaven',
+  'adcash',
+  'monetag',
+  'popads',
+] as const
+export type ActiveAd = (typeof ActiveAds)[number]

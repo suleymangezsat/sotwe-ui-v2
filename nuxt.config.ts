@@ -30,6 +30,16 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/eslint',
     '@nuxt/test-utils/module',
+    // Analytics: gtag drives GA4 reporting (event API used from
+    // SocialBarAd impression tracking). Lazy-loaded via the runtimeConfig
+    // `gtagId` so dev runs don't pollute the prod property — set
+    // `enabled: false` automatically when the id is empty.
+    'nuxt-gtag',
+    // Partytown re-hosts third-party scripts (Yandex Metrica, ad
+    // networks) on a service-worker-backed worker thread. Keeps the main
+    // thread free for hydration + scrolling, which moves Core Web Vitals
+    // (INP / TBT) into the green and protects 1.5M-daily SERP rankings.
+    '@nuxtjs/partytown',
   ],
 
   css: ['~/assets/css/main.css'],
@@ -50,6 +60,7 @@ export default defineNuxtConfig({
     { path: '~/components/dialog', pathPrefix: false },
     { path: '~/components/user', pathPrefix: false },
     { path: '~/components/pricing', pathPrefix: false },
+    { path: '~/components/ads', pathPrefix: false },
     { path: '~/components' },
   ],
 
@@ -68,6 +79,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      // `titleTemplate` is the v1 `'%s | Sotwe'` pattern — every page
+      // sets its own title via `useSotweMeta`, and Nuxt suffixes the
+      // brand. SERP-friendly and matches what Google already indexed.
+      titleTemplate: '%s | Sotwe',
       // `htmlAttrs.lang` is intentionally NOT set here — `@nuxtjs/i18n`
       // owns the html lang attribute and updates it per-request based on
       // the resolved locale (/tr/* → "tr", /id/* → "id", default → "en").
@@ -91,6 +106,17 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        // DNS prefetch + preconnect for Twitter's CDN hosts. v1 ports
+        // these from MetaHelper.createInitialMeta — they shave ~80–120ms
+        // off the first media render on a cold connection (DNS lookup +
+        // TLS handshake happen in parallel with HTML parse). Same hosts
+        // both for image (`pbs.twimg.com`) and video (`video[-s].twimg.com`).
+        { rel: 'dns-prefetch', href: '//pbs.twimg.com' },
+        { rel: 'preconnect', href: '//pbs.twimg.com' },
+        { rel: 'dns-prefetch', href: '//video.twimg.com' },
+        { rel: 'preconnect', href: '//video.twimg.com' },
+        { rel: 'dns-prefetch', href: '//video-s.twimg.com' },
+        { rel: 'preconnect', href: '//video-s.twimg.com' },
       ],
     },
   },
@@ -210,6 +236,59 @@ export default defineNuxtConfig({
 
   ui: {
     // Populated in app/app.config.ts
+  },
+
+  /*
+   * Google Analytics 4 (GA4 property G-HFT3KBFRDE in production).
+   *
+   * `nuxt-gtag` injects the gtag.js SDK once (lazy, after page paint)
+   * and exposes `useGtag().gtag(...)` for event tracking. v1 wired
+   * gtag inside `MetaHelper.createInitialMeta` with hand-rolled
+   * dataLayer scaffolding — moving to the module gives us:
+   *   - automatic page_view dispatch on route change (no plugin needed)
+   *   - `enabled: false` short-circuit for dev / when the id is empty,
+   *     so local runs and `NUXT_PUBLIC_ADS_ENABLED=false` deploys don't
+   *     ping the prod property
+   *   - typed `useGtag` composable for the impression-tracker in
+   *     SSocialBarAd
+   */
+  gtag: {
+    // The runtimeConfig public key is the source of truth (set per-env);
+    // the module reads it on boot.
+    id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-HFT3KBFRDE',
+    // Module disables itself when the id is empty — same semantics as
+    // v1's `if (this.$ads.enabled) { gtag... }` guard, but at the
+    // module boundary so no event call ever leaks to the wrong
+    // property.
+    enabled: process.env.NUXT_PUBLIC_ADS_ENABLED !== 'false',
+    initMode: 'manual', // load only after we explicitly initGtag() — see plugin
+  },
+
+  /*
+   * Partytown — re-hosts third-party scripts on a service-worker-backed
+   * worker thread. v1 ran Yandex Metrica + the rotated ad network
+   * (admaven / monetag / adcash) on the main thread, which dragged
+   * INP / TBT into the red on a 1.5M-daily-visit site.
+   *
+   *   - `forward` lists globals that bridge from the main thread to
+   *     the worker. `dataLayer.push` for gtag, `ym` for Yandex
+   *     Metrica, `aclib.runPop` for adcash. Without these the
+   *     worker's script can't reach the API surface from page code.
+   *   - The actual script tags carry `type="text/partytown"` (added in
+   *     `app/plugins/03.analytics.client.ts` below) — Partytown picks
+   *     them up at runtime and proxies them.
+   *   - `lib: '/~partytown/'` — module copies the runtime to /public/
+   *     so the SW registration doesn't 404 on Cloudflare.
+   */
+  partytown: {
+    forward: [
+      'dataLayer.push',
+      'gtag',
+      'ym',
+      'aclib.runPop',
+    ],
+    debug: false,
+    lib: '/~partytown/',
   },
 
   /*

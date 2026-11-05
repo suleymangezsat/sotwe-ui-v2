@@ -2,15 +2,37 @@
 const { t } = useI18n()
 const config = useRuntimeConfig()
 
+const appName = config.public.siteName
+const appEmail = config.public.siteEmail
+const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
+
+// `Organization` schema for the brand — Google reads this to wire the
+// knowledge panel + corporate logo on SERPs. Lives on /about because
+// that's the `contactPoint` page Google's guidelines reference.
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': appName,
+  'alternateName': 'sotwe.com',
+  'url': siteUrl,
+  'logo': `${siteUrl}/icon.png`,
+  'email': appEmail,
+  'description': t('aboutpage.about_p_1'),
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'email': appEmail,
+    'contactType': 'customer support',
+    'availableLanguage': ['en', 'tr', 'id'],
+  },
+}
+
 useSotweMeta({
   title: t('aboutpage.meta.title'),
   description: t('aboutpage.meta.description', {
     domain: new URL(config.public.siteUrl).host,
   }),
+  jsonLd: aboutJsonLd,
 })
-
-const appName = config.public.siteName
-const appEmail = config.public.siteEmail
 </script>
 
 <template>

@@ -20,6 +20,50 @@ if (error.value || !tweet.value) {
 }
 
 const tw = tweet.value
+const config = useRuntimeConfig()
+const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
+const tweetUrl = `${siteUrl}/tweet/${tw.id}`
+
+// `SocialMediaPosting` schema. Required by Google's article-rich-result
+// guidelines:
+//   - headline (≤110 chars)
+//   - datePublished
+//   - author (Person)
+//   - mainEntityOfPage
+// We add the full `articleBody`, `image` (when the tweet has media), and
+// reply / quote / share / like InteractionCounters so Google's
+// engagement-aware ranking sees the same numbers SERPs already show.
+const tweetMediaImages = (tw.mediaEntities ?? [])
+  .filter(m => m.type === 'photo' && m.mediaURL)
+  .map(m => m.mediaURL!) || []
+
+const tweetJsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'SocialMediaPosting',
+  'headline': (tw.text ?? '').slice(0, 110),
+  'articleBody': tw.text ?? '',
+  'datePublished': new Date(tw.createdAt).toISOString(),
+  'inLanguage': tw.lang,
+  'identifier': tw.id,
+  'url': tweetUrl,
+  'mainEntityOfPage': { '@type': 'WebPage', '@id': tweetUrl },
+  'author': tw.user
+    ? {
+        '@type': 'Person',
+        'name': tw.user.name,
+        'alternateName': `@${tw.user.screenName}`,
+        'url': `${siteUrl}/${tw.user.screenName}`,
+        'image': tw.user.profileImageOriginal,
+      }
+    : undefined,
+  'image': tweetMediaImages.length ? tweetMediaImages : undefined,
+  'interactionStatistic': [
+    { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/LikeAction', 'userInteractionCount': tw.favoriteCount ?? 0 },
+    { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/ShareAction', 'userInteractionCount': tw.retweetCount ?? 0 },
+    { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/CommentAction', 'userInteractionCount': tw.replyCount ?? 0 },
+    { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/QuoteAction', 'userInteractionCount': tw.quoteCount ?? 0 },
+  ],
+}
 
 // v1 `tweetpage.meta.*` template — `{fullname} {username}` pattern is
 // indexed by Google for tweet-detail SEO; param names match v1 exactly.
@@ -37,19 +81,7 @@ useSotweMeta({
   image: tw.mediaEntities?.[0]?.mediaURL || tw.user?.profileImageOriginal,
   isSensitive: tw.possiblySensitive,
   ogType: 'article',
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'SocialMediaPosting',
-    'headline': tw.text?.slice(0, 110),
-    'datePublished': new Date(tw.createdAt).toISOString(),
-    'author': tw.user
-      ? { '@type': 'Person', 'name': tw.user.name, 'alternateName': `@${tw.user.screenName}` }
-      : undefined,
-    'interactionStatistic': [
-      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/LikeAction', 'userInteractionCount': tw.favoriteCount },
-      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/ShareAction', 'userInteractionCount': tw.retweetCount },
-    ],
-  },
+  jsonLd: tweetJsonLd,
 })
 </script>
 

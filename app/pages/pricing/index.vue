@@ -40,9 +40,57 @@ const recommendedId = computed(() => sortedPlans.value[0]?.id)
 const isSinglePlan = computed(() => sortedPlans.value.length === 1)
 
 const { t } = useI18n()
+const config = useRuntimeConfig()
+
+// `Product` + nested `Offer` schema for each paid plan. When the backend
+// returns one plan we emit a single Offer; for multi-tier rollouts we
+// emit `AggregateOffer` so Google can display the price range. Required
+// fields per https://developers.google.com/search/docs/appearance/structured-data/product:
+// name, description, price, priceCurrency, availability.
+const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
+const pricingJsonLd = computed(() => {
+  if (!sortedPlans.value.length) return undefined
+  const baseProduct = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    'name': `${config.public.siteName} Premium`,
+    'description': t('pricing_page.subhead'),
+    'brand': { '@type': 'Brand', 'name': config.public.siteName },
+    'url': `${siteUrl}/pricing`,
+  } as Record<string, unknown>
+
+  if (sortedPlans.value.length === 1) {
+    const plan = sortedPlans.value[0]!
+    baseProduct.offers = {
+      '@type': 'Offer',
+      // Google's Product schema spec wants `price` as a string ("3.99")
+      // not a number — both validate, but the string form has been
+      // stable across the documented examples for years.
+      'price': String(plan.price),
+      'priceCurrency': plan.currency.toUpperCase(),
+      'availability': 'https://schema.org/InStock',
+      'url': `${siteUrl}/pricing`,
+      'name': plan.name,
+    }
+  }
+  else {
+    const prices = sortedPlans.value.map(p => Number(p.price)).filter(n => Number.isFinite(n))
+    baseProduct.offers = {
+      '@type': 'AggregateOffer',
+      'offerCount': sortedPlans.value.length,
+      'lowPrice': Math.min(...prices).toString(),
+      'highPrice': Math.max(...prices).toString(),
+      'priceCurrency': sortedPlans.value[0]!.currency.toUpperCase(),
+      'availability': 'https://schema.org/InStock',
+    }
+  }
+  return baseProduct
+})
+
 useSotweMeta({
   title: t('pricing.meta.title'),
   description: t('pricing.meta.description'),
+  jsonLd: pricingJsonLd.value,
 })
 </script>
 

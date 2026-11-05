@@ -113,6 +113,40 @@ const bioFragment = computed(() => {
   const trimmed = profile.description?.slice(0, 200).trim()
   return trimmed ? ` ${trimmed}` : ''
 })
+// v1 parity: ProfilePage schema with the same interactionStatistic
+// shape Google ingests for follower / following / like / post counts.
+// Missing counts coerce to `0` rather than being omitted, so the schema
+// validates even on protected accounts.
+const profileSiteUrl = `${useRuntimeConfig().public.siteUrl.replace(/\/+$/, '')}/${profile.screenName}`
+const profileJsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  'dateCreated': profile.createdAt ? new Date(profile.createdAt).toISOString() : undefined,
+  'mainEntity': {
+    '@type': 'Person',
+    'name': profile.name,
+    'alternateName': `@${profile.screenName}`,
+    'description': profile.description,
+    'url': profileSiteUrl,
+    'identifier': profile.screenName,
+    'image': profile.profileImageOriginal
+      ? {
+          '@type': 'ImageObject',
+          'caption': `${profile.name}'s profile picture`,
+          'contentUrl': profile.profileImageOriginal,
+          'thumbnailUrl': profile.profileImageMedium ?? profile.profileImageOriginal,
+        }
+      : undefined,
+    ...(profile.location ? { location: { '@type': 'Place', name: profile.location } } : {}),
+    'interactionStatistic': [
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/FollowAction', 'userInteractionCount': profile.followerCount ?? 0, 'name': 'Followers' },
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/SubscribeAction', 'userInteractionCount': profile.followingCount ?? 0, 'name': 'Following' },
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/LikeAction', 'userInteractionCount': profile.favouritesCount ?? 0, 'name': 'Likes' },
+      { '@type': 'InteractionCounter', 'interactionType': 'https://schema.org/WriteAction', 'userInteractionCount': profile.postCount ?? 0, 'name': 'Posts' },
+    ],
+  },
+}
+
 useSotweMeta({
   title: t('userpage.meta.title', {
     fullname: profile.name,
@@ -127,17 +161,7 @@ useSotweMeta({
   image: profile.profileImageOriginal,
   isSensitive: profile.possiblySensitive,
   ogType: 'profile',
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    'mainEntity': {
-      '@type': 'Person',
-      'name': profile.name,
-      'alternateName': `@${profile.screenName}`,
-      'description': profile.description,
-      'image': profile.profileImageOriginal,
-    },
-  },
+  jsonLd: profileJsonLd,
 })
 </script>
 
